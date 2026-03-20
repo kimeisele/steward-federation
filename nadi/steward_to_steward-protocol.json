@@ -6,134 +6,6 @@
     "payload": {
       "agent_id": "steward",
       "health": 0.8426937000848912,
-      "timestamp": 1773982891.6530201,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "timestamp": 1773982891.6530247,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "93ac69ad-7b44-47f6-abf9-755e55ea1a0f"
-  },
-  {
-    "source": "steward",
-    "target": "steward-protocol",
-    "operation": "pr_review_verdict",
-    "payload": {
-      "pr_number": 46,
-      "repo": "kimeisele/agent-city",
-      "verdict": "request_changes",
-      "reason": "author 'kimeisele' not in federation peer registry",
-      "diagnostics": {
-        "blast_radius": 0,
-        "has_core_files": false,
-        "core_files_touched": [],
-        "author_is_peer": false,
-        "author_trust": 0.0,
-        "ci_failing": false,
-        "ci_status": "unknown"
-      },
-      "source_agent": "steward"
-    },
-    "timestamp": 1773982894.2179182,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "4b380779-b814-4026-99ec-c5ce3ce303a4"
-  },
-  {
-    "source": "steward",
-    "target": "steward-protocol",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward",
-      "diagnostic": {
-        "agent_id": "steward",
-        "checks": [
-          "repo_accessible",
-          "ci_"
-        ],
-        "last_push": "2026-03-19T17:18:45Z",
-        "last_ci": {
-          "conclusion": "",
-          "name": "Steward Heartbeat"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "timestamp": 1773982907.9015691,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "94fe60c4-6488-452d-a491-0805ab500e97"
-  },
-  {
-    "source": "steward",
-    "target": "steward-protocol",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward",
-      "health": 0.8426937000848912,
-      "timestamp": 1773982907.9019809,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "timestamp": 1773982907.9019856,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "2bc2ffce-6445-48f4-af48-6529162ea1b4"
-  },
-  {
-    "source": "steward",
-    "target": "steward-protocol",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward",
-      "health": 0.8426937000848912,
-      "timestamp": 1773982911.548276,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "timestamp": 1773982911.5482824,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "70e68937-7e10-4b66-a012-9829b72ec431"
-  },
-  {
-    "source": "steward",
-    "target": "steward-protocol",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward",
-      "health": 0.8426937000848912,
       "timestamp": 1773982914.4431224,
       "capabilities": [
         "code_analysis",
@@ -3648,5 +3520,132 @@
     "correlation_id": "",
     "ttl_s": 900.0,
     "id": "0812b848-39e3-458a-ad55-93323fa331dc"
+  },
+  {
+    "source": "steward",
+    "target": "steward-protocol",
+    "operation": "diagnostic_report",
+    "payload": {
+      "target_peer": "steward",
+      "diagnostic": {
+        "agent_id": "steward",
+        "checks": [
+          "repo_accessible",
+          "ci_"
+        ],
+        "last_push": "2026-03-19T17:18:45Z",
+        "last_ci": {
+          "conclusion": "",
+          "name": "Steward Heartbeat"
+        }
+      },
+      "steward_action": "suspect_investigation",
+      "trust": 0.8
+    },
+    "timestamp": 1774004468.505073,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "bbe8ef51-c4fb-43ee-b5cf-2509d2243eae"
+  },
+  {
+    "source": "steward",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "steward",
+      "health": 0.8579000169550597,
+      "timestamp": 1774004468.505543,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "timestamp": 1774004468.5055478,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "ee5c573a-750f-4ef5-8685-627ccc64f114"
+  },
+  {
+    "source": "steward",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "steward",
+      "health": 0.8579000169550597,
+      "timestamp": 1774004473.6314054,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "timestamp": 1774004473.6314123,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "3ae9dd89-bc22-4167-a3e4-7fa012139c8d"
+  },
+  {
+    "source": "steward",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "steward",
+      "health": 0.8579000169550597,
+      "timestamp": 1774004474.861462,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "timestamp": 1774004474.861469,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "2a55d236-0405-4bf0-9354-2a5ead3f6592"
+  },
+  {
+    "source": "steward",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "steward",
+      "health": 0.8565202900369207,
+      "timestamp": 1774004527.2246163,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "timestamp": 1774004527.2246218,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "4d38e02d-9b40-4f0f-bc23-363130e85884"
   }
 ]
