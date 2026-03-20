@@ -4,6 +4,36 @@
     "target": "steward-protocol",
     "operation": "city_report",
     "payload": {
+      "heartbeat": 351,
+      "population": 64,
+      "alive": 64,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 351
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774014708.7063427,
+    "ttl_s": 7200.0
+  },
+  {
+    "source": "agent-city",
+    "target": "steward-protocol",
+    "operation": "city_report",
+    "payload": {
       "heartbeat": 350,
       "population": 64,
       "alive": 64,
@@ -4287,38 +4317,6 @@
     "priority": 2,
     "correlation_id": "",
     "timestamp": 1773861601.969819,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "agent-city",
-    "target": "steward-protocol",
-    "operation": "pr_review_request",
-    "payload": {
-      "repo": "kimeisele/agent-city",
-      "pr_number": 46,
-      "author": "kimeisele",
-      "title": "docs: add fork workflow guide covering contribution, sovereign cities, and federation",
-      "body": "Describes the three paths (contributor, sister city, sandbox) when someone\nforks the repo, including what transfers, what doesn't, security considerations,\nand how forks relate to the immigration/visa system.\n\nhttps://claude.ai/code/session_01NRPCeqPz3U3uc27zpGB5xR",
-      "files_changed": [
-        "city/federation.py",
-        "city/federation_nadi.py",
-        "city/identity_service.py",
-        "city/immigration.py",
-        "docs/FORK_WORKFLOW.md",
-        "scripts/nadi_bridge.py",
-        "tests/test_diplomacy.py",
-        "tests/test_federation_scaling.py"
-      ],
-      "is_citizen": false,
-      "touches_core": true,
-      "core_files": [
-        "city/immigration.py"
-      ],
-      "origin_phase": "genesis"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1773816473.4154944,
     "ttl_s": 7200.0
   }
 ]
