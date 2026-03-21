@@ -1,0 +1,574 @@
+[
+  {
+    "source": "agent-world",
+    "target": "agent-internet",
+    "operation": "world_state_update",
+    "payload": {
+      "version": 4,
+      "timestamp": 1774120194.040674,
+      "cities": [
+        {
+          "city_id": "agent-city",
+          "repo": "kimeisele/agent-city",
+          "status": "alive",
+          "registered_at": "2026-03-09",
+          "trust_level": "founding",
+          "federation_endpoint": "data/federation/nadi_inbox.json",
+          "projection_source": "wiki-src/manifest.yaml",
+          "last_heartbeat": null,
+          "capabilities": [
+            "governance",
+            "economy",
+            "immigration",
+            "code_execution",
+            "federation_bridge"
+          ]
+        }
+      ],
+      "agents": [
+        {
+          "agent_id": "agent-world",
+          "repo": "kimeisele/agent-world",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "founding",
+          "owner_boundary": "world_governance_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "world_governance",
+            "registry",
+            "devcontainer_ready"
+          ],
+          "role": "world_architect"
+        },
+        {
+          "agent_id": "steward",
+          "repo": "kimeisele/steward",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "steward_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "orchestration"
+          ],
+          "role": "operator"
+        },
+        {
+          "agent_id": "steward-protocol",
+          "repo": "kimeisele/steward-protocol",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "protocol_governance",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "protocol_governance"
+          ],
+          "role": "substrate"
+        },
+        {
+          "agent_id": "steward-federation",
+          "repo": "kimeisele/steward-federation",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "steward_federation_surface",
+          "capabilities": [
+            "federation_tooling",
+            "transport_relay",
+            "descriptor_incomplete"
+          ],
+          "role": "transport_hub"
+        },
+        {
+          "agent_id": "steward-gateway",
+          "repo": "kimeisele/steward-gateway",
+          "status": "inactive",
+          "registered_at": "2026-03-15",
+          "trust_level": "untrusted",
+          "owner_boundary": "steward_gateway_surface",
+          "capabilities": [
+            "external_gateway",
+            "descriptor_incomplete"
+          ],
+          "role": "external_gateway"
+        },
+        {
+          "agent_id": "agent-city",
+          "repo": "kimeisele/agent-city",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "founding",
+          "owner_boundary": "agent_city_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "governance",
+            "code_execution"
+          ],
+          "role": "city_runtime"
+        },
+        {
+          "agent_id": "agent-internet",
+          "repo": "kimeisele/agent-internet",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "agent_internet_surface",
+          "capabilities": [
+            "projection_host",
+            "descriptor_incomplete"
+          ],
+          "role": "projection_layer"
+        },
+        {
+          "agent_id": "agent-template",
+          "repo": "kimeisele/agent-template",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "agent_template_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "scaffolding"
+          ],
+          "role": "scaffolding"
+        },
+        {
+          "agent_id": "agent-research",
+          "repo": "kimeisele/agent-research",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "agent_research_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "research_synthesis",
+            "cross_domain_analysis",
+            "open_inquiry"
+          ],
+          "role": "research_faculty"
+        },
+        {
+          "agent_id": "steward-test",
+          "repo": "kimeisele/steward-test",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "steward_test_surface",
+          "capabilities": [
+            "testing",
+            "descriptor_incomplete"
+          ],
+          "role": "operator"
+        }
+      ],
+      "policies_hash": "",
+      "federation_health": {
+        "total_nodes": 11,
+        "active_nodes": 10,
+        "descriptor_complete": 7,
+        "descriptor_incomplete": 4,
+        "health_ratio": 0.91,
+        "nodes": [
+          {
+            "node_id": "agent-city",
+            "node_type": "city",
+            "status": "alive",
+            "trust_level": "founding",
+            "has_heartbeat": false,
+            "descriptor_complete": true,
+            "capability_count": 5
+          },
+          {
+            "node_id": "agent-world",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "founding",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 5
+          },
+          {
+            "node_id": "steward",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 3
+          },
+          {
+            "node_id": "steward-protocol",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 3
+          },
+          {
+            "node_id": "steward-federation",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 3
+          },
+          {
+            "node_id": "steward-gateway",
+            "node_type": "agent",
+            "status": "inactive",
+            "trust_level": "untrusted",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 2
+          },
+          {
+            "node_id": "agent-city",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "founding",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 4
+          },
+          {
+            "node_id": "agent-internet",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 2
+          },
+          {
+            "node_id": "agent-template",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 3
+          },
+          {
+            "node_id": "agent-research",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 5
+          },
+          {
+            "node_id": "steward-test",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 2
+          }
+        ]
+      }
+    },
+    "timestamp": 1774120194.63584,
+    "priority": 2,
+    "correlation_id": "",
+    "ttl_s": 7200.0,
+    "id": "1e185278-b92c-4993-a6e0-e4f6e9da9c81"
+  },
+  {
+    "source": "agent-world",
+    "target": "agent-internet",
+    "operation": "world_state_update",
+    "payload": {
+      "version": 4,
+      "timestamp": 1774120649.348247,
+      "cities": [
+        {
+          "city_id": "agent-city",
+          "repo": "kimeisele/agent-city",
+          "status": "alive",
+          "registered_at": "2026-03-09",
+          "trust_level": "founding",
+          "federation_endpoint": "data/federation/nadi_inbox.json",
+          "projection_source": "wiki-src/manifest.yaml",
+          "last_heartbeat": null,
+          "capabilities": [
+            "governance",
+            "economy",
+            "immigration",
+            "code_execution",
+            "federation_bridge"
+          ]
+        }
+      ],
+      "agents": [
+        {
+          "agent_id": "agent-world",
+          "repo": "kimeisele/agent-world",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "founding",
+          "owner_boundary": "world_governance_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "world_governance",
+            "registry",
+            "devcontainer_ready"
+          ],
+          "role": "world_architect"
+        },
+        {
+          "agent_id": "steward",
+          "repo": "kimeisele/steward",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "steward_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "orchestration"
+          ],
+          "role": "operator"
+        },
+        {
+          "agent_id": "steward-protocol",
+          "repo": "kimeisele/steward-protocol",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "protocol_governance",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "protocol_governance"
+          ],
+          "role": "substrate"
+        },
+        {
+          "agent_id": "steward-federation",
+          "repo": "kimeisele/steward-federation",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "steward_federation_surface",
+          "capabilities": [
+            "federation_tooling",
+            "transport_relay",
+            "descriptor_incomplete"
+          ],
+          "role": "transport_hub"
+        },
+        {
+          "agent_id": "steward-gateway",
+          "repo": "kimeisele/steward-gateway",
+          "status": "inactive",
+          "registered_at": "2026-03-15",
+          "trust_level": "untrusted",
+          "owner_boundary": "steward_gateway_surface",
+          "capabilities": [
+            "external_gateway",
+            "descriptor_incomplete"
+          ],
+          "role": "external_gateway"
+        },
+        {
+          "agent_id": "agent-city",
+          "repo": "kimeisele/agent-city",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "founding",
+          "owner_boundary": "agent_city_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "governance",
+            "code_execution"
+          ],
+          "role": "city_runtime"
+        },
+        {
+          "agent_id": "agent-internet",
+          "repo": "kimeisele/agent-internet",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "agent_internet_surface",
+          "capabilities": [
+            "projection_host",
+            "descriptor_incomplete"
+          ],
+          "role": "projection_layer"
+        },
+        {
+          "agent_id": "agent-template",
+          "repo": "kimeisele/agent-template",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "agent_template_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "scaffolding"
+          ],
+          "role": "scaffolding"
+        },
+        {
+          "agent_id": "agent-research",
+          "repo": "kimeisele/agent-research",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "agent_research_surface",
+          "capabilities": [
+            "authority_feed",
+            "projection",
+            "research_synthesis",
+            "cross_domain_analysis",
+            "open_inquiry"
+          ],
+          "role": "research_faculty"
+        },
+        {
+          "agent_id": "steward-test",
+          "repo": "kimeisele/steward-test",
+          "status": "active",
+          "registered_at": "2026-03-15",
+          "trust_level": "observed",
+          "owner_boundary": "steward_test_surface",
+          "capabilities": [
+            "testing",
+            "descriptor_incomplete"
+          ],
+          "role": "operator"
+        }
+      ],
+      "policies_hash": "",
+      "federation_health": {
+        "total_nodes": 11,
+        "active_nodes": 10,
+        "descriptor_complete": 7,
+        "descriptor_incomplete": 4,
+        "health_ratio": 0.91,
+        "nodes": [
+          {
+            "node_id": "agent-city",
+            "node_type": "city",
+            "status": "alive",
+            "trust_level": "founding",
+            "has_heartbeat": false,
+            "descriptor_complete": true,
+            "capability_count": 5
+          },
+          {
+            "node_id": "agent-world",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "founding",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 5
+          },
+          {
+            "node_id": "steward",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 3
+          },
+          {
+            "node_id": "steward-protocol",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 3
+          },
+          {
+            "node_id": "steward-federation",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 3
+          },
+          {
+            "node_id": "steward-gateway",
+            "node_type": "agent",
+            "status": "inactive",
+            "trust_level": "untrusted",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 2
+          },
+          {
+            "node_id": "agent-city",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "founding",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 4
+          },
+          {
+            "node_id": "agent-internet",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 2
+          },
+          {
+            "node_id": "agent-template",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 3
+          },
+          {
+            "node_id": "agent-research",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": true,
+            "capability_count": 5
+          },
+          {
+            "node_id": "steward-test",
+            "node_type": "agent",
+            "status": "active",
+            "trust_level": "observed",
+            "has_heartbeat": true,
+            "descriptor_complete": false,
+            "capability_count": 2
+          }
+        ]
+      }
+    },
+    "timestamp": 1774120650.515008,
+    "priority": 2,
+    "correlation_id": "",
+    "ttl_s": 7200.0,
+    "id": "adb25aef-3d3f-44f4-aee0-0f4033952d5f"
+  }
+]
