@@ -2,83 +2,6 @@
   {
     "source": "steward",
     "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward",
-      "diagnostic": {
-        "agent_id": "steward",
-        "checks": [
-          "repo_accessible",
-          "ci_"
-        ],
-        "last_push": "2026-03-21T06:36:27Z",
-        "last_ci": {
-          "conclusion": "",
-          "name": "Steward Heartbeat"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "timestamp": 1774091078.0951514,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "b1321019-ff3b-46ac-8dd8-a779beee6965"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward",
-      "health": 0.8616285471033911,
-      "timestamp": 1774091078.0955784,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "timestamp": 1774091078.0955825,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "8eb8bdd8-4578-41ae-ba87-fb0c9514cbca"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward",
-      "health": 0.8616285471033911,
-      "timestamp": 1774091082.8626814,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "timestamp": 1774091082.8626854,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "393e4949-913c-47e5-b5b3-d4b82d7b3297"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
     "operation": "heartbeat",
     "payload": {
       "agent_id": "steward",
@@ -3643,5 +3566,81 @@
     "correlation_id": "",
     "ttl_s": 900.0,
     "id": "9600ce0b-e929-408f-8890-01439092e4fc"
+  },
+  {
+    "source": "steward",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "steward",
+      "health": 0.8610689513534939,
+      "timestamp": 1774108254.453828,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "timestamp": 1774108254.4538877,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "8b8a6013-b521-44cd-a835-24490ea7cf54"
+  },
+  {
+    "source": "steward",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "steward",
+      "health": 0.8610689513534939,
+      "timestamp": 1774108254.4622157,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "timestamp": 1774108254.4622188,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "0ba2b87a-cfb6-4904-bd1d-67a5407b8970"
+  },
+  {
+    "source": "steward",
+    "target": "agent-internet",
+    "operation": "pr_review_verdict",
+    "payload": {
+      "pr_number": 46,
+      "repo": "kimeisele/agent-city",
+      "verdict": "request_changes",
+      "reason": "author 'kimeisele' not in federation peer registry",
+      "diagnostics": {
+        "blast_radius": 0,
+        "has_core_files": false,
+        "core_files_touched": [],
+        "author_is_peer": false,
+        "author_trust": 0.0,
+        "ci_failing": false,
+        "ci_status": "unknown"
+      },
+      "source_agent": "steward"
+    },
+    "timestamp": 1774108257.9168866,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "d4a0159d-c30a-4bde-b9f4-2be690e973a6"
   }
 ]
