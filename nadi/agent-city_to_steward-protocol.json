@@ -4,37 +4,6 @@
     "target": "steward-protocol",
     "operation": "city_report",
     "payload": {
-      "heartbeat": 289,
-      "population": 62,
-      "alive": 62,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 289
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1773958075.0463085,
-    "ttl_s": 7200.0,
-    "id": "b00bc606-7b67-467d-bb7e-47b816691123"
-  },
-  {
-    "source": "agent-city",
-    "target": "steward-protocol",
-    "operation": "city_report",
-    "payload": {
       "heartbeat": 290,
       "population": 62,
       "alive": 62,
@@ -5566,5 +5535,43 @@
     "timestamp": 1774093080.1595042,
     "ttl_s": 7200.0,
     "id": "e5b4e2b3-1891-4eb8-acf6-e838177eca7f"
+  },
+  {
+    "source": "agent-city",
+    "target": "steward-protocol",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 24,
+      "population": 50,
+      "alive": 50,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_428_13",
+          "name": "IssueHeal: #428",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 24
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774093900.6716285,
+    "ttl_s": 7200.0,
+    "id": "5381db65-f951-4861-b88c-5c7f1460f761"
   }
 ]
