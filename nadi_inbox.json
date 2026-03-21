@@ -4,6 +4,53 @@
     "target": "steward",
     "operation": "city_report",
     "payload": {
+      "heartbeat": 65,
+      "population": 51,
+      "alive": 51,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 65
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774129127.796927,
+    "ttl_s": 7200.0
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Diagnose and fix failing contracts 'ruff_clean' and 'tests_pass', and investigate why discussion missions (#412, #410, #",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 65,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774129101.8703656,
+    "ttl_s": 7200.0
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
       "heartbeat": 64,
       "population": 51,
       "alive": 51,
@@ -5633,66 +5680,6 @@
     "priority": 2,
     "correlation_id": "",
     "timestamp": 1773995479.1171532,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "agent-city",
-    "target": "steward-protocol",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 334,
-      "population": 63,
-      "alive": 63,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 334
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1773994611.8025904,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "agent-city",
-    "target": "steward-protocol",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 333,
-      "population": 63,
-      "alive": 63,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 333
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1773993684.8295784,
     "ttl_s": 7200.0
   }
 ]
