@@ -726,5 +726,61 @@
     "timestamp": 1774132997.6440964,
     "ttl_s": 7200.0,
     "id": "ea53e2ba-aa62-4100-941e-321c1b8a68f2"
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and fix failing contracts (ruff_clean, tests_pass) to restore code health, and analyze why discussions/threa",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 70,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774133550.3924572,
+    "ttl_s": 7200.0,
+    "id": "75bd783e-501a-4192-9f83-bd6169034820"
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 70,
+      "population": 52,
+      "alive": 52,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_523_59",
+          "name": "IssueHeal: #523",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 70
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774133595.7894235,
+    "ttl_s": 7200.0,
+    "id": "f0582163-0619-4a71-bf51-4b3216f08f0b"
   }
 ]
