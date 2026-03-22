@@ -2,153 +2,6 @@
   {
     "source": "steward",
     "target": "agent-internet",
-    "operation": "task_completed",
-    "payload": {
-      "task_title": "Fix bottleneck: technical_debt_and_engagement",
-      "source_agent": "agent-city",
-      "pr_url": ""
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774176870.546029,
-    "ttl_s": 900.0,
-    "id": "de4b9a39-4b07-4c61-9ced-d863031ebac7"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward",
-      "health": 0.8508340310698459,
-      "timestamp": 1774177514.0313475,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774177514.0314124,
-    "ttl_s": 900.0,
-    "id": "71e15822-f0c1-4935-9e73-6300456729fc"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
-    "operation": "pr_review_verdict",
-    "payload": {
-      "pr_number": 46,
-      "repo": "kimeisele/agent-city",
-      "verdict": "request_changes",
-      "reason": "author 'kimeisele' not in federation peer registry",
-      "diagnostics": {
-        "blast_radius": 0,
-        "has_core_files": false,
-        "core_files_touched": [],
-        "author_is_peer": false,
-        "author_trust": 0.0,
-        "ci_failing": false,
-        "ci_status": "unknown"
-      },
-      "source_agent": "steward"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774177515.88032,
-    "ttl_s": 900.0,
-    "id": "652443c6-da70-40d6-91e5-7e0212ca96ea"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "agent-world",
-      "diagnostic": {
-        "agent_id": "agent-world",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-03-22T10:42:55Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "World Heartbeat"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.3
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774177516.7389975,
-    "ttl_s": 900.0,
-    "id": "c1247a35-6cce-4dc1-9a89-d680a8b9c416"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward",
-      "diagnostic": {
-        "agent_id": "steward",
-        "checks": [
-          "repo_accessible",
-          "ci_"
-        ],
-        "last_push": "2026-03-22T10:48:57Z",
-        "last_ci": {
-          "conclusion": "",
-          "name": "Steward Heartbeat"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774177517.2059257,
-    "ttl_s": 900.0,
-    "id": "c9a6582a-05b7-4537-a560-0a6069aba8ca"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward-protocol",
-      "diagnostic": {
-        "agent_id": "steward-protocol",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-03-19T19:58:52Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "\ud83c\udfd9\ufe0f Scheduled Agent Operations"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.3
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774177517.7586799,
-    "ttl_s": 900.0,
-    "id": "bfe7b77f-300e-4d5d-a47b-f7caf93457fa"
-  },
-  {
-    "source": "steward",
-    "target": "agent-internet",
     "operation": "diagnostic_report",
     "payload": {
       "target_peer": "steward-federation",
@@ -3870,5 +3723,173 @@
     "payload_hash": "3496dace4cecbd2a489f91224cdfb39723cfbf40055a7b2747686689cf361c74",
     "signature": "59Yf0TLFXZiyPKK8Rzp4CViPmR7/1sf732DZ9zzfCb0+3x8XjDCbwkTpU/2iK83er8JwcGHt00rN36wcMKg8DA==",
     "id": "e582882a-7625-4a14-9338-15bac0848a33"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8358648060560396,
+      "timestamp": 1774202737.1280904,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1774202737.1280947,
+    "ttl_s": 900.0,
+    "message_id": "75492d6f-159d-4e01-8e78-4c152c1b34c7",
+    "payload_hash": "b5fb1fce1aba131f0f506a5494fb70f35f5a71e61dbe879df1ce202006f3da34",
+    "signature": "PDNJgbEqb9Hu6NdWOTiXfH3JhPzC8g5q2QoBLmwEfV35PrLTInAQvQc2pMYhEtYf4sNoHEVekpsrf+beGihuCA==",
+    "id": "8340b21a-3e61-4940-ab4e-afa446a7e349"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8360583060560396,
+      "timestamp": 1774202744.460792,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1774202744.460796,
+    "ttl_s": 900.0,
+    "message_id": "7cb85b5d-f0ee-4de4-8c1b-1d7c67d5a84c",
+    "payload_hash": "c41b36d32a2ace69724a035c92d5b71c225da813a4626b01a0de190933e25b96",
+    "signature": "uJqfxm8CnAFgWOHD9as98aQ9RJWwSFCM/fJdg/BJ+gYIE7aN4Io3CcNll+MLKRNYwlI/TRd7t6Ipe3d++8GkDA==",
+    "id": "4c5c49e7-ef0f-4669-a2ed-feabe9e580d2"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8360583060560396,
+      "timestamp": 1774202746.983228,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1774202746.9832323,
+    "ttl_s": 900.0,
+    "message_id": "9a42ae36-6eec-4629-9b9d-c4adfed45387",
+    "payload_hash": "accd1c8dc2755335fe2066f10a276017f5f8d88c612451b0572cacfdb41bcd42",
+    "signature": "khEkXgLL4JbC57Mt4Ojo6v1uaXH0ObCfbhC2xjirDygO5K2/1J/8BERVbiklDv6dVef0exCJIe/Ey9kaxtO8DQ==",
+    "id": "764ea45b-0dbf-4a53-9feb-a6f213605a54"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8360583060560396,
+      "timestamp": 1774202751.2148871,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1774202751.2148912,
+    "ttl_s": 900.0,
+    "message_id": "f8d7eba8-ab4f-4a2c-8b31-6898f66aa71c",
+    "payload_hash": "49a6ae42485eee09f10dcd74654fceefdc05d675ed7fe469df38853015b6d2dd",
+    "signature": "iycXTNa1hgYqRCwTR2kCi4M1yKWahGZ3c17Yja+XkqYrtm5LhB3pb8HHqX9c/b7C5ellgQMLRbabKnBbS3q+BA==",
+    "id": "8c6e368e-c2f1-4e69-8add-57302863e2eb"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8369484644240506,
+      "timestamp": 1774203855.683282,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1774203855.683346,
+    "ttl_s": 900.0,
+    "message_id": "b49e8bf2-1230-46d5-9ac5-b9f1389de44d",
+    "payload_hash": "a9c09336761ac670c0ac89258da11984c92fc76900c1f629511c41e4b7621e72",
+    "signature": "zDy7FGuB8yW522qnHmYPrQx29W3cOyumBxvgBzx0st7xT07h5h+JgBuYdrfQrrQ4wItEsOvyMBOuOKqfBsbwBw==",
+    "id": "cb8feefc-f655-434b-b160-3c3d9927a14d"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8369484644240506,
+      "timestamp": 1774203855.686831,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1774203855.6868334,
+    "ttl_s": 900.0,
+    "message_id": "33521656-315f-4153-8c22-be3661fe491e",
+    "payload_hash": "550b978cecad743e9dbfbe4622563f95cbfdfbdb31e6fde89c2094bef66e6d67",
+    "signature": "jWrJqDuTwtnvxRfbm1qHL+dFiR1V0ot+SPd09Aa9h+vTvF49WUBmc9nerYKkv9d2cyZz4S63BOpeabmpazNZAg==",
+    "id": "0a2eeb5c-6d0f-4cb7-8c3f-60f8df7ff0e2"
   }
 ]
