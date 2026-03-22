@@ -2536,5 +2536,65 @@
     "timestamp": 1774185426.9566052,
     "ttl_s": 7200.0,
     "id": "50001e93-73e2-40a9-bb50-e80a11d97133"
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Prioritize and resolve failing contracts (ruff_clean, tests_pass) by reassigning agent focus from open discussions to co",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:prioritize_and_resolve_failing_contracts_ruff_cl",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 108,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774186424.2642374,
+    "ttl_s": 7200.0,
+    "id": "c7541da3-d4a6-468f-8eed-bc8f38e8eb9b"
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 108,
+      "population": 53,
+      "alive": 53,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_603_97",
+          "name": "IssueHeal: #603",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 108
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774186561.534206,
+    "ttl_s": 7200.0,
+    "id": "b2e08822-803c-4d08-ae5b-313ef5624af5"
   }
 ]
