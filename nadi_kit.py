@@ -431,18 +431,21 @@ class NadiNode:
 
         return messages
 
-    def heartbeat(self, *, health: float = 1.0, version: str = "0.1.0") -> list[NadiMessage]:
+    def heartbeat(self, *, health: float = 1.0, version: str = "0.1.0", head_agent: str | None = None) -> list[NadiMessage]:
         """Emit a heartbeat broadcast to all peers."""
+        payload = {
+            "agent_id": self.agent_id,
+            "health": health,
+            "timestamp": time.time(),
+            "capabilities": self.capabilities,
+            "repo": self.repo,
+            "version": version,
+        }
+        if head_agent is not None:
+            payload["head_agent"] = head_agent
         return self.emit(
             "heartbeat",
-            {
-                "agent_id": self.agent_id,
-                "health": health,
-                "timestamp": time.time(),
-                "capabilities": self.capabilities,
-                "repo": self.repo,
-                "version": version,
-            },
+            payload,
             target="*",
             priority=1,
             ttl_s=NADI_HEARTBEAT_TTL_S,
