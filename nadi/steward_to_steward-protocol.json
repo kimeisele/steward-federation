@@ -5,31 +5,6 @@
     "operation": "heartbeat",
     "payload": {
       "agent_id": "steward",
-      "health": 0.8539875887844048,
-      "timestamp": 1774157903.5637112,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774157903.5637174,
-    "ttl_s": 900.0,
-    "id": "b36f3066-3487-4d0c-b340-0c14f45ff387"
-  },
-  {
-    "source": "steward",
-    "target": "steward-protocol",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward",
       "health": 0.8555131943599754,
       "timestamp": 1774159422.4292924,
       "capabilities": [
@@ -3454,5 +3429,20 @@
     "timestamp": 1774176119.6294837,
     "ttl_s": 900.0,
     "id": "ee0b13c4-ccaa-43cf-8cea-5a4a4be78dbd"
+  },
+  {
+    "source": "steward",
+    "target": "steward-protocol",
+    "operation": "task_completed",
+    "payload": {
+      "task_title": "Fix bottleneck: technical_debt_and_engagement",
+      "source_agent": "agent-city",
+      "pr_url": ""
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1774176154.9580789,
+    "ttl_s": 900.0,
+    "id": "cb30f297-b7a7-46f5-a47f-6a1de9a95662"
   }
 ]
