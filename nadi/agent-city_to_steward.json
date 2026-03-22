@@ -2776,5 +2776,71 @@
     "timestamp": 1774189505.129993,
     "ttl_s": 7200.0,
     "id": "6bdbd4cd-5ad2-4c05-88be-7d71bddfbe90"
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and fix failing contracts 'ruff_clean' and 'tests_pass' to restore code health and ensure continuous integra",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_failing_contracts_ruff_clean",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 112,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774190518.371156,
+    "ttl_s": 7200.0,
+    "id": "cd85cde8-959a-4ede-a875-daa316c5baf3"
+  },
+  {
+    "source": "agent-city",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 112,
+      "population": 54,
+      "alive": 54,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_611_101",
+          "name": "IssueHeal: #611",
+          "status": "abandoned",
+          "owner": "mayor"
+        },
+        {
+          "id": "brain_bottleneck_code_health_and_engagement_101",
+          "name": "Brain bottleneck: code_health_and_engagement",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 112
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774190620.9989703,
+    "ttl_s": 7200.0,
+    "id": "2847e2f5-c26d-42c5-8da5-8b76f182c92b"
   }
 ]
