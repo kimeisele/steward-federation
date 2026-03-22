@@ -529,7 +529,10 @@ class NadiNode:
         if seeds_path.exists():
             try:
                 data = json.loads(seeds_path.read_text(encoding="utf-8"))
-                seeds = data if isinstance(data, list) else data.get("seeds", [])
+                seeds = (
+                    data if isinstance(data, list)
+                    else data.get("seeds", data.get("descriptor_urls", []))
+                )
                 peers = []
                 for seed in seeds:
                     if isinstance(seed, str):
