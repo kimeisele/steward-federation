@@ -3704,5 +3704,65 @@
     "timestamp": 1774224487.6568089,
     "ttl_s": 7200.0,
     "id": "2774d472-326e-49b8-931a-99dfb0773a0a"
+  },
+  {
+    "source": "ag_09254c67b95e9aa1",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and fix failing contracts (ruff_clean, tests_pass) to restore code quality and test suite integrity.",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_failing_contracts_ruff_clean",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 151,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774227336.664889,
+    "ttl_s": 7200.0,
+    "id": "7b63a531-2308-4da2-bc33-d8b32870446d"
+  },
+  {
+    "source": "ag_09254c67b95e9aa1",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 151,
+      "population": 54,
+      "alive": 54,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_695_140",
+          "name": "IssueHeal: #695",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 151
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774227406.659681,
+    "ttl_s": 7200.0,
+    "id": "b9b74f07-9a9a-4d1a-ae13-f83c32e3eb28"
   }
 ]
