@@ -2,82 +2,6 @@
   {
     "source": "agent-city",
     "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 67,
-      "population": 52,
-      "alive": 52,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [
-        {
-          "id": "brain_bottleneck_code_health_56",
-          "name": "Brain bottleneck: code_health",
-          "status": "abandoned",
-          "owner": "mayor"
-        }
-      ],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 67
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774130776.6335266,
-    "ttl_s": 7200.0,
-    "id": "9b32fce3-ef18-49c6-9e37-bac3a28ed375"
-  },
-  {
-    "source": "agent-city",
-    "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 68,
-      "population": 52,
-      "alive": 52,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [
-        {
-          "id": "issue_519_57",
-          "name": "IssueHeal: #519",
-          "status": "abandoned",
-          "owner": "mayor"
-        }
-      ],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 68
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774131833.592821,
-    "ttl_s": 7200.0,
-    "id": "bd24b73f-f25b-4d5b-9c53-4af609c2b8cc"
-  },
-  {
-    "source": "agent-city",
-    "target": "steward",
     "operation": "bottleneck_escalation",
     "payload": {
       "target": "Diagnose and fix the engagement deadlock: investigate why agents are not responding to discussions (#412, #410, #408, #4",
@@ -4784,5 +4708,75 @@
     "timestamp": 1774287555.050267,
     "ttl_s": 7200.0,
     "id": "4138b01f-1983-4c71-ae4d-2370e987859d"
+  },
+  {
+    "source": "ag_bd5dee2ae984e470",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and fix the failing 'ruff' and 'tests_pass' contracts to restore code health and test reliability.",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_and_tests_p",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 183,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774288965.810755,
+    "ttl_s": 7200.0,
+    "id": "72b72941-44cd-48c8-a1f6-7f57a76657de"
+  },
+  {
+    "source": "ag_bd5dee2ae984e470",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 183,
+      "population": 55,
+      "alive": 55,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_764_172",
+          "name": "IssueHeal: #764",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 183
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 183
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774289076.218822,
+    "ttl_s": 7200.0,
+    "id": "33cbab5a-ee3b-4708-9676-4ae59925e715"
   }
 ]
