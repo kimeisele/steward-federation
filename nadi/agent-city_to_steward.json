@@ -2,44 +2,6 @@
   {
     "source": "agent-city",
     "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 107,
-      "population": 53,
-      "alive": 53,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [
-        {
-          "id": "issue_601_96",
-          "name": "IssueHeal: #601",
-          "status": "abandoned",
-          "owner": "mayor"
-        }
-      ],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 107
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774185426.9566052,
-    "ttl_s": 7200.0,
-    "id": "50001e93-73e2-40a9-bb50-e80a11d97133"
-  },
-  {
-    "source": "agent-city",
-    "target": "steward",
     "operation": "bottleneck_escalation",
     "payload": {
       "target": "Prioritize and resolve failing contracts (ruff_clean, tests_pass) by reassigning agent focus from open discussions to co",
@@ -5282,5 +5244,65 @@
     "timestamp": 1774343857.336068,
     "ttl_s": 7200.0,
     "id": "88b637de-94f8-4e18-834b-671d30ebb812"
+  },
+  {
+    "source": "ag_e0c6a87b73df8b5b",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 218,
+      "population": 58,
+      "alive": 58,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_870_207",
+          "name": "IssueHeal: #870",
+          "status": "abandoned",
+          "owner": "mayor"
+        },
+        {
+          "id": "issue_871_207",
+          "name": "IssueHeal: #871",
+          "status": "abandoned",
+          "owner": "mayor"
+        },
+        {
+          "id": "disc_0_207",
+          "name": "Discussion: #0",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 218
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 218
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774345195.728972,
+    "ttl_s": 7200.0,
+    "id": "cb9afe6f-b5ff-4fa8-8168-f06d715b189e"
   }
 ]
