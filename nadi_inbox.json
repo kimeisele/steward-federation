@@ -1,5 +1,79 @@
 [
   {
+    "source": "ag_1c46bddb3680464b",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 221,
+      "population": 58,
+      "alive": 58,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_880_210",
+          "name": "IssueHeal: #880",
+          "status": "abandoned",
+          "owner": "mayor"
+        },
+        {
+          "id": "issue_881_210",
+          "name": "IssueHeal: #881",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 221
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 221
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774350419.5421302,
+    "ttl_s": 7200.0
+  },
+  {
+    "source": "ag_1c46bddb3680464b",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and fix the failing ruff_clean and tests_pass contracts to restore code health and testing integrity.",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_clean_and_t",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 221,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774350260.8579383,
+    "ttl_s": 7200.0
+  },
+  {
     "source": "ag_4a32e1a431fbf245",
     "target": "steward",
     "operation": "city_report",
@@ -5149,64 +5223,6 @@
     "priority": 2,
     "correlation_id": "",
     "timestamp": 1774188445.8524318,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "agent-city",
-    "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 109,
-      "population": 53,
-      "alive": 53,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [
-        {
-          "id": "issue_605_98",
-          "name": "IssueHeal: #605",
-          "status": "abandoned",
-          "owner": "mayor"
-        }
-      ],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 109
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774187855.1898406,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "agent-city",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Diagnose and fix failing contracts 'ruff_clean' and 'tests_pass' to restore code health and prevent degradation of CI/CD",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:diagnose_and_fix_failing_contracts_ruff_clean_an",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 109,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774187781.2508745,
     "ttl_s": 7200.0
   }
 ]
