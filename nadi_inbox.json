@@ -1,5 +1,58 @@
 [
   {
+    "source": "ag_d1aa6cdd48c9e2aa",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 219,
+      "population": 58,
+      "alive": 58,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [
+        {
+          "id": "issue_873_208",
+          "name": "IssueHeal: #873",
+          "status": "abandoned",
+          "owner": "mayor"
+        },
+        {
+          "id": "issue_874_208",
+          "name": "IssueHeal: #874",
+          "status": "abandoned",
+          "owner": "mayor"
+        }
+      ],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 219
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 219
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1774346743.8938174,
+    "ttl_s": 7200.0
+  },
+  {
     "source": "ag_e0c6a87b73df8b5b",
     "target": "steward",
     "operation": "city_report",
@@ -5138,27 +5191,6 @@
     "priority": 2,
     "correlation_id": "",
     "timestamp": 1774186561.534206,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "agent-city",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Prioritize and resolve failing contracts (ruff_clean, tests_pass) by reassigning agent focus from open discussions to co",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:prioritize_and_resolve_failing_contracts_ruff_cl",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 108,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774186424.2642374,
     "ttl_s": 7200.0
   }
 ]
