@@ -380,5 +380,37 @@
     "nadi_priority": "rajas",
     "ttl_ms": 900000,
     "maha_header_hex": "238e10b6e43f4887a0819601c291c887f9cbf43a7cf0c4dd3d6af09f914cf4623254e39acee73322d0038f39d6b97d84a0bb0d0000000000ab47c7a58f365214ae0524145c7aac0d"
+  },
+  {
+    "source": "steward",
+    "target": "steward-federation",
+    "operation": "diagnostic_report",
+    "payload": {
+      "diagnostic": {
+        "agent_id": "steward-protocol",
+        "checks": [
+          "repo_accessible",
+          "ci_success"
+        ],
+        "last_ci": {
+          "conclusion": "success",
+          "name": "\ud83c\udfd9\ufe0f Scheduled Agent Operations"
+        },
+        "last_push": "2026-03-22T16:24:12Z"
+      },
+      "steward_action": "suspect_investigation",
+      "target_peer": "steward-protocol",
+      "trust": 0.09999999999999998
+    },
+    "priority": 1,
+    "correlation_id": "b7032ab4-b7f5-4067-9d12-201eb79684d2",
+    "timestamp": 1774783968.8716388,
+    "ttl_s": 900.0,
+    "envelope_id": "b7032ab4-b7f5-4067-9d12-201eb79684d2",
+    "nadi_type": "vyana",
+    "nadi_op": "send",
+    "nadi_priority": "rajas",
+    "ttl_ms": 900000,
+    "maha_header_hex": "238e10b6e43f4887a0819601c291c887f9cbf43a7cf0c4dd3d6af09f914cf4623254e39acee73322d0038f39d6b97d84a0bb0d0000000000ab47c7a58f365214ae0524145c7aac0d"
   }
 ]
