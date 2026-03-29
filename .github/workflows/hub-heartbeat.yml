@@ -1,0 +1,43 @@
+name: Federation Hub Heartbeat
+
+on:
+  schedule:
+    - cron: '5-59/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hub-heartbeat
+  cancel-in-progress: false
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout steward-federation
+        uses: actions/checkout@v4
+
+      - name: Write hub heartbeat to mailbox
+        run: |
+          mkdir -p nadi
+          TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          echo "[{\"agent_id\":\"steward-federation\",\"operation\":\"heartbeat\",\"status\":\"alive\",\"role\":\"transport_hub\",\"source\":\"steward-federation\",\"ts\":\"$TS\"}]" \
+            > nadi/steward-federation_to_steward.json
+
+      - name: Commit heartbeat to hub
+        run: |
+          git config user.name "steward-federation-bot"
+          git config user.email "bot@steward-federation"
+          git add nadi/steward-federation_to_steward.json
+          git diff --cached --quiet || \
+            git commit -m "relay: steward-federation hub heartbeat #${{ github.run_number }}"
+          for attempt in 1 2 3; do
+            git push && break
+            echo "Push attempt $attempt failed, rebasing..."
+            git pull --rebase origin main || true
+            sleep $((RANDOM % 10 + 2))
+          done
+
