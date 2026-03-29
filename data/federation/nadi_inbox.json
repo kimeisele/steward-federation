@@ -609,5 +609,37 @@
     "nadi_priority": "rajas",
     "ttl_ms": 900000,
     "maha_header_hex": "238e10b6e43f4887a0819601c291c887f9cbf43a7cf0c4ddcdd011495b6b41c93254e39acee73322d0038f39d6b97d84a0bb0d0000000000ab47c7a58f3652145ebfc5c2965d19a6"
+  },
+  {
+    "source": "steward",
+    "target": "steward-federation",
+    "operation": "diagnostic_report",
+    "payload": {
+      "diagnostic": {
+        "agent_id": "agent-city",
+        "checks": [
+          "repo_accessible",
+          "ci_failure"
+        ],
+        "last_ci": {
+          "conclusion": "failure",
+          "name": "Agent City Heartbeat"
+        },
+        "last_push": "2026-03-28T05:59:55Z"
+      },
+      "steward_action": "suspect_investigation",
+      "target_peer": "agent-city",
+      "trust": 0.3
+    },
+    "priority": 1,
+    "correlation_id": "f5f8a1cf-89ce-4964-84ba-fae62caa8335",
+    "timestamp": 1774794282.2975962,
+    "ttl_s": 900.0,
+    "envelope_id": "f5f8a1cf-89ce-4964-84ba-fae62caa8335",
+    "nadi_type": "vyana",
+    "nadi_op": "send",
+    "nadi_priority": "rajas",
+    "ttl_ms": 900000,
+    "maha_header_hex": "238e10b6e43f4887a0819601c291c887f9cbf43a7cf0c4dd3d6af09f914cf4623254e39acee73322d0038f39d6b97d84a0bb0d0000000000ab47c7a58f365214ae0524145c7aac0d"
   }
 ]
