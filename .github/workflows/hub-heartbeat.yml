@@ -22,11 +22,9 @@ jobs:
 
       - name: Write hub heartbeat to mailbox
         run: |
-          mkdir -p nadi
-          TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          echo "[{\"agent_id\":\"steward-federation\",\"operation\":\"heartbeat\",\"status\":\"alive\",\"role\":\"transport_hub\",\"source\":\"steward-federation\",\"ts\":\"$TS\"}]" \
-            > nadi/steward-federation_to_steward.json
-
+          pip install -q 'git+https://github.com/kimeisele/steward-federation.git' 2>/dev/null || true
+          mkdir -p data/federation
+          nadi --peer-json data/federation/peer.json heartbeat --health 1.0
       - name: Commit heartbeat to hub
         run: |
           git config user.name "steward-federation-bot"
