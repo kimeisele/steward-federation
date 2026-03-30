@@ -19,6 +19,7 @@ Usage:
 from __future__ import annotations
 
 import base64
+import hashlib
 import json
 import logging
 import os
@@ -29,6 +30,9 @@ import uuid
 from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 from typing import Any, Callable
+
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 
 __all__ = ["NadiMessage", "NadiTransport", "NadiHubRelay", "NadiNode", "NodeKeyStore"]
 __version__ = "0.1.0"
@@ -44,26 +48,26 @@ HUB_REPO: str = "kimeisele/steward-federation"
 HUB_NADI_DIR: str = "nadi"
 MIN_RELAY_INTERVAL_S: float = 30.0
 
-# ── Crypto Identity (Ed25519)
-# ──────────────────────────────────────────────────────────────────
+
+# ── Cryptography Utilities ───────────────────────────────────────────────────
 
 def _derive_node_id(public_key_hex: str, length: int = 16) -> str:
-    """Derive ag_xxxx node ID from public key hex."""
-    import hashlib
-    digest = hashlib.sha256(public_key_hex.encode()).hexdigest()
+    """Derive ag_XXXX node ID from public key hex string."""
+    digest = hashlib.sha256(str(public_key_hex).encode()).hexdigest()
     return f"ag_{digest[:length]}"
 
 
 class NodeKeyStore:
-    """Persist Ed25519 keypair in federation_dir/.node_keys.json."""
+    """Persistent Ed25519 key management for NADI nodes."""
 
-    def __init__(self, path) -> None:
+    def __init__(self, path: str | Path) -> None:
         self._path = Path(path)
         self.private_key = ""
         self.public_key = ""
         self.node_id = ""
 
     def ensure_keys(self) -> None:
+        """Load keys from disk or generate new pair."""
         if self._path.exists():
             self._load()
             if self.private_key and self.public_key:
@@ -71,9 +75,10 @@ class NodeKeyStore:
         self._generate()
 
     def _load(self) -> None:
+        """Load keys from JSON file."""
         try:
             payload = json.loads(self._path.read_text())
-        except Exception:
+        except (json.JSONDecodeError, OSError):
             payload = {}
         self.private_key = str(payload.get("private_key", "")).strip()
         self.public_key = str(payload.get("public_key", "")).strip()
@@ -82,43 +87,34 @@ class NodeKeyStore:
             self.node_id = _derive_node_id(self.public_key)
 
     def _generate(self) -> None:
-        try:
-            from cryptography.hazmat.primitives import serialization
-            from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-            priv = Ed25519PrivateKey.generate()
-            pub = priv.public_key()
-            priv_bytes = priv.private_bytes(
-                encoding=serialization.Encoding.Raw,
-                format=serialization.PrivateFormat.Raw,
-                encryption_algorithm=serialization.NoEncryption(),
-            )
-            pub_bytes = pub.public_bytes(
-                encoding=serialization.Encoding.Raw,
-                format=serialization.PublicFormat.Raw,
-            )
-            self.private_key = priv_bytes.hex()
-            self.public_key = pub_bytes.hex()
-            self.node_id = _derive_node_id(self.public_key)
-            self._path.parent.mkdir(parents=True, exist_ok=True)
-            self._path.write_text(json.dumps(
+        """Generate new Ed25519 keypair and save to disk."""
+        private_key = Ed25519PrivateKey.generate()
+        public_key = private_key.public_key()
+        private_bytes = private_key.private_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PrivateFormat.Raw,
+            encryption_algorithm=serialization.NoEncryption(),
+        )
+        public_bytes = public_key.public_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PublicFormat.Raw,
+        )
+        self.private_key = private_bytes.hex()
+        self.public_key = public_bytes.hex()
+        self.node_id = _derive_node_id(self.public_key)
+        self._path.parent.mkdir(parents=True, exist_ok=True)
+        self._path.write_text(
+            json.dumps(
                 {"private_key": self.private_key, "public_key": self.public_key, "node_id": self.node_id},
                 indent=2,
-            ))
-        except ImportError:
-            log.warning("cryptography not installed — node_id fallback to agent_id")
-            self.node_id = ""
+            )
+        )
 
     def sign(self, payload_hash: str) -> str:
-        if not self.private_key:
-            return ""
-        try:
-            import base64 as _b64
-            from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-            priv = Ed25519PrivateKey.from_private_bytes(bytes.fromhex(self.private_key))
-            return _b64.b64encode(priv.sign(payload_hash.encode())).decode()
-        except Exception:
-            return ""
-
+        """Sign payload hash with private key, return base64 signature."""
+        private_key = Ed25519PrivateKey.from_private_bytes(bytes.fromhex(self.private_key))
+        signature = private_key.sign(payload_hash.encode())
+        return base64.b64encode(signature).decode()
 
 
 # ── NadiMessage ──────────────────────────────────────────────────────────────
@@ -441,11 +437,13 @@ class NadiNode:
         self._handlers: dict[str, Callable[[NadiMessage], None]] = {}
         self._peers: list[str] = []
         self._processed: set[tuple[str, float]] = set()
-        # Crypto identity
-        keys_path = Path(federation_dir) / ".node_keys.json"
+
+        # Cryptographic identity
+        fed_dir = Path(federation_dir)
+        keys_path = fed_dir / ".node_keys.json"
         self._key_store = NodeKeyStore(keys_path)
         self._key_store.ensure_keys()
-        self.node_id = self._key_store.node_id or agent_id
+        self.node_id = self._key_store.node_id
         self.public_key = self._key_store.public_key
         self._agent_claim_sent = False
 
@@ -515,39 +513,37 @@ class NadiNode:
         return messages
 
     def heartbeat(self, *, health: float = 1.0, version: str = "0.1.0", head_agent: str | None = None) -> list[NadiMessage]:
-        """Emit a heartbeat broadcast to all peers."""
-        import hashlib as _hashlib
+        """Emit a heartbeat broadcast to all peers.
+
+        On first heartbeat to steward, also emits agent_claim with cryptographic identity.
+        """
+        # Emit agent_claim on first heartbeat (registers public key with peers)
+        if not self._agent_claim_sent:
+            self._agent_claim_sent = True
+            self.emit(
+                "federation.agent_claim",
+                {
+                    "node_id": self.node_id,
+                    "agent_name": self.agent_id,
+                    "public_key": self.public_key,
+                    "capabilities": self.capabilities,
+                },
+                target="steward",
+                priority=2,
+            )
+
         payload = {
             "agent_id": self.agent_id,
-            "source": self.node_id,
             "health": health,
             "timestamp": time.time(),
             "capabilities": self.capabilities,
             "repo": self.repo,
             "version": version,
-            "operation": "heartbeat",
-            "status": "alive",
+            "node_id": self.node_id,
+            "public_key": self.public_key,
         }
         if head_agent is not None:
             payload["head_agent"] = head_agent
-        
-        # Sign payload with Ed25519
-        payload_hash = _hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
-        sig = self._key_store.sign(payload_hash)
-        if sig:
-            payload["payload_hash"] = payload_hash
-            payload["signature"] = sig
-        
-        # Emit agent_claim on first heartbeat so steward can verify identity
-        if not self._agent_claim_sent and self.public_key:
-            self.emit("federation.agent_claim", {
-                "node_id": self.node_id,
-                "agent_name": self.agent_id,
-                "public_key": self.public_key,
-                "capabilities": self.capabilities,
-            }, target="steward", priority=2)
-            self._agent_claim_sent = True
-        
         return self.emit(
             "heartbeat",
             payload,
