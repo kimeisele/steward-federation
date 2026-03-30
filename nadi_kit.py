@@ -30,7 +30,7 @@ from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 from typing import Any, Callable
 
-__all__ = ["NadiMessage", "NadiTransport", "NadiHubRelay", "NadiNode"]
+__all__ = ["NadiMessage", "NadiTransport", "NadiHubRelay", "NadiNode", "NodeKeyStore"]
 __version__ = "0.1.0"
 
 log = logging.getLogger("nadi_kit")
