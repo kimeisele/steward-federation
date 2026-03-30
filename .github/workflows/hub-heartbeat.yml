@@ -20,11 +20,27 @@ jobs:
       - name: Checkout steward-federation
         uses: actions/checkout@v4
 
+      - name: Restore node keys cache
+        uses: actions/cache/restore@v4
+        with:
+          path: data/federation/.node_keys.json
+          key: node-keys-${{ github.repository }}-v1
+          restore-keys: |
+            node-keys-${{ github.repository }}-
+
+
       - name: Write hub heartbeat to mailbox
         run: |
           pip install -q 'git+https://github.com/kimeisele/steward-federation.git' 2>/dev/null || true
           mkdir -p data/federation
           nadi --peer-json data/federation/peer.json heartbeat --health 1.0
+      - name: Save node keys cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/federation/.node_keys.json
+          key: node-keys-${{ github.repository }}-v1
+
       - name: Commit heartbeat to hub
         run: |
           git config user.name "steward-federation-bot"
