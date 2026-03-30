@@ -34,10 +34,17 @@ jobs:
           git add nadi/steward-federation_to_steward.json
           git diff --cached --quiet || \
             git commit -m "relay: steward-federation hub heartbeat #${{ github.run_number }}"
-          for attempt in 1 2 3; do
-            git push && break
-            echo "Push attempt $attempt failed, rebasing..."
-            git pull --rebase origin main || true
-            sleep $((RANDOM % 10 + 2))
+          max_retries=10
+          count=0
+          until git push origin main; do
+            count=$((count+1))
+            if [ $count -gt $max_retries ]; then
+              echo "Push failed after $max_retries attempts"
+              exit 1
+            fi
+            backoff=$(( (RANDOM % 15) + 2 ))
+            echo "Race condition. Backoff ${backoff}s then rebase..."
+            sleep $backoff
+            git pull --rebase origin main
           done
 
