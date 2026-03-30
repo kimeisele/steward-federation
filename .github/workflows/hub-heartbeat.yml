@@ -29,11 +29,26 @@ jobs:
             node-keys-${{ github.repository }}-
 
 
-      - name: Write hub heartbeat to mailbox
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install nadi-kit
+        env:
+          GH_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
         run: |
-          pip install -q 'git+https://github.com/kimeisele/steward-federation.git' 2>/dev/null || true
-          mkdir -p data/federation
-          nadi --peer-json data/federation/peer.json heartbeat --health 1.0
+          python -m pip install --upgrade "git+https://${GH_TOKEN}@github.com/kimeisele/steward-federation.git#egg=nadi-kit"
+
+      - name: Run NADI heartbeat cycle
+        env:
+          GH_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          nadi sync
+          nadi heartbeat
+          nadi sync
+          echo "Heartbeat + sync complete"
       - name: Save node keys cache
         if: always()
         uses: actions/cache/save@v4
