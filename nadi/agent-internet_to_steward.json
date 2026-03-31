@@ -1,1 +1,57 @@
-[{"agent_id":"agent-internet","operation":"heartbeat","source":"agent-internet","status":"alive","role":"projection_layer"}]
+[
+  {
+    "agent_id": "agent-internet",
+    "operation": "heartbeat",
+    "source": "agent-internet",
+    "status": "alive",
+    "role": "projection_layer"
+  },
+  {
+    "source": "agent-internet",
+    "target": "steward",
+    "operation": "federation.agent_claim",
+    "payload": {
+      "node_id": "ag_148b528015e76982",
+      "agent_name": "agent-internet",
+      "public_key": "0344ba6d89daf6d9964041493be8255b6846ee8efe4efd55f1c6f5e33c37c44e",
+      "capabilities": [
+        "nadi-relay",
+        "federation-discovery",
+        "lotus-addressing",
+        "semantic-search",
+        "authority-projection"
+      ]
+    },
+    "timestamp": 1774931049.0943892,
+    "priority": 2,
+    "correlation_id": "",
+    "ttl_s": 7200.0,
+    "id": "cd1055f3-6569-4808-bf8c-afb53845dafe"
+  },
+  {
+    "source": "agent-internet",
+    "target": "steward",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-internet",
+      "health": 1.0,
+      "timestamp": 1774931049.0959487,
+      "capabilities": [
+        "nadi-relay",
+        "federation-discovery",
+        "lotus-addressing",
+        "semantic-search",
+        "authority-projection"
+      ],
+      "repo": "kimeisele/agent-internet",
+      "version": "0.1.0",
+      "node_id": "ag_148b528015e76982",
+      "public_key": "0344ba6d89daf6d9964041493be8255b6846ee8efe4efd55f1c6f5e33c37c44e"
+    },
+    "timestamp": 1774931049.0960546,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "a886d433-62be-4e6a-b3ed-a46b2f9a5ea8"
+  }
+]
