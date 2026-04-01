@@ -5,38 +5,6 @@
     "operation": "diagnostic_report",
     "payload": {
       "diagnostic": {
-        "agent_id": "steward-federation",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        },
-        "last_push": "2026-03-28T17:13:22Z"
-      },
-      "steward_action": "suspect_investigation",
-      "target_peer": "steward-federation",
-      "trust": 0.09999999999999998
-    },
-    "priority": 1,
-    "correlation_id": "bc55a89a-a606-4e09-801a-c27b7cb79050",
-    "timestamp": 1774775905.3729935,
-    "ttl_s": 900.0,
-    "envelope_id": "bc55a89a-a606-4e09-801a-c27b7cb79050",
-    "nadi_type": "vyana",
-    "nadi_op": "send",
-    "nadi_priority": "rajas",
-    "ttl_ms": 900000,
-    "maha_header_hex": "238e10b6e43f4887a0819601c291c887f9cbf43a7cf0c4dd3d6af09f914cf4623254e39acee73322d0038f39d6b97d84a0bb0d0000000000ab47c7a58f365214ae0524145c7aac0d"
-  },
-  {
-    "source": "steward",
-    "target": "steward-federation",
-    "operation": "diagnostic_report",
-    "payload": {
-      "diagnostic": {
         "agent_id": "steward-gateway",
         "checks": [
           "repo_accessible"
@@ -4326,6 +4294,36 @@
     "timestamp": 1775055565.4604514,
     "ttl_s": 900.0,
     "envelope_id": "ae584d71-31f3-4832-926c-ec422d17db08",
+    "nadi_type": "vyana",
+    "nadi_op": "send",
+    "nadi_priority": "rajas",
+    "ttl_ms": 900000,
+    "maha_header_hex": "238e10b6e43f4887a0819601c291c887f9cbf43a7cf0c4ddcdd011495b6b41c93254e39acee73322d0038f39d6b97d84a0bb0d0000000000ab47c7a58f3652145ebfc5c2965d19a6"
+  },
+  {
+    "source": "steward",
+    "target": "steward-federation",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.7408453042150247,
+      "timestamp": 1775056152.9702294,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "51c08cd6-0345-454a-959c-c0c5af48a213",
+    "timestamp": 1775057929.0062084,
+    "ttl_s": 900.0,
+    "envelope_id": "51c08cd6-0345-454a-959c-c0c5af48a213",
     "nadi_type": "vyana",
     "nadi_op": "send",
     "nadi_priority": "rajas",
