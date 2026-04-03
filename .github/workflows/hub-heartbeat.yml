@@ -28,7 +28,7 @@ jobs:
       - name: Inject node identity from secret
         run: |
           mkdir -p data/federation
-          echo "${{ secrets.NODE_PRIVATE_KEY }}" > data/federation/.node_keys.json
+          printf '%s' "${{ secrets.NODE_PRIVATE_KEY }}" > data/federation/.node_keys.json
 
       - name: Install nadi-kit
         env:
@@ -66,4 +66,3 @@ jobs:
             sleep $backoff
             git pull --rebase origin main
           done
-
