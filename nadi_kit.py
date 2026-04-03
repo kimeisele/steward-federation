@@ -35,7 +35,7 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 
 __all__ = ["NadiMessage", "NadiTransport", "NadiHubRelay", "NadiNode", "NodeKeyStore"]
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 log = logging.getLogger("nadi_kit")
 
