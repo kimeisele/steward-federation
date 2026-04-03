@@ -520,14 +520,23 @@ class NadiNode:
         # Emit agent_claim on first heartbeat (registers public key with peers)
         if not self._agent_claim_sent:
             self._agent_claim_sent = True
+            import hashlib as _hashlib, json as _json
+            claim_payload = {
+                "node_id": self.node_id,
+                "agent_name": self.agent_id,
+                "public_key": self.public_key,
+                "capabilities": self.capabilities,
+            }
+            claim_hash = _hashlib.sha256(
+                _json.dumps(claim_payload, sort_keys=True).encode()
+            ).hexdigest()
+            claim_sig = self._key_store.sign(claim_hash)
+            if claim_sig:
+                claim_payload["payload_hash"] = claim_hash
+                claim_payload["signature"] = claim_sig
             self.emit(
                 "federation.agent_claim",
-                {
-                    "node_id": self.node_id,
-                    "agent_name": self.agent_id,
-                    "public_key": self.public_key,
-                    "capabilities": self.capabilities,
-                },
+                claim_payload,
                 target="steward",
                 priority=2,
             )
