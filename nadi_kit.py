@@ -35,7 +35,7 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 
 __all__ = ["NadiMessage", "NadiTransport", "NadiHubRelay", "NadiNode", "NodeKeyStore"]
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 log = logging.getLogger("nadi_kit")
 
@@ -312,8 +312,12 @@ class NadiHubRelay:
             log.debug("relay push throttled")
             return 0
 
+        now = time.time()
         by_target: dict[str, list[dict]] = {}
         for msg in messages:
+            if msg.is_expired():
+                log.debug("push_to_hub: skipping expired message op=%s", msg.operation)
+                continue
             by_target.setdefault(msg.target, []).append(msg.to_dict())
 
         pushed = 0
