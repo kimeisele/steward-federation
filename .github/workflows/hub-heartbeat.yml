@@ -42,9 +42,9 @@ jobs:
           GH_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
         run: |
-          nadi sync
-          nadi heartbeat
-          nadi sync
+          python3 nadi_kit.py sync
+          python3 nadi_kit.py heartbeat
+          python3 nadi_kit.py sync
           echo "Heartbeat + sync complete"
 
       - name: Commit heartbeat to hub
