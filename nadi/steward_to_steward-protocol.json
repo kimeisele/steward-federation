@@ -1,88 +1,6 @@
 [
   {
     "source": "ag_e3331b8d3b0d20a7",
-    "target": "steward-protocol",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_e3331b8d3b0d20a7",
-      "diagnostic": {
-        "agent_id": "ag_e3331b8d3b0d20a7",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 1.0
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1775954983.5610282,
-    "ttl_s": 900.0,
-    "message_id": "f1db2360-831f-41b7-9163-74eb6c8aeee9",
-    "payload_hash": "d7d024111efa03a98c52833aae77a3bb364ce515346864b571cc456141c13374",
-    "signature": "wF+XIe5b5Kwp081/jZmbZsa7XURh2YpwytZC4147DbBZnYSStighYejtZ1CXL3L00Mb4HUcUA9GcmPovKIe+Aw==",
-    "id": "41317a6b-251c-4483-be2f-97734378f83f"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
-    "target": "*",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward-test",
-      "diagnostic": {
-        "agent_id": "steward-test",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-03-16T14:54:34Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.09999999999999998
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774714930.6063848,
-    "ttl_s": 900.0,
-    "message_id": "c42845a5-fca1-4386-94b4-dc901ad91862",
-    "payload_hash": "59022d2e377974d819182c99189c23a72b1d2b09291070dec208a718fdb3c214",
-    "signature": "C31VLosKWNJhI9IFLlnjkhh+UTKKeoSig1z2ggor3HepAylQvnJV5jGNE9uWT1a6RKVsStM6WmITUIod5gLAAA==",
-    "id": "1739265e-6163-4f16-a37d-8a72f65b93b0"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
-    "target": "*",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "ag_e3331b8d3b0d20a7",
-      "health": 0.8580561238506471,
-      "timestamp": 1774714930.6071582,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774714930.6071649,
-    "ttl_s": 900.0,
-    "message_id": "efe62c48-8594-4c1a-a805-6fc1c16ed24c",
-    "payload_hash": "84ff49b72bc9325d0b426777c15350c53c0dae48e2a887aef49eb801e42524a0",
-    "signature": "5pkGj2vpCCUEs/OPaUcGUqcP7KjhJFZ4VJxc1duL5t92YZKEwnDiQjEQibSdfxbEw4cGUA8a2YmILC4UqXkQCg==",
-    "id": "daed9442-04c4-4c59-a09c-88539c02543b"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
     "target": "*",
     "operation": "diagnostic_report",
     "payload": {
@@ -3946,5 +3864,89 @@
     "payload_hash": "d7d024111efa03a98c52833aae77a3bb364ce515346864b571cc456141c13374",
     "signature": "wF+XIe5b5Kwp081/jZmbZsa7XURh2YpwytZC4147DbBZnYSStighYejtZ1CXL3L00Mb4HUcUA9GcmPovKIe+Aw==",
     "id": "9fce33ee-7565-436b-8746-8cd9d1b8d2b4"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8554505291922829,
+      "timestamp": 1775984591.5407758,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1775984591.5407808,
+    "ttl_s": 900.0,
+    "message_id": "5e54586d-f7d5-4b76-904b-657983a2c2f0",
+    "payload_hash": "85c75ce5a3a081812c778778df42657737d4c904ddedce91326aa496612e5c1c",
+    "signature": "Pc572PAkuVELWjXvzyhrU5zN1IvG7xpLIMI8mjRX38UqFpUIDoubSrYBwiN1XqeQp02pGB2R+V1p+2A0mcN6Bw==",
+    "id": "43b1c242-b8f2-4b77-af6d-e80b5180c414"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8574680291922829,
+      "timestamp": 1775984609.5658221,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1775984609.5658267,
+    "ttl_s": 900.0,
+    "message_id": "279826ba-e56a-45b5-b61f-510d88113f3b",
+    "payload_hash": "f9a094597bf08c631a6998d808c2e8bb343c463b2320a804effb38beaec5b32a",
+    "signature": "W/M/y1vzL1X9kckyvbTad8fr8HIzTNLNAVqTHIC6fbx8MDchjMiPQV8UyTHEbO8ul3VoXcQ+JPkaB9z2W+pCCA==",
+    "id": "094d158f-104e-4b7a-9cfb-2569dc3cfcc2"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8571441127395092,
+      "timestamp": 1775984624.6545713,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1775984624.654576,
+    "ttl_s": 900.0,
+    "message_id": "b15b10ab-87e5-4aa1-bb88-ced8cacd8e61",
+    "payload_hash": "608ef58eb6c9d6178e55d5eb26202143b46205d09b37ff2df788c6b50935f4bb",
+    "signature": "Ojv5CCJquY1gi6OTwZWMDIkEH0Boba2MoRiMxVgeBDfm4ZC3OPyA4XClMWd6R8+8XtGrhjVw4R3sDlZdq0gdDw==",
+    "id": "7d8d05f9-60db-4027-b38e-33be9673cf3c"
   }
 ]
