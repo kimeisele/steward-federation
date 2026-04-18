@@ -1,60 +1,6 @@
 [
   {
     "source": "ag_e3331b8d3b0d20a7",
-    "target": "agent-world",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_e3331b8d3b0d20a7",
-      "diagnostic": {
-        "agent_id": "ag_e3331b8d3b0d20a7",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1776515013.8809073,
-    "ttl_s": 900.0,
-    "message_id": "f17b02ee-9395-4c14-a54c-b51be772d418",
-    "payload_hash": "7383040227231d80bd32e440500179e2dcd4734d5d3a7d1c0ac1b264feba46c5",
-    "signature": "BOAQqeLJfizXws4EZbQ/UFW1upcDe22F8xMY8XKGFHtQR2WBGOq7nPn3SWtUrhL1bxQryfzS9fANm5JrSRanCA==",
-    "id": "ef296990-0c22-433e-a8a1-fcd594e61dad"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
-    "target": "*",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward-test",
-      "diagnostic": {
-        "agent_id": "steward-test",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-03-16T14:54:34Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.09999999999999998
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774714930.6063848,
-    "ttl_s": 900.0,
-    "message_id": "c42845a5-fca1-4386-94b4-dc901ad91862",
-    "payload_hash": "59022d2e377974d819182c99189c23a72b1d2b09291070dec208a718fdb3c214",
-    "signature": "C31VLosKWNJhI9IFLlnjkhh+UTKKeoSig1z2ggor3HepAylQvnJV5jGNE9uWT1a6RKVsStM6WmITUIod5gLAAA==",
-    "id": "e4de13ae-06ab-4645-bcd4-61a2839916bf"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
     "target": "*",
     "operation": "heartbeat",
     "payload": {
@@ -3960,5 +3906,61 @@
     "payload_hash": "e082317828f3fd01977b1bd79c84d95fd0155c97d50831649626b9ad950a10bd",
     "signature": "YZfZ9NnaoJAZsXG7LN+Sr6gzaA8Bdgq9d2tvWV8lC4KYQPANyPUFG1L3NKTzAjphdC7finhRNaJPqOcB1BggCg==",
     "id": "d196391e-bee9-4d49-8fc7-bd0beba38cfc"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-world",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.857465029192283,
+      "timestamp": 1776533450.7204459,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1776533450.7204483,
+    "ttl_s": 900.0,
+    "message_id": "f3171f5e-2cb6-452e-8ee5-7992c53cca5c",
+    "payload_hash": "19dc812ee8f9ef2b5ae829466a097043b1189abfea05fdf4df47169587952f1a",
+    "signature": "a92VUI+ZeaLWvgukjSiTAR8nxbgF6CyRO0xMbFceuO176uljcmyAPIREJiv3etKMOVARzjl+gdJFShtUXmWmAw==",
+    "id": "6452ce8f-d4aa-4f0e-833c-154d461e27cb"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-world",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.857465029192283,
+      "timestamp": 1776533490.718769,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1776533490.7187712,
+    "ttl_s": 900.0,
+    "message_id": "5d0ff415-1336-4c0d-b990-ae0539bcf1da",
+    "payload_hash": "70bb87eec0c5ec53b4cb883a3600af5ebbdbd21b15915cb378616ea3ef0373b4",
+    "signature": "Hz/iZbDNOrUYpO7DiXMtESywqP2k7z9L5W80OsSJ+ErUXOnyPK5SgHmxtAepjPIdmTgu2DkQZmAuYDIZ4E+9DQ==",
+    "id": "7377d324-33dd-479c-a0c2-57a1851d7d0b"
   }
 ]
