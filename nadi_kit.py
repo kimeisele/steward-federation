@@ -122,7 +122,13 @@ class NodeKeyStore:
 
 @dataclass
 class NadiMessage:
-    """A single NADI federation message."""
+    """A single NADI federation message.
+
+    payload_hash and signature are populated by NadiNode.emit() before the
+    message hits the outbox — every outbound message is signed uniformly,
+    independent of whether the receiving gateway treats the operation as
+    PUBLIC or PROTECTED.
+    """
 
     source: str
     target: str
@@ -133,6 +139,8 @@ class NadiMessage:
     correlation_id: str = ""
     ttl_s: float = NADI_DEFAULT_TTL_S
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    payload_hash: str = ""
+    signature: str = ""
 
     @property
     def is_expired(self) -> bool:
@@ -485,6 +493,22 @@ class NadiNode:
 
     # ── Emit ─────────────────────────────────────────────────────────────
 
+    def _sign_message(self, msg: NadiMessage) -> None:
+        """Attach canonical sha256 payload_hash + base64 ed25519 signature.
+
+        Hash convention is sha256 over sorted-keys JSON of the message dict
+        minus payload_hash and signature fields. Matches the verifier in
+        steward.federation_crypto.verify_payload_signature so steward's
+        gateway accepts every message we emit.
+        """
+        canonical = {
+            k: v for k, v in asdict(msg).items()
+            if k not in ("payload_hash", "signature")
+        }
+        canonical_bytes = json.dumps(canonical, sort_keys=True).encode("utf-8")
+        msg.payload_hash = hashlib.sha256(canonical_bytes).hexdigest()
+        msg.signature = self._key_store.sign(msg.payload_hash)
+
     def emit(
         self,
         operation: str,
@@ -495,12 +519,18 @@ class NadiNode:
         ttl_s: float = NADI_DEFAULT_TTL_S,
         correlation_id: str = "",
     ) -> list[NadiMessage]:
-        """Queue message(s) to outbox. target='*' expands to all known peers."""
+        """Queue message(s) to outbox. target='*' expands to all known peers.
+
+        Every emitted message is signed before reaching the outbox. The
+        message's `source` is the cryptographic node_id (derive_node_id of
+        public_key) — matches what steward's verified_agents.json is keyed
+        by, so the gateway's get_verified_agent(source) lookup succeeds.
+        """
         targets = self._resolve_targets(target)
         messages = []
         for t in targets:
             msg = NadiMessage(
-                source=self.agent_id,
+                source=self.node_id,
                 target=t,
                 operation=operation,
                 payload=payload,
@@ -508,39 +538,31 @@ class NadiNode:
                 ttl_s=ttl_s,
                 correlation_id=correlation_id,
             )
+            self._sign_message(msg)
             messages.append(msg)
 
         if messages:
             self.transport.append_to_outbox(messages)
-            log.info("emit %s → %s (%d targets)", operation, target, len(messages))
+            log.info("emit %s → %s (%d targets, signed)", operation, target, len(messages))
 
         return messages
 
     def heartbeat(self, *, health: float = 1.0, version: str = "0.1.0", head_agent: str | None = None) -> list[NadiMessage]:
         """Emit a heartbeat broadcast to all peers.
 
-        On first heartbeat to steward, also emits agent_claim with cryptographic identity.
+        On first heartbeat to steward, also emits agent_claim with cryptographic
+        identity. Signing is uniform via emit() — no inline crypto here.
         """
-        # Emit agent_claim on first heartbeat (registers public key with peers)
         if not self._agent_claim_sent:
             self._agent_claim_sent = True
-            import hashlib as _hashlib, json as _json
-            claim_payload = {
-                "node_id": self.node_id,
-                "agent_name": self.agent_id,
-                "public_key": self.public_key,
-                "capabilities": self.capabilities,
-            }
-            claim_hash = _hashlib.sha256(
-                _json.dumps(claim_payload, sort_keys=True).encode()
-            ).hexdigest()
-            claim_sig = self._key_store.sign(claim_hash)
-            if claim_sig:
-                claim_payload["payload_hash"] = claim_hash
-                claim_payload["signature"] = claim_sig
             self.emit(
                 "federation.agent_claim",
-                claim_payload,
+                {
+                    "node_id": self.node_id,
+                    "agent_name": self.agent_id,
+                    "public_key": self.public_key,
+                    "capabilities": self.capabilities,
+                },
                 target="steward",
                 priority=2,
             )

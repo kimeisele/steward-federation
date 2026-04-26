@@ -113,6 +113,49 @@ def test_node_emit_and_receive(tmp_path: Path):
     assert node.transport.stats()["outbox"] == 1
 
 
+def test_emit_signs_every_message_and_uses_node_id_as_source(tmp_path: Path):
+    """Regression for the heartbeat-bleeding incident.
+
+    Until this fix, NadiMessage carried no signature and source was the
+    agent_name string — so steward's PROTECTED-op gateway rejected every
+    inbound heartbeat (10k+ drops/day across the federation).
+    """
+    import base64
+    import hashlib
+
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+
+    fed_dir = tmp_path
+    (fed_dir / "nadi_inbox.json").write_text("[]")
+    (fed_dir / "nadi_outbox.json").write_text("[]")
+
+    node = NadiNode("sender", fed_dir)
+    node.set_peers(["peer-a"])
+
+    msgs = node.emit("status", {"ok": True}, target="peer-a")
+    msg = msgs[0]
+
+    # source MUST be the cryptographic node_id, not the agent_name
+    assert msg.source == node.node_id
+    assert msg.source != "sender"
+
+    # payload_hash + signature MUST be populated
+    assert msg.payload_hash, "payload_hash empty — gateway will reject"
+    assert msg.signature, "signature empty — gateway will reject"
+
+    # payload_hash recomputes deterministically from canonical JSON
+    canonical = {k: v for k, v in msg.to_dict().items()
+                 if k not in ("payload_hash", "signature")}
+    expected_hash = hashlib.sha256(
+        json.dumps(canonical, sort_keys=True).encode()
+    ).hexdigest()
+    assert msg.payload_hash == expected_hash
+
+    # signature verifies via the same primitive steward uses
+    pk = Ed25519PublicKey.from_public_bytes(bytes.fromhex(node.public_key))
+    pk.verify(base64.b64decode(msg.signature.encode()), msg.payload_hash.encode())
+
+
 def test_node_broadcast(tmp_path: Path):
     fed_dir = tmp_path
     (fed_dir / "nadi_inbox.json").write_text("[]")
