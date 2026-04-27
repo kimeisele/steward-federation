@@ -1,60 +1,6 @@
 [
   {
     "source": "ag_e3331b8d3b0d20a7",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_73bebe8ba2ed2a3b",
-      "diagnostic": {
-        "agent_id": "ag_73bebe8ba2ed2a3b",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.3
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1777241939.7540026,
-    "ttl_s": 900.0,
-    "payload_hash": "826cef7d0d6f1c333197d919fbcc748e22a11952d9e6c25d4480b55b09e9933d",
-    "signature": "apmoaDPXgUO0sGTCA+BMemoGPb/yOtZNIHO5BcjK86d1Qzxw2Wx9mDIsYwyllF35Nt3g0bl6vQM7Ipwx+xacAg==",
-    "message_id": "dd9f1f7c-5ae9-4541-b2f1-de24d586badc",
-    "id": "336dbef5-5c49-412f-81ca-2649eba05fc6"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
-    "target": "*",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward-test",
-      "diagnostic": {
-        "agent_id": "steward-test",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-03-16T14:54:34Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.09999999999999998
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774714930.6063848,
-    "ttl_s": 900.0,
-    "message_id": "c42845a5-fca1-4386-94b4-dc901ad91862",
-    "payload_hash": "59022d2e377974d819182c99189c23a72b1d2b09291070dec208a718fdb3c214",
-    "signature": "C31VLosKWNJhI9IFLlnjkhh+UTKKeoSig1z2ggor3HepAylQvnJV5jGNE9uWT1a6RKVsStM6WmITUIod5gLAAA==",
-    "id": "10a828ce-f5d6-4c51-bd5d-8c8e47578c06"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
     "target": "*",
     "operation": "heartbeat",
     "payload": {
@@ -3964,5 +3910,61 @@
     "signature": "HbMX4sGb0KhClKxiUvZi1E1rgjSYVozyrk/wu81N6GfxZQhbifPvhfLXwBmOKV7eiBIhnlwPOHmp/F4VgwDGAA==",
     "message_id": "ab7a74be-2a75-4a9f-832c-81a62b485633",
     "id": "1d2cb78c-651c-49ca-ba6f-62aedb14f301"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8579749117648712,
+      "timestamp": 1777268141.3789022,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1777268141.3789666,
+    "ttl_s": 900.0,
+    "payload_hash": "ecab816245c5d7d3a15cdfe8c87aa127bc9d0a359ac9a31a8a70e1aa025dc2be",
+    "signature": "ffqD6dLvqUnBE/1n7FTkFGBZRWRUvjCS6rJPRe4LZ7Au2uU+glqKfo76R5KWlHWwBk2lykoZMdfbAtHT1U6fAw==",
+    "message_id": "5b84c7cb-a344-4d47-a856-91a4ca87af5b",
+    "id": "c084d85a-314a-4a46-b732-c0bda0e8fdd3"
+  },
+  {
+    "source": "ag_e3331b8d3b0d20a7",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_e3331b8d3b0d20a7",
+      "health": 0.8579749117648712,
+      "timestamp": 1777268141.451988,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1777268141.4519918,
+    "ttl_s": 900.0,
+    "payload_hash": "fda019bef523d5176ee47ceb8ef75f4e3ed5d7fd971f4dccbf87d94e26da9d2c",
+    "signature": "GYpXLY5WCUaq0LQtJX526z/uuvy4WZWpuRtlvZyyR5BU4JhQfuXeEYL+SeyhTeviG0df2SWRz8PkCBlh0MEPAg==",
+    "message_id": "5cb639e2-007b-415d-a2a9-ed4bb220b990",
+    "id": "ed90d5a5-c5b9-4c3e-a632-36edfde26fde"
   }
 ]
