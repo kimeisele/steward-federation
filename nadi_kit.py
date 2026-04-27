@@ -19,6 +19,7 @@ Usage:
 from __future__ import annotations
 
 import base64
+import binascii
 import hashlib
 import json
 import logging
@@ -75,19 +76,18 @@ class NodeKeyStore:
         self._generate()
 
     def _load(self) -> None:
-        """Load keys from disk, accepting both formats Genesis hooks emit.
+        """Load keys from disk in any of the formats secrets-management
+        tooling commonly emits. Order:
+          1. JSON blob (Genesis-Provisioning-Hook format)
+          2. Raw hex 32-byte Ed25519 seed
+          3. Base64-encoded 32-byte Ed25519 seed (standard or url-safe)
+          4. PEM-encoded Ed25519 private key (PKCS#8)
+          5. Base64-encoded JSON blob (if a tool double-encoded)
+          6. None match → leave fields empty, ensure_keys() generates
+             fresh and emits a WARNING with safe length probe (no leak).
 
-        Tries in order:
-          1. JSON blob: {"private_key": "<hex>", "public_key": "<hex>", ...}
-          2. Raw hex: a 32-byte (64-char) Ed25519 seed, derives public_key
-          3. Both fail → leave fields empty so ensure_keys() will _generate()
-
-        Until this fix, secrets stored as raw hex (e.g. by Genesis-Provisioning-
-        Hook) caused json.loads() to throw, the catch block left fields empty,
-        and every workflow run silently generated a fresh ephemeral keypair —
-        producing a flood of one-shot identities in steward's verified_agents
-        .json (~12k/day projected at the observed rate). A WARNING is now
-        emitted on the unrecognised-format path so future drift is loud.
+        Adding new formats here is forward-safe — every path is
+        deterministic and the secret is never logged.
         """
         try:
             text = self._path.read_text().strip()
@@ -97,41 +97,111 @@ class NodeKeyStore:
             return
 
         # 1. JSON-blob format
+        if self._try_json_blob(text):
+            log.info("nodekeystore: loaded JSON-blob secret from %s", self._path)
+            return
+
+        # 2. Raw hex 32-byte
+        if self._try_raw_hex(text):
+            log.info("nodekeystore: loaded raw-hex secret from %s", self._path)
+            return
+
+        # 3. Base64 → 32-byte raw
+        if self._try_base64_raw(text):
+            log.info("nodekeystore: loaded base64-raw secret from %s", self._path)
+            return
+
+        # 4. PEM-encoded Ed25519 private key
+        if self._try_pem(text):
+            log.info("nodekeystore: loaded PEM-encoded secret from %s", self._path)
+            return
+
+        # 5. Base64-of-JSON (double-encoded)
+        try:
+            decoded = base64.b64decode(text, validate=True).decode("utf-8", errors="ignore").strip()
+            if decoded and self._try_json_blob(decoded):
+                log.info("nodekeystore: loaded base64-of-JSON secret from %s", self._path)
+                return
+        except (ValueError, UnicodeDecodeError):
+            pass
+
+        # All format detectors failed. Log a safe length probe (no content).
+        log.warning(
+            "nodekeystore: %s exists but format unrecognised — falling back to "
+            "ephemeral keypair. Forensic probe (no secret leak): len=%d, "
+            "looks_like_json=%s, looks_like_pem=%s, base64_chars_only=%s, "
+            "hex_chars_only=%s",
+            self._path,
+            len(text),
+            text.startswith(("{", "[")),
+            text.startswith("-----"),
+            all(c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=_-" for c in text),
+            all(c in "0123456789abcdefABCDEF" for c in text),
+        )
+
+    def _try_json_blob(self, text: str) -> bool:
         try:
             payload = json.loads(text)
-            if isinstance(payload, dict):
-                self.private_key = str(payload.get("private_key", "")).strip()
-                self.public_key = str(payload.get("public_key", "")).strip()
-                self.node_id = str(payload.get("node_id", "")).strip()
-                if self.public_key and not self.node_id:
-                    self.node_id = _derive_node_id(self.public_key)
-                if self.private_key and self.public_key:
-                    return
         except (json.JSONDecodeError, ValueError):
-            pass
+            return False
+        if not isinstance(payload, dict):
+            return False
+        priv = str(payload.get("private_key", "")).strip()
+        pub = str(payload.get("public_key", "")).strip()
+        if not priv or not pub:
+            return False
+        self.private_key = priv
+        self.public_key = pub
+        self.node_id = str(payload.get("node_id", "")).strip() or _derive_node_id(pub)
+        return True
 
-        # 2. Raw-hex format — 32-byte Ed25519 seed
+    def _try_raw_hex(self, text: str) -> bool:
         try:
             raw = bytes.fromhex(text)
-            if len(raw) == 32:
-                sk = Ed25519PrivateKey.from_private_bytes(raw)
-                pub = sk.public_key().public_bytes(
-                    serialization.Encoding.Raw,
-                    serialization.PublicFormat.Raw,
-                )
-                self.private_key = raw.hex()
-                self.public_key = pub.hex()
-                self.node_id = _derive_node_id(self.public_key)
-                log.info("nodekeystore: loaded raw-hex secret from %s", self._path)
-                return
         except (ValueError, TypeError):
-            pass
+            return False
+        if len(raw) != 32:
+            return False
+        return self._adopt_raw(raw)
 
-        log.warning(
-            "nodekeystore: %s exists but format unrecognised "
-            "(neither JSON nor 32-byte hex) — falling back to ephemeral keypair",
-            self._path,
+    def _try_base64_raw(self, text: str) -> bool:
+        for decoder in (base64.b64decode, base64.urlsafe_b64decode):
+            try:
+                raw = decoder(text + "=" * (-len(text) % 4))
+            except (ValueError, TypeError, binascii.Error):
+                continue
+            if len(raw) == 32:
+                return self._adopt_raw(raw)
+        return False
+
+    def _try_pem(self, text: str) -> bool:
+        if "PRIVATE KEY" not in text:
+            return False
+        try:
+            sk = serialization.load_pem_private_key(text.encode(), password=None)
+            if not isinstance(sk, Ed25519PrivateKey):
+                return False
+            raw = sk.private_bytes(
+                serialization.Encoding.Raw,
+                serialization.PrivateFormat.Raw,
+                serialization.NoEncryption(),
+            )
+            return self._adopt_raw(raw)
+        except (ValueError, TypeError):
+            return False
+
+    def _adopt_raw(self, raw: bytes) -> bool:
+        try:
+            sk = Ed25519PrivateKey.from_private_bytes(raw)
+        except (ValueError, TypeError):
+            return False
+        pub = sk.public_key().public_bytes(
+            serialization.Encoding.Raw, serialization.PublicFormat.Raw,
         )
+        self.private_key = raw.hex()
+        self.public_key = pub.hex()
+        self.node_id = _derive_node_id(self.public_key)
+        return True
 
     def _generate(self) -> None:
         """Generate new Ed25519 keypair and save to disk."""
