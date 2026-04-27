@@ -1,60 +1,6 @@
 [
   {
     "source": "ag_e3331b8d3b0d20a7",
-    "target": "agent-city",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_fcc675dbea1d0cc0",
-      "diagnostic": {
-        "agent_id": "ag_fcc675dbea1d0cc0",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.09999999999999998
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1777257684.7335582,
-    "ttl_s": 900.0,
-    "payload_hash": "229c5de1e243812a1861d018120a4589ff3b9e12e2fd7b5522ff8205360ada62",
-    "signature": "BNRgMc5H106Fdt5enOyMHB+R2mxYMq9cJ9Zbm9ESU7JkXYaqS15HAzmSH76dbey6EO7y4exiBLQT5QhIp+xDDg==",
-    "message_id": "8c90a360-b105-4730-9e9a-c6800166669b",
-    "id": "bea468d7-e332-47de-9486-705c91390d74"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
-    "target": "*",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward-test",
-      "diagnostic": {
-        "agent_id": "steward-test",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-03-16T14:54:34Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.09999999999999998
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774714930.6063848,
-    "ttl_s": 900.0,
-    "message_id": "c42845a5-fca1-4386-94b4-dc901ad91862",
-    "payload_hash": "59022d2e377974d819182c99189c23a72b1d2b09291070dec208a718fdb3c214",
-    "signature": "C31VLosKWNJhI9IFLlnjkhh+UTKKeoSig1z2ggor3HepAylQvnJV5jGNE9uWT1a6RKVsStM6WmITUIod5gLAAA==",
-    "id": "0dd4a1dc-905a-40c2-8508-52729ab079eb"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
     "target": "*",
     "operation": "heartbeat",
     "payload": {
@@ -4006,5 +3952,61 @@
     "signature": "36HfvlQd1y96u80MLkpGl03av7izc43l8IBQhZCbrvw0ExsURwD4MEIbwBEZ5U1zWWYwEi35dQYmO1E8JDiODw==",
     "message_id": "b5a1375f-9df9-4d48-932c-5a1ff94fe142",
     "id": "3eb1d5fd-0434-4516-af0b-59fcb8ea2714"
+  },
+  {
+    "source": "ag_9361733f6885e6dc",
+    "target": "agent-city",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_9361733f6885e6dc",
+      "health": 0.8579749117648712,
+      "timestamp": 1777329131.6652188,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1777329131.6653218,
+    "ttl_s": 900.0,
+    "payload_hash": "968aae71d86c53c04a0a75fee1f52f545dad842dea777cfba13b14e291a41ac0",
+    "signature": "l9k8QGHgB9dSllhO/p9+PM0nzdZF6gUcgvx+S+7wvbrFvQ64kL5nqww/b1mj4ufonAWdxH1n+MBkVOh+aN5xDQ==",
+    "message_id": "fc67ae42-d8bc-43d2-8d80-7e81ce2021b8",
+    "id": "60944976-f175-4dde-8e1f-c7b36553072b"
+  },
+  {
+    "source": "ag_9361733f6885e6dc",
+    "target": "agent-city",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_9361733f6885e6dc",
+      "health": 0.8579749117648712,
+      "timestamp": 1777329132.7984533,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1777329132.7984588,
+    "ttl_s": 900.0,
+    "payload_hash": "0d8a8fd882f8d6d9fd1f486328e36a62c5ccfcd8d8eb848417da7e85a85b4044",
+    "signature": "nNsqPJ3ku/JdkQ2iY1KMre57rqevjLLyfGtk6vUSKfN0YdfzfKgWQcvanXMD0F+sy7g8PnT8mvlgnR26BUGADg==",
+    "message_id": "107c2be6-1f07-4990-a24c-524ba4a5ce08",
+    "id": "8ac0d921-1c61-46b8-900c-c5b7e1815380"
   }
 ]
