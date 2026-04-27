@@ -75,16 +75,63 @@ class NodeKeyStore:
         self._generate()
 
     def _load(self) -> None:
-        """Load keys from JSON file."""
+        """Load keys from disk, accepting both formats Genesis hooks emit.
+
+        Tries in order:
+          1. JSON blob: {"private_key": "<hex>", "public_key": "<hex>", ...}
+          2. Raw hex: a 32-byte (64-char) Ed25519 seed, derives public_key
+          3. Both fail → leave fields empty so ensure_keys() will _generate()
+
+        Until this fix, secrets stored as raw hex (e.g. by Genesis-Provisioning-
+        Hook) caused json.loads() to throw, the catch block left fields empty,
+        and every workflow run silently generated a fresh ephemeral keypair —
+        producing a flood of one-shot identities in steward's verified_agents
+        .json (~12k/day projected at the observed rate). A WARNING is now
+        emitted on the unrecognised-format path so future drift is loud.
+        """
         try:
-            payload = json.loads(self._path.read_text())
-        except (json.JSONDecodeError, OSError):
-            payload = {}
-        self.private_key = str(payload.get("private_key", "")).strip()
-        self.public_key = str(payload.get("public_key", "")).strip()
-        self.node_id = str(payload.get("node_id", "")).strip()
-        if self.public_key and not self.node_id:
-            self.node_id = _derive_node_id(self.public_key)
+            text = self._path.read_text().strip()
+        except OSError:
+            text = ""
+        if not text:
+            return
+
+        # 1. JSON-blob format
+        try:
+            payload = json.loads(text)
+            if isinstance(payload, dict):
+                self.private_key = str(payload.get("private_key", "")).strip()
+                self.public_key = str(payload.get("public_key", "")).strip()
+                self.node_id = str(payload.get("node_id", "")).strip()
+                if self.public_key and not self.node_id:
+                    self.node_id = _derive_node_id(self.public_key)
+                if self.private_key and self.public_key:
+                    return
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+        # 2. Raw-hex format — 32-byte Ed25519 seed
+        try:
+            raw = bytes.fromhex(text)
+            if len(raw) == 32:
+                sk = Ed25519PrivateKey.from_private_bytes(raw)
+                pub = sk.public_key().public_bytes(
+                    serialization.Encoding.Raw,
+                    serialization.PublicFormat.Raw,
+                )
+                self.private_key = raw.hex()
+                self.public_key = pub.hex()
+                self.node_id = _derive_node_id(self.public_key)
+                log.info("nodekeystore: loaded raw-hex secret from %s", self._path)
+                return
+        except (ValueError, TypeError):
+            pass
+
+        log.warning(
+            "nodekeystore: %s exists but format unrecognised "
+            "(neither JSON nor 32-byte hex) — falling back to ephemeral keypair",
+            self._path,
+        )
 
     def _generate(self) -> None:
         """Generate new Ed25519 keypair and save to disk."""
