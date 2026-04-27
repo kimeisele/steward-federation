@@ -221,3 +221,53 @@ def test_node_load_peers_from_seeds(tmp_path: Path):
     peers = node.load_peers_from_seeds()
     assert "steward" in peers
     assert "agent-city" not in peers  # self excluded
+
+
+def test_keystore_loads_raw_hex_format(tmp_path):
+    """NodeKeyStore must accept raw-hex secrets (Genesis-Hook format) so
+    nodes don't generate fresh ephemeral keys per workflow run when the
+    NODE_PRIVATE_KEY secret is stored as a 32-byte hex string."""
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+    from cryptography.hazmat.primitives import serialization
+
+    from nadi_kit import NodeKeyStore, _derive_node_id
+
+    sk = Ed25519PrivateKey.generate()
+    priv_hex = sk.private_bytes(
+        serialization.Encoding.Raw, serialization.PrivateFormat.Raw,
+        serialization.NoEncryption()
+    ).hex()
+    pub_hex = sk.public_key().public_bytes(
+        serialization.Encoding.Raw, serialization.PublicFormat.Raw
+    ).hex()
+
+    p = tmp_path / "raw.json"
+    p.write_text(priv_hex)  # raw 32-byte hex, no JSON wrapper
+
+    ks_a = NodeKeyStore(p)
+    ks_a.ensure_keys()
+    assert ks_a.private_key == priv_hex
+    assert ks_a.public_key == pub_hex
+    assert ks_a.node_id == _derive_node_id(pub_hex)
+
+    # Critical: reload yields SAME identity (no ephemeral regeneration)
+    ks_b = NodeKeyStore(p)
+    ks_b.ensure_keys()
+    assert ks_b.node_id == ks_a.node_id
+
+
+def test_keystore_falls_back_to_ephemeral_on_garbage(tmp_path, caplog):
+    """If the file is neither JSON nor valid 32-byte hex, log a WARNING
+    and generate a fresh key — better than silent rotation."""
+    import logging
+
+    from nadi_kit import NodeKeyStore
+
+    p = tmp_path / "garbage.json"
+    p.write_text("not json and not hex")
+
+    with caplog.at_level(logging.WARNING, logger="nadi_kit"):
+        ks = NodeKeyStore(p)
+        ks.ensure_keys()
+    assert ks.private_key  # fresh keypair generated
+    assert any("format unrecognised" in r.message for r in caplog.records)
