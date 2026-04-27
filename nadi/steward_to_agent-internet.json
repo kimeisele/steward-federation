@@ -1,60 +1,6 @@
 [
   {
     "source": "ag_e3331b8d3b0d20a7",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_e4572ce85d7fe7a7",
-      "diagnostic": {
-        "agent_id": "ag_e4572ce85d7fe7a7",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.3
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1777245989.2035239,
-    "ttl_s": 900.0,
-    "payload_hash": "face4e06cc336441320823cf1c2a80305847ae6974b889c196e0dee2559de3c1",
-    "signature": "5PpjnJbDIe/x3PTSoOKZYHkoFGDj+d5WYlomzhRIjQczn4rBKckFIrx8esJdnP97TVS3gVKaUzDRszXPYUpFCA==",
-    "message_id": "bd80dc5f-d2cf-4d55-930a-7ebb9423e90a",
-    "id": "92272d92-84b0-4944-a53c-b706c63d1955"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
-    "target": "*",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "steward-test",
-      "diagnostic": {
-        "agent_id": "steward-test",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-03-16T14:54:34Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.09999999999999998
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1774714930.6063848,
-    "ttl_s": 900.0,
-    "message_id": "c42845a5-fca1-4386-94b4-dc901ad91862",
-    "payload_hash": "59022d2e377974d819182c99189c23a72b1d2b09291070dec208a718fdb3c214",
-    "signature": "C31VLosKWNJhI9IFLlnjkhh+UTKKeoSig1z2ggor3HepAylQvnJV5jGNE9uWT1a6RKVsStM6WmITUIod5gLAAA==",
-    "id": "a43ed46d-a920-44f0-8d06-35bd3e1ae43d"
-  },
-  {
-    "source": "ag_e3331b8d3b0d20a7",
     "target": "*",
     "operation": "heartbeat",
     "payload": {
@@ -3978,5 +3924,61 @@
     "signature": "ZTcgCXpkgcuAJMT0T1o/MAma3vd2KVYQytuXqjltY2JEpxDGeun395XNn9yc/sOLw/Er5PJ8uPpmwQ8Dcs4LCA==",
     "message_id": "c0444fae-fef2-4b97-a3a9-8f95caa2475f",
     "id": "56a75dc6-9cdf-42c7-8968-abba39f7fa8b"
+  },
+  {
+    "source": "ag_9361733f6885e6dc",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_9361733f6885e6dc",
+      "health": 0.8579749117648712,
+      "timestamp": 1777290812.6009762,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1777290812.6055732,
+    "ttl_s": 900.0,
+    "payload_hash": "98144818c1d61644a75c8ed0884aefc57a5599b2700472858e7f0401ba4ba0b2",
+    "signature": "73bXSBR3iogssSeQZ+CUUt6XEM8lY5cp5ppG4x9cXNDwuTj57U3rBVPc7BPCCK0QWqrn7z8dJqg985XNVUB9Dw==",
+    "message_id": "b9587355-eb14-42b2-b258-23784bac4c4d",
+    "id": "a767a59d-826a-4e3a-9ea1-10c91e4a64ac"
+  },
+  {
+    "source": "ag_9361733f6885e6dc",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_9361733f6885e6dc",
+      "health": 0.8579749117648712,
+      "timestamp": 1777290813.0274704,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1777290813.0274754,
+    "ttl_s": 900.0,
+    "payload_hash": "6358cccf2a69225ab0b3e9dda44cb1f3477652ee7943f8b22de80c6c06e072ed",
+    "signature": "1YvrXZDRF2sljbtv2YdCIHvM7rMvcxA4P7qLJwLjRItsAOlLi6J+YhRmcwo3yvL5YNwhv4z599O2qRiVJNDnAw==",
+    "message_id": "3a6bd0fc-2af2-49c3-b0d3-44615a24288b",
+    "id": "58ff07a6-7621-4260-97b4-34d1ef2b0123"
   }
 ]
