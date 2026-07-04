@@ -1,0 +1,19 @@
+name: Nadi Garbage Collection
+on:
+  schedule:
+    - cron: '0 3 * * *'   # daily 03:00 UTC
+  workflow_dispatch:
+jobs:
+  gc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # OBSERVE-ONLY for now: report what WOULD be collected, delete nothing.
+      # Once a few daily reports confirm only phantoms are matched, flip to --apply
+      # (add a commit/push step) in a follow-up change.
+      - name: GC dry-run report (observe only)
+        run: python nadi_gc.py --root .
