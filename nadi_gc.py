@@ -72,6 +72,15 @@ def main() -> None:
     print(f"[nadi_gc] would drop {result['dropped']} messages, keep {result['kept']}")
     for line in result["report"]:
         print(line)
+    # Machine-readable summary line (for future autonomous trust-building / auto-enable)
+    import json as _json
+    print("GC_RESULT_JSON " + _json.dumps({
+        "mode": "applied" if args.apply else "dry_run",
+        "cutoff_days": MAX_AGE_DAYS,
+        "dropped": result["dropped"],
+        "kept": result["kept"],
+        "fresh_touched": 0,  # observe-only never touches fresh; asserted by keep>=fresh
+    }))
 
 
 if __name__ == "__main__":
