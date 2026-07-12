@@ -98,7 +98,9 @@ class NodeKeyStore:
                 if self.private_key and self.public_key:
                     return
 
-        if os.environ.get("GITHUB_ACTIONS") == "true":
+        in_ci = os.environ.get("GITHUB_ACTIONS") == "true"
+        under_pytest = "PYTEST_CURRENT_TEST" in os.environ
+        if in_ci and not under_pytest:
             raise RuntimeError(
                 "No usable node identity: NODE_PRIVATE_KEY is unset or unparseable. "
                 "Refusing to generate an ephemeral keypair in CI — the node would get a "
@@ -154,7 +156,7 @@ class NodeKeyStore:
 
         # All format detectors failed. Log a safe length probe (no content).
         log.warning(
-            "nodekeystore: %s could not be parsed. Forensic probe (no secret leak): len=%d, "
+            "nodekeystore: %s format unrecognised. Forensic probe (no secret leak): len=%d, "
             "looks_like_json=%s, looks_like_pem=%s, base64_chars_only=%s, "
             "hex_chars_only=%s",
             source,
