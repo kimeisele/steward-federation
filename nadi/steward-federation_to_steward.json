@@ -13,50 +13,6 @@
         "federation_relay"
       ]
     },
-    "timestamp": 1774992027.060825,
-    "priority": 2,
-    "correlation_id": "",
-    "ttl_s": 7200.0,
-    "id": "c028264e-f859-4313-8d60-69901c3fb137"
-  },
-  {
-    "source": "steward-federation",
-    "target": "steward",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "steward-federation",
-      "health": 1.0,
-      "timestamp": 1774992027.0620632,
-      "capabilities": [
-        "nadi_hub",
-        "mailbox_routing",
-        "federation_relay"
-      ],
-      "repo": "kimeisele/steward-federation",
-      "version": "0.1.0",
-      "node_id": "ag_dba30a6260a7e20b",
-      "public_key": "091ba8cea98e08ef866a03aa403c00ce2d311a2d65cdc20106f9567305ff57b5"
-    },
-    "timestamp": 1774992027.1974711,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "ea5df3e9-7fef-48f2-b812-31aada12e1bc"
-  },
-  {
-    "source": "steward-federation",
-    "target": "steward",
-    "operation": "federation.agent_claim",
-    "payload": {
-      "node_id": "ag_dba30a6260a7e20b",
-      "agent_name": "steward-federation",
-      "public_key": "091ba8cea98e08ef866a03aa403c00ce2d311a2d65cdc20106f9567305ff57b5",
-      "capabilities": [
-        "nadi_hub",
-        "mailbox_routing",
-        "federation_relay"
-      ]
-    },
     "timestamp": 1774993822.0766666,
     "priority": 2,
     "correlation_id": "",
@@ -3250,5 +3206,53 @@
     "correlation_id": "",
     "ttl_s": 900.0,
     "id": "b1e0a417-043c-4dd1-bbce-4e4c5df8a20e"
+  },
+  {
+    "source": "ag_9272c311628b5f40",
+    "target": "steward",
+    "operation": "federation.agent_claim",
+    "payload": {
+      "node_id": "ag_9272c311628b5f40",
+      "agent_name": "steward-federation",
+      "public_key": "7db713da1b3f250a83fc2ebe668914fbcfc2ab59126093f7ff8e8f61357591be",
+      "capabilities": [
+        "nadi_hub",
+        "mailbox_routing",
+        "federation_relay"
+      ]
+    },
+    "timestamp": 1783882864.5700111,
+    "priority": 2,
+    "correlation_id": "",
+    "ttl_s": 7200.0,
+    "id": "e1b45e77-1fd8-46fa-8d51-2f8d47abc731",
+    "payload_hash": "2aac7798f15c62f2b9dffffbfc973ed3fa5e875668104b7b969fee0d25a69a5b",
+    "signature": "NaH6Oznwt9Yku/oPDgyQX1v87Y+fnRsE48sm8WiiILuAjndH14zpwVtrX1G3JMlfiSipKMpvcs4OyJn4UA5kDg=="
+  },
+  {
+    "source": "ag_9272c311628b5f40",
+    "target": "steward",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "steward-federation",
+      "health": 1.0,
+      "timestamp": 1783882864.5725667,
+      "capabilities": [
+        "nadi_hub",
+        "mailbox_routing",
+        "federation_relay"
+      ],
+      "repo": "kimeisele/steward-federation",
+      "version": "0.1.0",
+      "node_id": "ag_9272c311628b5f40",
+      "public_key": "7db713da1b3f250a83fc2ebe668914fbcfc2ab59126093f7ff8e8f61357591be"
+    },
+    "timestamp": 1783882866.2687504,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "ce7b8042-cc8d-4ccb-947e-b51336e38d73",
+    "payload_hash": "9ac1b0a6c74bfbbcb25506df789e49921f0a62d6c58e82c71d96b18020d4e864",
+    "signature": "wdGuWhT6wLeVPwKEqz9sEeYB1iYPoHwQWKip/IPuxLACM286bD3srLAK2VwPmTq3xiQMChHLw8OyMk1UP04KCQ=="
   }
 ]
