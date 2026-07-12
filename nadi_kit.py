@@ -564,16 +564,30 @@ class NadiHubRelay:
         content_b64 = base64.b64encode(
             json.dumps(data, indent=2, default=str).encode("utf-8")
         ).decode("ascii")
+        # The payload goes in over stdin, not as an argument. A full mailbox is
+        # ~98 KB of JSON, ~130 KB once base64-encoded, and Linux caps a single
+        # argument at 128 KB (MAX_ARG_STRLEN) — so passing it as -f content=...
+        # failed with "Argument list too long" on exactly the mailboxes that had
+        # anything in them. The fuller the mailbox, the more certainly the write
+        # failed, which is why old messages could never be pushed out by new ones.
+        body: dict[str, str] = {
+            "message": f"nadi: {self.agent_id} relay update",
+            "content": content_b64,
+        }
+        if sha:
+            body["sha"] = sha
         args = [
             "gh", "api", f"repos/{self.hub_repo}/contents/{filepath}",
             "-X", "PUT",
-            "-f", f"message=nadi: {self.agent_id} relay update",
-            "-f", f"content={content_b64}",
+            "--input", "-",
         ]
-        if sha:
-            args.extend(["-f", f"sha={sha}"])
-
-        result = subprocess.run(args, capture_output=True, text=True, timeout=30)
+        result = subprocess.run(
+            args,
+            input=json.dumps(body),
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
         if result.returncode != 0:
             raise RuntimeError(f"hub write {filepath}: {result.stderr.strip()}")
 
