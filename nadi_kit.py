@@ -174,8 +174,20 @@ class NodeKeyStore:
             return False
         priv = str(payload.get("private_key", "")).strip()
         pub = str(payload.get("public_key", "")).strip()
-        if not priv or not pub:
+        if not priv:
             return False
+        if not pub:
+            # The public key is derivable from the private key — a secret that
+            # only carries the private half is still complete. Rejecting it here
+            # made nodes fall through to generating a fresh (and therefore
+            # unrecognised) identity.
+            try:
+                sk = Ed25519PrivateKey.from_private_bytes(bytes.fromhex(priv))
+                pub = sk.public_key().public_bytes(
+                    serialization.Encoding.Raw, serialization.PublicFormat.Raw,
+                ).hex()
+            except (ValueError, TypeError):
+                return False
         self.private_key = priv
         self.public_key = pub
         self.node_id = str(payload.get("node_id", "")).strip() or _derive_node_id(pub)

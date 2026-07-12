@@ -25,11 +25,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Inject node identity from secret
-        run: |
-          mkdir -p data/federation
-          printf '%s' "${{ secrets.NODE_PRIVATE_KEY }}" > data/federation/.node_keys.json
-
       - name: Install nadi-kit
         env:
           GH_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
@@ -41,6 +36,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
+          NODE_PRIVATE_KEY: ${{ secrets.NODE_PRIVATE_KEY }}
         run: |
           python3 nadi_kit.py sync
           python3 nadi_kit.py heartbeat
