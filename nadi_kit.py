@@ -68,15 +68,46 @@ class NodeKeyStore:
         self.node_id = ""
 
     def ensure_keys(self) -> None:
-        """Load keys from disk or generate new pair."""
-        if self._path.exists():
-            self._load()
+        """Resolve the node identity.
+
+        Order:
+          1. NODE_PRIVATE_KEY environment variable (the only source in CI —
+             the secret never touches the filesystem, so it cannot leak into
+             an Actions cache or a commit).
+          2. On-disk key file (local development only).
+          3. Generate a fresh keypair (local development only).
+
+        In CI a missing NODE_PRIVATE_KEY is fatal: silently generating a new
+        keypair would give the node a new identity on every run, so its own
+        signed heartbeats would be rejected as coming from an unknown peer.
+        """
+        env_secret = os.environ.get("NODE_PRIVATE_KEY", "").strip()
+        if env_secret:
+            self._parse(env_secret, source="NODE_PRIVATE_KEY env")
             if self.private_key and self.public_key:
                 return
+            log.error("nodekeystore: NODE_PRIVATE_KEY is set but could not be parsed")
+
+        if self._path.exists():
+            try:
+                text = self._path.read_text().strip()
+            except OSError:
+                text = ""
+            if text:
+                self._parse(text, source=str(self._path))
+                if self.private_key and self.public_key:
+                    return
+
+        if os.environ.get("GITHUB_ACTIONS") == "true":
+            raise RuntimeError(
+                "No usable node identity: NODE_PRIVATE_KEY is unset or unparseable. "
+                "Refusing to generate an ephemeral keypair in CI — the node would get a "
+                "new identity every run and its heartbeats would be rejected."
+            )
         self._generate()
 
-    def _load(self) -> None:
-        """Load keys from disk in any of the formats secrets-management
+    def _parse(self, text: str, source: str = "") -> None:
+        """Parse a key secret in any of the formats secrets-management
         tooling commonly emits. Order:
           1. JSON blob (Genesis-Provisioning-Hook format)
           2. Raw hex 32-byte Ed25519 seed
@@ -89,49 +120,44 @@ class NodeKeyStore:
         Adding new formats here is forward-safe — every path is
         deterministic and the secret is never logged.
         """
-        try:
-            text = self._path.read_text().strip()
-        except OSError:
-            text = ""
         if not text:
             return
 
         # 1. JSON-blob format
         if self._try_json_blob(text):
-            log.info("nodekeystore: loaded JSON-blob secret from %s", self._path)
+            log.info("nodekeystore: loaded JSON-blob secret from %s", source)
             return
 
         # 2. Raw hex 32-byte
         if self._try_raw_hex(text):
-            log.info("nodekeystore: loaded raw-hex secret from %s", self._path)
+            log.info("nodekeystore: loaded raw-hex secret from %s", source)
             return
 
         # 3. Base64 → 32-byte raw
         if self._try_base64_raw(text):
-            log.info("nodekeystore: loaded base64-raw secret from %s", self._path)
+            log.info("nodekeystore: loaded base64-raw secret from %s", source)
             return
 
         # 4. PEM-encoded Ed25519 private key
         if self._try_pem(text):
-            log.info("nodekeystore: loaded PEM-encoded secret from %s", self._path)
+            log.info("nodekeystore: loaded PEM-encoded secret from %s", source)
             return
 
         # 5. Base64-of-JSON (double-encoded)
         try:
             decoded = base64.b64decode(text, validate=True).decode("utf-8", errors="ignore").strip()
             if decoded and self._try_json_blob(decoded):
-                log.info("nodekeystore: loaded base64-of-JSON secret from %s", self._path)
+                log.info("nodekeystore: loaded base64-of-JSON secret from %s", source)
                 return
         except (ValueError, UnicodeDecodeError):
             pass
 
         # All format detectors failed. Log a safe length probe (no content).
         log.warning(
-            "nodekeystore: %s exists but format unrecognised — falling back to "
-            "ephemeral keypair. Forensic probe (no secret leak): len=%d, "
+            "nodekeystore: %s could not be parsed. Forensic probe (no secret leak): len=%d, "
             "looks_like_json=%s, looks_like_pem=%s, base64_chars_only=%s, "
             "hex_chars_only=%s",
-            self._path,
+            source,
             len(text),
             text.startswith(("{", "[")),
             text.startswith("-----"),
@@ -219,6 +245,8 @@ class NodeKeyStore:
         self.private_key = private_bytes.hex()
         self.public_key = public_bytes.hex()
         self.node_id = _derive_node_id(self.public_key)
+        # Local development only. In CI ensure_keys() raises before reaching this,
+        # so a generated key is never written to a runner's filesystem.
         self._path.parent.mkdir(parents=True, exist_ok=True)
         self._path.write_text(
             json.dumps(
