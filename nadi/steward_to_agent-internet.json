@@ -4,30 +4,6 @@
     "target": "agent-internet",
     "operation": "diagnostic_report",
     "payload": {
-      "target_peer": "ag_fd5a7db51b1acac1",
-      "diagnostic": {
-        "agent_id": "ag_fd5a7db51b1acac1",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.3
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1783882907.2442288,
-    "ttl_s": 900.0,
-    "payload_hash": "b59b97f11605bef6b3ef62a3189983520c1fc862be8c04dcd7f69077e540b7e2",
-    "signature": "/RSnvBRLMsxE7/yoSJdTTjGdpXhwzisV72A7SkWojKe4FaKR61AbmaDNWNMjRdV9UOmN3D2o9KvEIFKNXVbvBQ==",
-    "message_id": "2f675b1c-f2c1-4e37-b955-7b536211af24",
-    "id": "ffe28ed8-10f3-4736-87c2-a219644586bc"
-  },
-  {
-    "source": "ag_8859b969119219b8",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
       "target_peer": "ag_f1bc59288c9c5443",
       "diagnostic": {
         "agent_id": "ag_f1bc59288c9c5443",
@@ -3846,5 +3822,33 @@
     "signature": "Kyg5vFW8c06GGxzA4hl6wRYpRpK+tYyhrF1F1k8JgAaT1dCU1bvzA9RLZcet0wtx5t7auFGEHphMC/AdI5D+Bw==",
     "message_id": "0e71e2d1-ea4d-4ddd-ba34-5ae0695a1f5b",
     "id": "d901099e-2ee0-4f03-816d-5d6c4b2c70a4"
+  },
+  {
+    "source": "ag_8859b969119219b8",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_8859b969119219b8",
+      "health": 0.8598795484023556,
+      "timestamp": 1783892168.1622028,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1783892168.1622052,
+    "ttl_s": 900.0,
+    "payload_hash": "8687e2d78cf9c3b6e1ec322f1721e639ae89568832779ec569403dc7fced7eca",
+    "signature": "2pvonQuP4oEvwMwOVnIhXX2j7A6gfMXjxwLY3CCSxSJ6FCR/CJMW6+gJ+U3IhLVMdvJ7u8m8LOHxXjtqU4HsAg==",
+    "message_id": "065db76d-f184-4c5d-b1a2-d6b0f8bb4401",
+    "id": "ff421d5c-b819-4739-9a1a-14679b8e4ef0"
   }
 ]
