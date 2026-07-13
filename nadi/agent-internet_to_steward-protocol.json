@@ -2,24 +2,6 @@
   {
     "source": "agent-internet",
     "target": "steward-protocol",
-    "operation": "head_agent_status",
-    "payload": {
-      "head_agent": "navigator",
-      "cycle": 1,
-      "peers_observed": 1,
-      "actions_taken": 1,
-      "delivery_rate": 0.0,
-      "timestamp": 1775000217.7198653
-    },
-    "timestamp": 1775000217.719904,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 7200.0,
-    "id": "afe2bb36-8dbb-4558-9d5c-f2fe9bc8b0b8"
-  },
-  {
-    "source": "agent-internet",
-    "target": "steward-protocol",
     "operation": "heartbeat",
     "payload": {
       "agent_id": "agent-internet",
@@ -3556,5 +3538,33 @@
     "id": "e4a0d530-9159-4b17-9a08-ae93304fbcc3",
     "payload_hash": "afca9344d39404564503662ec717c87b79865cd0b7674ac81fe05826cd72d3cc",
     "signature": "YVCJ0J1OQMOevq3qdaJ3WaLUpJXH3U9VgOVA4vC+JzLEfIF/HdP7o8UDT875mSzB1sgY7CaCop/3deOPS22aDQ=="
+  },
+  {
+    "source": "ag_d7b5cd6e9baa0add",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-internet",
+      "health": 1.0,
+      "timestamp": 1783969504.816571,
+      "capabilities": [
+        "nadi-relay",
+        "federation-discovery",
+        "lotus-addressing",
+        "semantic-search",
+        "authority-projection"
+      ],
+      "repo": "kimeisele/agent-internet",
+      "version": "0.1.0",
+      "node_id": "ag_d7b5cd6e9baa0add",
+      "public_key": "6febc5323ed41672ceef523cf4b9a80520f8cd8c30fc0ca2ddbaaeadb432dd36"
+    },
+    "timestamp": 1783969504.8172116,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "960eb071-8029-471d-865f-894d83fce113",
+    "payload_hash": "457a37bd310e233a2412e7c15c91020b320442792b2b41b9b39084eb630a2942",
+    "signature": "yYIqFHNk2VY9cHVw6Q25K6u9SCsN08cR1AMafmFmzsQNw2pQYjYBpz+atuNwI+fyzrrNpVfUKlkldo+Mjew6DQ=="
   }
 ]
