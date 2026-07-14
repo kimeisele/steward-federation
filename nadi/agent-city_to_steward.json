@@ -2982,5 +2982,69 @@
     "id": "fc5abc9b-a077-42cf-a1cc-0c734ef11372",
     "payload_hash": "23f394f5439f8a341ab871ecc09294aa40b9ae31afbd022673d974b81f1f6e85",
     "signature": "k4LLw16U71eZbM29adK55+F1810rXWI9X1b+Vpfg6CEcg38R5IzV3mJLVVZOUSm2U7ppQ4ZBI45FURKObZskAQ=="
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 2618,
+      "population": 32,
+      "alive": 0,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 2618
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 2618
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784060577.7631693,
+    "ttl_s": 7200.0,
+    "payload_hash": "a2fe68b74c269d667b9a07199f70cf249a9032cfa5435daed9f7d1d1bde3a3a1",
+    "signature": "3GQ41algjZBwYi9Ls39CL5yqkTcIF7T0uMSfkCXdiMjNaB8nxyVwEQhYWVZrSOUGpvy9+YCYO5hLUCavqtguDQ==",
+    "id": "c1137653-ddc7-49ad-9ba4-02626f735541"
+  },
+  {
+    "operation": "federation.agent_claim",
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "payload": {
+      "node_id": "ag_b670dc6cbcb705fe",
+      "agent_name": "agent-city",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d",
+      "repo": "kimeisele/agent-city",
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ]
+    },
+    "payload_hash": "95c2fbf4fa4c008b6a6ca39edd5b94f16418e227236500c71ddca4f2cdd14140",
+    "signature": "T2M9VgWJbVMqg8GjK0BaLWM1I0PBGfUDSZeTbiPMei8oyfJ9Ry+I/6trVscTCOgSahVDA1hf1RK6nZ8eAGzYCw==",
+    "id": "bd10558c-6e79-44f0-bcc8-33bcd9df7a2f"
   }
 ]
