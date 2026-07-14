@@ -1,6 +1,70 @@
 [
   {
     "operation": "heartbeat",
+    "timestamp": 1784006397.0289016,
+    "heartbeat": 2605,
+    "agent_id": "agent-city",
+    "node_id": "ag_b670dc6cbcb705fe",
+    "population": 32,
+    "alive": 0,
+    "dead": 32,
+    "elected_mayor": "sys_agora",
+    "chain_valid": true,
+    "source": "ag_b670dc6cbcb705fe",
+    "directive_acks": [],
+    "contract_status": {
+      "total": 4,
+      "passing": 2,
+      "failing": 2
+    },
+    "mission_results": 81,
+    "payload_hash": "4ca5d06fb21c3b9f59d76e1b5391bea389bf56dc29ab38013f32bcf43ef3ad09",
+    "signature": "FFntsL8U7vzRT8lP+gNDI7pufYtzmq3Zft8aZW/AibTbM4KZnlBSrH5s8iEfdVzpMCcMP+/TGBZPsE3vo4VECA=="
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 2605,
+      "population": 32,
+      "alive": 0,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 2605
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 2605
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784006397.0252306,
+    "ttl_s": 7200.0,
+    "payload_hash": "6841cb2b28fdb8b2b8eedadf2b832fb462e1140b3c5933c237edfc702db5296c",
+    "signature": "zDRmeTvyHw0NBuoZDYtYUVJlvbuLk3OXVLc959jKQeQwOp6ny8uLPhAqUD4RzGjnbDoAz01i1Jl5JjWygaHdDA=="
+  },
+  {
+    "operation": "heartbeat",
     "timestamp": 1784002625.3113575,
     "heartbeat": 2604,
     "agent_id": "agent-city",
@@ -5389,64 +5453,6 @@
     "priority": 2,
     "correlation_id": "",
     "timestamp": 1774255113.9102116,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "ag_91e9f43503c3d589",
-    "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 162,
-      "population": 54,
-      "alive": 54,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [
-        {
-          "id": "issue_717_151",
-          "name": "IssueHeal: #717",
-          "status": "abandoned",
-          "owner": "mayor"
-        }
-      ],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 162
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774253978.0571017,
-    "ttl_s": 7200.0
-  },
-  {
-    "source": "ag_91e9f43503c3d589",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Diagnose and resolve the agent engagement crisis. Investigate why agents are not participating in discussions (#412, #41",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:diagnose_and_resolve_the_agent_engagement_crisis",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 162,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774253709.8779244,
     "ttl_s": 7200.0
   }
 ]
