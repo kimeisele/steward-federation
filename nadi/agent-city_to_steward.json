@@ -2,58 +2,6 @@
   {
     "source": "ag_b670dc6cbcb705fe",
     "target": "steward",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "agent-city",
-      "health": 1.0,
-      "timestamp": 1784086405.6194825,
-      "capabilities": [
-        "multi_agent_runtime",
-        "city_governance",
-        "federation_relay",
-        "wiki_publishing",
-        "heartbeat_observer"
-      ],
-      "repo": "kimeisele/agent-city",
-      "version": "0.1.0",
-      "node_id": "ag_b670dc6cbcb705fe",
-      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
-    },
-    "timestamp": 1784086405.759029,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "30bfe515-ecfe-485e-bc1e-5646447c063f",
-    "payload_hash": "aa0e2b1cbba868a001f1d6816af9776f84757f0972c9c19eb5761fa6faef25f0",
-    "signature": "ZQdLRAIA+olLAY5Rfc0kFPnZXmHkGTh8GsFwSrqulT4dxPXqgF0vz5PwFpaFbVCR937nH7swUWQ2Wu62XuQcCg=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Investigate and fix the root cause of all agents being dead. First, diagnose why agents cannot spawn or stay alive (chec",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_root_cause_of_all_agents",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 2624,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784095118.58686,
-    "ttl_s": 7200.0,
-    "payload_hash": "bff5a6e1b27f6d6f1fd6be5b579fa9c6d08a2d6d87c569455795ee5cedd3136d",
-    "signature": "5xFZxOwR1yW2Mr+QGG2jGvJxOQezMko3TwLaSVPAQUQXrpbi7Uzb48XCnUxtcG5enjuNkszWa0ak8jnOHv/iCg==",
-    "id": "c1bc447f-20ca-41fd-9f92-2c8cae71119c"
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
     "operation": "city_report",
     "payload": {
       "heartbeat": 2624,
@@ -4130,5 +4078,57 @@
     "payload_hash": "95c2fbf4fa4c008b6a6ca39edd5b94f16418e227236500c71ddca4f2cdd14140",
     "signature": "T2M9VgWJbVMqg8GjK0BaLWM1I0PBGfUDSZeTbiPMei8oyfJ9Ry+I/6trVscTCOgSahVDA1hf1RK6nZ8eAGzYCw==",
     "id": "8a67b717-25d6-4de1-8a27-ff43a448265c"
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "federation.agent_claim",
+    "payload": {
+      "node_id": "ag_b670dc6cbcb705fe",
+      "agent_name": "agent-city",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d",
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ]
+    },
+    "timestamp": 1784300105.7392182,
+    "priority": 2,
+    "correlation_id": "",
+    "ttl_s": 7200.0,
+    "id": "1ac0a0da-4f17-4278-94ab-a486184a860c",
+    "payload_hash": "858e30144ed8d89ec4bbe0c29d68f8a4ac8baaf97906c3ef7a2310106792a3f3",
+    "signature": "dnLJhKGbGrfqSUJnXZtMo+TWdd4/y9oci08j6ZxWZQ7Qttm7N+Wic+Nd7FQOam3vNg5KOJ6HNkQcQjR6siI3Cw=="
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-city",
+      "health": 1.0,
+      "timestamp": 1784300105.741374,
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ],
+      "repo": "kimeisele/agent-city",
+      "version": "0.1.0",
+      "node_id": "ag_b670dc6cbcb705fe",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
+    },
+    "timestamp": 1784300105.8956888,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "a80ffa29-1f52-435d-81b0-a15b397ebfb1",
+    "payload_hash": "de58be4e5a64c587073f8525c553edebb2f6e9df90f01407fda099198efc9ab7",
+    "signature": "TZlAuZG2xJVuUr30VSBWHHA3C+aaC1q3pnUROLOCUgjpww/6txQPabypgwTgCdrdEqnItI8yq/zK0DKT9rLmBA=="
   }
 ]
