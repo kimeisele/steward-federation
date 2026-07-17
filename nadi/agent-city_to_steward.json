@@ -1,100 +1,5 @@
 [
   {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "federation.agent_claim",
-    "payload": {
-      "node_id": "ag_b670dc6cbcb705fe",
-      "agent_name": "agent-city",
-      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d",
-      "capabilities": [
-        "multi_agent_runtime",
-        "city_governance",
-        "federation_relay",
-        "wiki_publishing",
-        "heartbeat_observer"
-      ]
-    },
-    "timestamp": 1784060589.1538284,
-    "priority": 2,
-    "correlation_id": "",
-    "ttl_s": 7200.0,
-    "id": "32f009f3-5177-4bcd-bbd6-b5d40eac10a2",
-    "payload_hash": "a30554cf302bc269e176d858510f74ed9b187878066fc48b2a105d46f772c174",
-    "signature": "LMgeXwu6tGNHKkSQEFI6uEk5o3TanEKVw2lsKYHe2A3f0+bYYI0w8nB1OiHrKOvUyouYZofFY5a40TWAjm4IAA=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "agent-city",
-      "health": 1.0,
-      "timestamp": 1784060589.155881,
-      "capabilities": [
-        "multi_agent_runtime",
-        "city_governance",
-        "federation_relay",
-        "wiki_publishing",
-        "heartbeat_observer"
-      ],
-      "repo": "kimeisele/agent-city",
-      "version": "0.1.0",
-      "node_id": "ag_b670dc6cbcb705fe",
-      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
-    },
-    "timestamp": 1784060589.4550002,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "3ccd89a1-7dcc-4695-a14a-735eda68fa7d",
-    "payload_hash": "5de3a6f957211fee973b6a86f04559784d8c476a1d2d1b83d56958a69954ba34",
-    "signature": "Csonw4VFgPOByvuu+DcQg9Rg70TfVcNxH8YZ+v2hknM/I2tzL1VZOvvY5i7qQ7dbZI29ojf3fYAGKrtZsmlnBg=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 2619,
-      "population": 32,
-      "alive": 0,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 2619
-        },
-        {
-          "id": "federation-recruitment",
-          "title": "Federation Recruitment via GitHub Discussions",
-          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
-          "status": "active",
-          "last_gap_summary": [
-            "maintain recruitment momentum without thrash"
-          ],
-          "last_evaluated_heartbeat": 2619
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784064595.0391433,
-    "ttl_s": 7200.0,
-    "payload_hash": "93aafec93f0b59d238d2aaff36d92f43c32957d537a7554efbdc45fce8a0ea25",
-    "signature": "enoSOYaIL+bBlAGUSsjsrBCyzwPNorHs7ljjPKcrJXNC8tzzrFjcC1A7IkwCVwYkhk3XIU0Bc73hRSI9jpzGCg==",
-    "id": "07540c4b-63f3-497d-a017-abaeffa0a2a3"
-  },
-  {
     "operation": "federation.agent_claim",
     "source": "ag_b670dc6cbcb705fe",
     "target": "steward",
@@ -4134,5 +4039,93 @@
     "id": "f77b7d05-4b23-4cf3-9b95-14108717c5d2",
     "payload_hash": "5fc58549726ebcae30b07a298fead8d0f47b556ab7d27b28e47566921f740c39",
     "signature": "7d9oTFkX5yFz91Vh4SPa+XZYD459OBS7NWQpNvF3E5s2UWIXhorg5JT52wQfWKHpugyU/p974hIWIFwEQmodAw=="
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and resolve failing code health contracts (ruff_clean, tests_pass) and review the 4 active discussions for s",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_resolve_failing_code_health_cont",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 3,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784278560.8924494,
+    "ttl_s": 7200.0,
+    "payload_hash": "5024f4b43fdf5d6f5646e4dd4aac9fe68ed9ed4b4df15a84fc89a6e289761d6a",
+    "signature": "6XvohzLckVsEMJegeXFfX2qYp+vt91pUvzURpUAwH6frUbqDtjfHl0zUjrmpGqwE+oCbHuDmGHZ2mu5bIKkNAA==",
+    "id": "9696a644-b8d5-44b2-8cb7-e88ba1d48f89"
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 3,
+      "population": 32,
+      "alive": 32,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 3
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 3
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784278683.3558102,
+    "ttl_s": 7200.0,
+    "payload_hash": "ab56ad5dd536a5ee216a4a4bdd72e8161877c545e51da75b82820a6bc13a9afc",
+    "signature": "rEKeT/npLwd2jyN0fpqcjd+ry89T6lskvdERA6wCfEJ5LiFcLvqcT81EwxJT8Ymm91oVuuHYNJ6HMb7G2AppBQ==",
+    "id": "4feb27e5-5bae-4acd-8866-031eaf590f9b"
+  },
+  {
+    "operation": "federation.agent_claim",
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "payload": {
+      "node_id": "ag_b670dc6cbcb705fe",
+      "agent_name": "agent-city",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d",
+      "repo": "kimeisele/agent-city",
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ]
+    },
+    "payload_hash": "95c2fbf4fa4c008b6a6ca39edd5b94f16418e227236500c71ddca4f2cdd14140",
+    "signature": "T2M9VgWJbVMqg8GjK0BaLWM1I0PBGfUDSZeTbiPMei8oyfJ9Ry+I/6trVscTCOgSahVDA1hf1RK6nZ8eAGzYCw==",
+    "id": "2a9b8f61-fdb3-493d-9e4d-663d0bff7c5b"
   }
 ]
