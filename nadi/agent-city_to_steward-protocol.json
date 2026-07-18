@@ -4,56 +4,6 @@
     "target": "steward-protocol",
     "operation": "city_report",
     "payload": {
-      "heartbeat": 404,
-      "population": 67,
-      "alive": 67,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [
-        {
-          "id": "issue_381_393",
-          "name": "IssueHeal: #381",
-          "status": "abandoned",
-          "owner": "mayor"
-        },
-        {
-          "id": "heal_ruff_clean_393",
-          "name": "Heal: ruff_clean",
-          "status": "abandoned",
-          "owner": "mayor"
-        },
-        {
-          "id": "heal_tests_pass_393",
-          "name": "Heal: tests_pass",
-          "status": "abandoned",
-          "owner": "mayor"
-        }
-      ],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 404
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774056709.4788852,
-    "ttl_s": 7200.0,
-    "id": "2f7d31a8-3002-4be5-92c3-300f17b94501"
-  },
-  {
-    "source": "agent-city",
-    "target": "steward-protocol",
-    "operation": "city_report",
-    "payload": {
       "heartbeat": 405,
       "population": 68,
       "alive": 68,
@@ -4562,5 +4512,33 @@
     "id": "3181004f-7973-454c-b8b7-e1fcadef855b",
     "payload_hash": "0c4b57fb8df42321ade6d26927fd90999ddaeefb4026e5bb43b3f6d8bdb32877",
     "signature": "ViwLuaJ8VAPt7Kcia0gZLhNy+VtedZbGIYLfYz0yENJ6tSajtJe+AVROUxEzd9ORIqaWMDRrl8irswNhUl/5DA=="
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-city",
+      "health": 1.0,
+      "timestamp": 1784408797.6421194,
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ],
+      "repo": "kimeisele/agent-city",
+      "version": "0.1.0",
+      "node_id": "ag_b670dc6cbcb705fe",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
+    },
+    "timestamp": 1784408797.9956348,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "7768b6c8-800c-4352-8cf8-79a3ed05defb",
+    "payload_hash": "8ff9a748cdf797e9ab680b5f68f94b27fe394621c5627ae7ad2a4587ee056ad9",
+    "signature": "aM/3d6l75x2zy4b2x6y7FxkccClem7HLgyFomhUJ+LyQNOEOAwFqnuJ5xtyuVL6POywTEjBvNMpqFu1E11MMBg=="
   }
 ]
