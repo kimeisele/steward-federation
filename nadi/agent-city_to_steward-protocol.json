@@ -4,37 +4,6 @@
     "target": "steward-protocol",
     "operation": "city_report",
     "payload": {
-      "heartbeat": 0,
-      "population": 45,
-      "alive": 45,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 0
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774070409.4867651,
-    "ttl_s": 7200.0,
-    "id": "75184ed6-5f4f-42b6-83c7-9c64a0800988"
-  },
-  {
-    "source": "agent-city",
-    "target": "steward-protocol",
-    "operation": "city_report",
-    "payload": {
       "heartbeat": 1,
       "population": 45,
       "alive": 45,
@@ -4500,5 +4469,33 @@
     "id": "aa6d841b-a075-4a93-baeb-b87d8b57724e",
     "payload_hash": "f069570210c5c96343a5939285202ed6720c05b2ccee8482425085fe8ba9ec18",
     "signature": "78/DxcvZHKXWIUkBewQsoD732qLX8cYN+GLk8S3PHvHbk+mdrXzZBNeLzTRwXy+4vHSm0NnE/kuKqiTBBZ9jBg=="
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-city",
+      "health": 1.0,
+      "timestamp": 1784442357.0894616,
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ],
+      "repo": "kimeisele/agent-city",
+      "version": "0.1.0",
+      "node_id": "ag_b670dc6cbcb705fe",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
+    },
+    "timestamp": 1784442357.4498777,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "25156a55-88f9-4b69-9c00-5ee4ffbc281f",
+    "payload_hash": "d774e2751d0d8191e7f8d67e22651bdfec4d9e14f294ae3339b312bd8f266243",
+    "signature": "n7gNE85PeEzeX2A6JADsiirKQQsTTciEJdKEVCKfKV/jxBkxiq+sWeM4MqdQYt6P17SDiRU9XOfNWLXu+KShCg=="
   }
 ]
