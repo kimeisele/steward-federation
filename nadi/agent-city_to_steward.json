@@ -2,58 +2,6 @@
   {
     "source": "ag_b670dc6cbcb705fe",
     "target": "steward",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "agent-city",
-      "health": 1.0,
-      "timestamp": 1784320596.0618055,
-      "capabilities": [
-        "multi_agent_runtime",
-        "city_governance",
-        "federation_relay",
-        "wiki_publishing",
-        "heartbeat_observer"
-      ],
-      "repo": "kimeisele/agent-city",
-      "version": "0.1.0",
-      "node_id": "ag_b670dc6cbcb705fe",
-      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
-    },
-    "timestamp": 1784320596.2726874,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "a419c47c-5ca7-4ef0-baac-3bca05ab4bf6",
-    "payload_hash": "fa38f619277c11b059dbbdb4a10f888395c5f1e02d7852d64a371fe6527002e9",
-    "signature": "eiA0BUqP/asmuj6onOek5VtC+ViQJU/Mun/C7h/lh9E2NLWa0HMOSfX8LunQO0u6BpLAH2nFjHILrR5GgaEsCQ=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Investigate and fix the failing 'ruff_clean' and 'tests_pass' contracts to restore code health and CI/CD pipeline reliab",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_clean_and_t",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 13,
-      "origin_phase": "brain_health"
-    },
-    "timestamp": 1784323864.0558145,
-    "priority": 2,
-    "correlation_id": "",
-    "ttl_s": 7200.0,
-    "id": "8a1b00b8-f0d9-426b-8962-760145b9591e",
-    "payload_hash": "e7710dcd0f7f92d9a6a95e2f0e24f2cbc5e29d278e42f9d8a470b378412547c4",
-    "signature": "60EQiAgco357udN5/6Ux6Ahn/XxfdEEN8WIooXW97nnSfgJ9HKDSzIUZh4Wde0B+2eYBLVfz4pL6myTMKxaECA=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
     "operation": "city_report",
     "payload": {
       "heartbeat": 13,
@@ -4134,5 +4082,57 @@
     "payload_hash": "95c2fbf4fa4c008b6a6ca39edd5b94f16418e227236500c71ddca4f2cdd14140",
     "signature": "T2M9VgWJbVMqg8GjK0BaLWM1I0PBGfUDSZeTbiPMei8oyfJ9Ry+I/6trVscTCOgSahVDA1hf1RK6nZ8eAGzYCw==",
     "id": "0abb8ed2-0c71-4af8-abf6-5cb489ed5f4d"
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "federation.agent_claim",
+    "payload": {
+      "node_id": "ag_b670dc6cbcb705fe",
+      "agent_name": "agent-city",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d",
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ]
+    },
+    "timestamp": 1784479614.3376477,
+    "priority": 2,
+    "correlation_id": "",
+    "ttl_s": 7200.0,
+    "id": "7f21a25f-70aa-4c12-ad3f-73d45af3276e",
+    "payload_hash": "f5702f39d54f52d8a9f843c2c47776dd6de30c16d2b789403f17bb58c13e6bbf",
+    "signature": "VMLplLWIM/uV2n04GqdbpmFW2Wm5JWSNSn9b94LQsbjivUqD85WKs5xyXLPA/7oC1BxHEvADWOuVXSowtw67Dw=="
+  },
+  {
+    "source": "ag_b670dc6cbcb705fe",
+    "target": "steward",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-city",
+      "health": 1.0,
+      "timestamp": 1784479614.3397071,
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ],
+      "repo": "kimeisele/agent-city",
+      "version": "0.1.0",
+      "node_id": "ag_b670dc6cbcb705fe",
+      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
+    },
+    "timestamp": 1784479614.4605134,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "9e2a24c9-6f14-4c5e-826f-1b2f612d53a6",
+    "payload_hash": "428f7945131e78c8ac1ca80eb4a8e49c46e731183461017168a82d4ec6cc393d",
+    "signature": "/SYtS8lVUPGINdbe6/xN0jJtTydumzBfmxEqtsc58Sj0YoS6wUHtIPSVTrFp6JnLbj+dOS77MJXbEfQ7RxLSDg=="
   }
 ]
