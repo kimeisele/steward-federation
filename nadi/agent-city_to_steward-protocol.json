@@ -4,44 +4,6 @@
     "target": "steward-protocol",
     "operation": "city_report",
     "payload": {
-      "heartbeat": 20,
-      "population": 47,
-      "alive": 47,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [
-        {
-          "id": "issue_423_9",
-          "name": "IssueHeal: #423",
-          "status": "abandoned",
-          "owner": "mayor"
-        }
-      ],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 20
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1774090461.5675988,
-    "ttl_s": 7200.0,
-    "id": "b31a1fbd-5700-4bfd-b1a5-e28398d4dc62"
-  },
-  {
-    "source": "agent-city",
-    "target": "steward-protocol",
-    "operation": "city_report",
-    "payload": {
       "heartbeat": 21,
       "population": 48,
       "alive": 48,
@@ -4378,5 +4340,33 @@
     "id": "c6bf0983-faf9-4f65-9fcf-4227e2637885",
     "payload_hash": "d8d8a03794da650857115c62e865c4c195752d72875d10c17b716937f3e7fef8",
     "signature": "mVbhDW/5v2NhoGno3wn3JO08tYThiSD24LR5bgNd2qkhQz1IWGn8xcgVXv0x/aKhrlGdWFl6cEH/QPsMaEt3DA=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-city",
+      "health": 1.0,
+      "timestamp": 1784566001.3018637,
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ],
+      "repo": "kimeisele/agent-city",
+      "version": "0.1.0",
+      "node_id": "ag_3a223b9a0c43a649",
+      "public_key": "863b1d081f74760421393288b1b0c94e691fb215723ded9a096cfaf2719a176a"
+    },
+    "timestamp": 1784566001.6816714,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "d793a810-e2a6-4672-8607-dc9e31f06755",
+    "payload_hash": "eaeea34e87806d067469d27aaf5c154efd0ab370d3a9db471414fe4523371465",
+    "signature": "CK0ZuK+wt2g0klUUiv2l1BWuUouNzhmTlEs62Nz8C6FxoqDxHQbPGDlDUbO7pCfWghFRF4z7XjgWxN2/C6BvAQ=="
   }
 ]
