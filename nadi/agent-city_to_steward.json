@@ -2,70 +2,6 @@
   {
     "source": "ag_b670dc6cbcb705fe",
     "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 31,
-      "population": 32,
-      "alive": 32,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 31
-        },
-        {
-          "id": "federation-recruitment",
-          "title": "Federation Recruitment via GitHub Discussions",
-          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
-          "status": "active",
-          "last_gap_summary": [
-            "maintain recruitment momentum without thrash"
-          ],
-          "last_evaluated_heartbeat": 31
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784408787.7641413,
-    "ttl_s": 7200.0,
-    "payload_hash": "117e942ebc5e4ee0093a69cbc60e90d3ade142eec91120167e2524255246bf46",
-    "signature": "B+8tv8uyB9P8KMUSaBXlminD8iexlRCUiWF14YNsJ11DZkqXpkQIwDioPDmyb+1ReRoRbO9ricUgWV9OaxHyBg==",
-    "id": "2b66681e-8bf1-4d3d-a1a3-9f1afe9b9fc4"
-  },
-  {
-    "operation": "federation.agent_claim",
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "payload": {
-      "node_id": "ag_b670dc6cbcb705fe",
-      "agent_name": "agent-city",
-      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d",
-      "repo": "kimeisele/agent-city",
-      "capabilities": [
-        "multi_agent_runtime",
-        "city_governance",
-        "federation_relay",
-        "wiki_publishing",
-        "heartbeat_observer"
-      ]
-    },
-    "payload_hash": "95c2fbf4fa4c008b6a6ca39edd5b94f16418e227236500c71ddca4f2cdd14140",
-    "signature": "T2M9VgWJbVMqg8GjK0BaLWM1I0PBGfUDSZeTbiPMei8oyfJ9Ry+I/6trVscTCOgSahVDA1hf1RK6nZ8eAGzYCw==",
-    "id": "e25e912d-9b89-4069-ad37-8e7421f23800"
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
     "operation": "federation.agent_claim",
     "payload": {
       "node_id": "ag_b670dc6cbcb705fe",
@@ -4115,5 +4051,57 @@
     "payload_hash": "834ba04a688cb4dc0062ad0098373d243b34ba51b061de1939269d3a2bc806b8",
     "signature": "FY+vG1xv8QS4VNSkpumkSItorbrA2dfmDJCxpcarvGg/lmyvnldElSumoBTzs/ppBBYqcWOAT6FNMJ2bPmC5Bw==",
     "id": "a19cd083-229b-4263-9a74-14a18446e0b5"
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "federation.agent_claim",
+    "payload": {
+      "node_id": "ag_3a223b9a0c43a649",
+      "agent_name": "agent-city",
+      "public_key": "863b1d081f74760421393288b1b0c94e691fb215723ded9a096cfaf2719a176a",
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ]
+    },
+    "timestamp": 1784587187.7192018,
+    "priority": 2,
+    "correlation_id": "",
+    "ttl_s": 7200.0,
+    "id": "21804ecb-a750-4234-9590-913ac65237da",
+    "payload_hash": "9c81ab9fd5220c83866bdc582e68cd22043354cd1cf8c5d2c35f38ea0d5c7947",
+    "signature": "GPVIAtuqTlQ4DgVpArw35i4Wb+4ahDhU+QrhReC26mdR4dyS+5swjLc9Jc3WBZ8JIgp8qj2rWurETiko3L0EAA=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "agent-city",
+      "health": 1.0,
+      "timestamp": 1784587187.7213473,
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ],
+      "repo": "kimeisele/agent-city",
+      "version": "0.1.0",
+      "node_id": "ag_3a223b9a0c43a649",
+      "public_key": "863b1d081f74760421393288b1b0c94e691fb215723ded9a096cfaf2719a176a"
+    },
+    "timestamp": 1784587187.9651427,
+    "priority": 1,
+    "correlation_id": "",
+    "ttl_s": 900.0,
+    "id": "fe4b0cc0-25c8-495d-8cf5-55c5fc13717f",
+    "payload_hash": "6e261b76cee57e1e50105b81de1e8054ed40cb2280584f92668972d52d0e57b3",
+    "signature": "Xn8/EfdQhV2FsvzRwmyBnKNALeUpLEE4o8I0qpdg5v1kxvHmWVtYhiLRmmeylPeqRt0BDKXqXYABdv+ZpwPgBA=="
   }
 ]
