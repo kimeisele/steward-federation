@@ -1,6 +1,70 @@
 [
   {
     "operation": "heartbeat",
+    "timestamp": 1784572534.6820357,
+    "heartbeat": 59,
+    "agent_id": "agent-city",
+    "node_id": "ag_3a223b9a0c43a649",
+    "population": 32,
+    "alive": 32,
+    "dead": 0,
+    "elected_mayor": "sys_analyst",
+    "chain_valid": true,
+    "source": "ag_3a223b9a0c43a649",
+    "directive_acks": [],
+    "contract_status": {
+      "total": 4,
+      "passing": 2,
+      "failing": 2
+    },
+    "mission_results": 26,
+    "payload_hash": "a31a219c3b3c60a0bf0a41375c46868d303b1ead76a16491ec9bb6f86a12cb85",
+    "signature": "Z67W88SUUpe46awYsJhE7pND6w94/EeGzO+SnEljrUQPq6qp0G6+pOj3APk3zNZRJeT6gwDP7B04VjXtlXymAg=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 59,
+      "population": 32,
+      "alive": 32,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 59
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 59
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784572534.6797023,
+    "ttl_s": 7200.0,
+    "payload_hash": "2433efb1aaa9e84f11582c8ae40b65be14a65cbfc9ee2bebf277dabca8445b2e",
+    "signature": "yj0cTH0Mm1JW5+6i3u+df2hiFD31Mma+lvIaOqhWEzSnjRB/ZkHQ52MZo7eu7Fbby8KIFKXE7pIp4zz/mKSkAg=="
+  },
+  {
+    "operation": "heartbeat",
     "timestamp": 1784565989.15446,
     "heartbeat": 58,
     "agent_id": "agent-city",
@@ -4282,69 +4346,5 @@
     "ttl_s": 7200.0,
     "payload_hash": "77edb785dd04ae2dd7ec2b093cea694d1a7fd6f5dfc6893a52b288ba356b541d",
     "signature": "taUvnh3UkYZIRaWQy7wXFFK7Kt7RHAmrHhTGfo0c/FhtlWaMh3Qn0LpSftEQfWXjM1fWFXdXcbPzUVVO60R/Ag=="
-  },
-  {
-    "operation": "heartbeat",
-    "timestamp": 1784250782.0758748,
-    "heartbeat": 0,
-    "agent_id": "agent-city",
-    "node_id": "ag_b670dc6cbcb705fe",
-    "population": 32,
-    "alive": 32,
-    "dead": 0,
-    "elected_mayor": "sys_analyst",
-    "chain_valid": true,
-    "source": "ag_b670dc6cbcb705fe",
-    "directive_acks": [],
-    "contract_status": {
-      "total": 4,
-      "passing": 2,
-      "failing": 2
-    },
-    "mission_results": 17,
-    "payload_hash": "cf70a00119485593c028a16edac5ed278e01115550692dde80cf575805c4377a",
-    "signature": "nOjcBlBoTeoTYIKM7cUI6PSOiyvMd8NLDiT4byHeZ58tnCfsm//UUFnQ57cyer/g/wujbK88X/lpzAYoECGvAQ=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 0,
-      "population": 32,
-      "alive": 32,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 0
-        },
-        {
-          "id": "federation-recruitment",
-          "title": "Federation Recruitment via GitHub Discussions",
-          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
-          "status": "active",
-          "last_gap_summary": [
-            "maintain recruitment momentum without thrash"
-          ],
-          "last_evaluated_heartbeat": 0
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784250782.0732698,
-    "ttl_s": 7200.0,
-    "payload_hash": "0d526928f0e623eee1605158d823fa413b936df98cb9fb8d3e43e77517ae2ba0",
-    "signature": "WuUiOEm1Mic/xTJwb9D/yeMqWlSwXGCnEnKKVSZvFNiCpH8uW3Na0KfhsH49OGnNBubZUN7AkWGkkVuFnoG7Cw=="
   }
 ]
