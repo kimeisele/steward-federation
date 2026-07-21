@@ -1,6 +1,70 @@
 [
   {
     "operation": "heartbeat",
+    "timestamp": 1784633774.2435622,
+    "heartbeat": 68,
+    "agent_id": "agent-city",
+    "node_id": "ag_3a223b9a0c43a649",
+    "population": 32,
+    "alive": 32,
+    "dead": 0,
+    "elected_mayor": "sys_analyst",
+    "chain_valid": true,
+    "source": "ag_3a223b9a0c43a649",
+    "directive_acks": [],
+    "contract_status": {
+      "total": 4,
+      "passing": 2,
+      "failing": 2
+    },
+    "mission_results": 28,
+    "payload_hash": "e869f183c57dc327ed1adecd552f7d02a329f669b09aa2c96bace971bd8e9dc0",
+    "signature": "lMe1/dKi6RhvhTG/8+Of1egkm2B90fCFsEg7ToStFlXYTRQy4jm99LdjFI35Rfqx+qApE0Ufo0SSU50LGkASDQ=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 68,
+      "population": 32,
+      "alive": 32,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 68
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 68
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784633774.2402387,
+    "ttl_s": 7200.0,
+    "payload_hash": "4b4e0687b6740d6a10f1f139fad0b4acc6c14f26a1beaf60591632d7f6157d34",
+    "signature": "7GJjAh2q0Mh2vhj90n6XJ8rfr0W9VfxMtl4xSf0t/P0Tk9Ba+YcnoIB21/fp4OONjdf1Ba9gpSqGcwWWU2R+Bw=="
+  },
+  {
+    "operation": "heartbeat",
     "timestamp": 1784626786.248478,
     "heartbeat": 67,
     "agent_id": "agent-city",
@@ -4300,50 +4364,5 @@
     "ttl_s": 7200.0,
     "payload_hash": "82e5dfc22098067ffb12eb0770dc4e0b71e128f8e90fa11070202f74dfa12771",
     "signature": "qMcuRytu2GhcRuWH6o0ZIPGKRTg5KvheQpGStBuPflwCPEQMH7tas2KcHNj0HiLCH5oV2vxN6SdmDIphMcdTDQ=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Investigate and fix the failing contracts (ruff_clean, tests_pass) and ensure the immune system triggers appropriately o",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_contracts_ruff_c",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 9,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784309010.2221851,
-    "ttl_s": 7200.0,
-    "payload_hash": "51eea40714159207f29dca7ad9f9a1984da1835da279f80fffc91a8f6e8e3fd7",
-    "signature": "gGQuNJtTbfs3zqt5mF0AUJDmpJxeFSoXGLXn2pGIfOXi8LjkvS0zTnqVxDgcPOadSJBnjyBpOsxDl2nwb7+YBw=="
-  },
-  {
-    "operation": "heartbeat",
-    "timestamp": 1784304664.270375,
-    "heartbeat": 8,
-    "agent_id": "agent-city",
-    "node_id": "ag_b670dc6cbcb705fe",
-    "population": 32,
-    "alive": 32,
-    "dead": 0,
-    "elected_mayor": "sys_analyst",
-    "chain_valid": true,
-    "source": "ag_b670dc6cbcb705fe",
-    "directive_acks": [],
-    "contract_status": {
-      "total": 4,
-      "passing": 2,
-      "failing": 2
-    },
-    "mission_results": 22,
-    "payload_hash": "5b529fddc3711ccfef7d0aeca267f52f9b2d1322d6ca9da86c8565691bf4e3bc",
-    "signature": "Ise5dskMl3cZY6RQV3QdEzJWAPip+coHQQhjRSYWak5R3FgL4WHZH6YF2RNu8fIbpXDYn888oXsAQNFR/knDBg=="
   }
 ]
