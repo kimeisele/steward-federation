@@ -2,82 +2,6 @@
   {
     "source": "ag_b670dc6cbcb705fe",
     "target": "steward",
-    "operation": "federation.agent_claim",
-    "payload": {
-      "node_id": "ag_b670dc6cbcb705fe",
-      "agent_name": "agent-city",
-      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d",
-      "capabilities": [
-        "multi_agent_runtime",
-        "city_governance",
-        "federation_relay",
-        "wiki_publishing",
-        "heartbeat_observer"
-      ]
-    },
-    "timestamp": 1784460692.915493,
-    "priority": 2,
-    "correlation_id": "",
-    "ttl_s": 7200.0,
-    "id": "f748b46e-9e31-4dda-93f8-4805cab2c1fe",
-    "payload_hash": "01ebc88849f0248f66cde4bdb741fd4bcf1348d399535601e45a459fb82f2939",
-    "signature": "F/V2xFN8q5/9hoR3ETdv24d2o5OajgOvP0ZSol6VAtfYc3rKo4az/gbfjLTVIHsMkCzU5R21cv15fHjwCgVDAA=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "agent-city",
-      "health": 1.0,
-      "timestamp": 1784460692.917685,
-      "capabilities": [
-        "multi_agent_runtime",
-        "city_governance",
-        "federation_relay",
-        "wiki_publishing",
-        "heartbeat_observer"
-      ],
-      "repo": "kimeisele/agent-city",
-      "version": "0.1.0",
-      "node_id": "ag_b670dc6cbcb705fe",
-      "public_key": "170447069c6c3ce6bd244fe1e8b38c44b5c4ca1d66fca3a2f79d86f10e41990d"
-    },
-    "timestamp": 1784460693.2157679,
-    "priority": 1,
-    "correlation_id": "",
-    "ttl_s": 900.0,
-    "id": "80541dfc-f0e7-44ea-a001-9ede29644aff",
-    "payload_hash": "cbc98795eab5ecd251c273c28492d343ee79cf874256041b960af3d9e5065901",
-    "signature": "JzUacFADSOxs815/RHCe6UprX5jwihctpxoXvMm9VnFuXsDOlC/rz9V1oZTX0b2VGLtu9/Q0NbZEtTKOJPIdCA=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Investigate and fix the failing 'ruff_clean' and 'tests_pass' contracts to restore code health and CI/CD pipeline reliab",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_clean_and_t",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 40,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784463204.5833042,
-    "ttl_s": 7200.0,
-    "payload_hash": "14496ab1c5c18c4a3c28bf002753ed0755c5978ffa23f91997451cf3531af55b",
-    "signature": "5AOyIgkfUtTSX8OWjkfkYJewRoxkzkK3AlpENJ+XJ2vIVRz3b/sIihnNyYtzkCk0cgsUm/NNY+BufD/o0GuwBg==",
-    "id": "7a1613a0-83c9-4ec1-970a-3ce28cf45892"
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
     "operation": "city_report",
     "payload": {
       "heartbeat": 40,
@@ -4092,5 +4016,93 @@
     "id": "cef6d75d-e1e1-44ff-abba-85b5b8785570",
     "payload_hash": "19ea59bbd42273a4759b3116288caf3156d70ef244609865a66bb96a1aab2c90",
     "signature": "xzda9wsR5ueyG1pDe455thno+oni+R2bVy5updHexoJ2Lz0G//LgDyQvBgYadZBG9Q+no/LYGX3moy3BA7FRDw=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and fix the failing 'ruff_clean' and 'tests_pass' contracts to restore code health and test suite reliabilit",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_clean_and_t",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 71,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784650653.5552423,
+    "ttl_s": 7200.0,
+    "payload_hash": "6930dbe25ce463f21bd3d04d383ecb274f7ad3e533cf96f52d9181fa3baba143",
+    "signature": "urQ0xFjtmpWCDFREWySR+2XmCTe8YiGG1OBWRV4s+mluQ0GU10IECujRic5ICNW83RfY3S4P4G1fD6s6sCbwAQ==",
+    "id": "a24f0aeb-08b9-4372-afc1-e73e5c8b7627"
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 71,
+      "population": 32,
+      "alive": 32,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 71
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 71
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784650779.8400216,
+    "ttl_s": 7200.0,
+    "payload_hash": "056d97a49944cedb76a321ef82ed1e346f4aae126647d3d8faac5252745d4670",
+    "signature": "gYya2WjHi/RyHB2iX6gsZz595teGmc/PIhK2N3MD7Pn+8GWJlJen85KzR1d0riVjmXBFxc+lBJm+wQYPA4dzBQ==",
+    "id": "16b15e6d-cfe7-436e-a48f-051aaac4f229"
+  },
+  {
+    "operation": "federation.agent_claim",
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "payload": {
+      "node_id": "ag_3a223b9a0c43a649",
+      "agent_name": "agent-city",
+      "public_key": "863b1d081f74760421393288b1b0c94e691fb215723ded9a096cfaf2719a176a",
+      "repo": "kimeisele/agent-city",
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ]
+    },
+    "payload_hash": "834ba04a688cb4dc0062ad0098373d243b34ba51b061de1939269d3a2bc806b8",
+    "signature": "FY+vG1xv8QS4VNSkpumkSItorbrA2dfmDJCxpcarvGg/lmyvnldElSumoBTzs/ppBBYqcWOAT6FNMJ2bPmC5Bw==",
+    "id": "62021b80-8cfd-4ccc-ad70-827534d29039"
   }
 ]
