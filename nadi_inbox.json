@@ -1,6 +1,93 @@
 [
   {
     "operation": "heartbeat",
+    "timestamp": 1784608278.5994637,
+    "heartbeat": 65,
+    "agent_id": "agent-city",
+    "node_id": "ag_3a223b9a0c43a649",
+    "population": 32,
+    "alive": 32,
+    "dead": 0,
+    "elected_mayor": "sys_analyst",
+    "chain_valid": true,
+    "source": "ag_3a223b9a0c43a649",
+    "directive_acks": [],
+    "contract_status": {
+      "total": 4,
+      "passing": 2,
+      "failing": 2
+    },
+    "mission_results": 28,
+    "payload_hash": "b331417c9d1db2ec7072a5b208c9988a55a804a6448c437b23f16d6ebb181f20",
+    "signature": "nSY5DgdVRWJ1PyMWS0XatvIezVhqDXex/8UyhVKESVfFa7xBdz8qdpKKUAlEubHwt1fYADUbiScv9n99qoKvBQ=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 65,
+      "population": 32,
+      "alive": 32,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 65
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 65
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784608278.5955598,
+    "ttl_s": 7200.0,
+    "payload_hash": "c15276b02ad6629cb9a32923b847073d0fcba020d221ca4f6cef3fa792696903",
+    "signature": "D1FMJuYNld61GWwzgaAMK7EfkuooWLUDTEHEgGnsrVJthszHLZ+a9gt1rWVMOhGFE5O6g3h7f348E08mykOVDA=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "bottleneck_escalation",
+    "payload": {
+      "target": "Investigate and fix the failing 'ruff_clean' and 'tests_pass' contracts to restore code health, and diagnose why agents ",
+      "contract_name": "ruff_clean",
+      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_clean_and_t",
+      "target_repo": "kimeisele/agent-city",
+      "target_role": "city_runtime",
+      "source": "brain_health",
+      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
+      "requested_action": "fix",
+      "heartbeat": 65,
+      "origin_phase": "brain_health"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784608212.6888332,
+    "ttl_s": 7200.0,
+    "payload_hash": "ad6a1274006bb1facbad65ddd270c73ad02999bd2bfdb2b5c01ccba42bea3e98",
+    "signature": "OzEZ77L/M57PJ/we1g9PB/sDoNPlx4I8FDQtBzXBEeBxafG9C9NgqW7YB+PHXVVPs2PRIml2jrkJvwtpUNRDCw=="
+  },
+  {
+    "operation": "heartbeat",
     "timestamp": 1784596068.993318,
     "heartbeat": 64,
     "agent_id": "agent-city",
@@ -4258,92 +4345,5 @@
     "mission_results": 22,
     "payload_hash": "cf3c626759b6b1cf97316cecab24cea71d7a9e873d0186bb43787bc41ed5b497",
     "signature": "XvBDOjUEnsqmlgsrWyxl/DXpzU+lXJtIwlHyI2WkqzQ9YW2V1cMBCe05zsF7lYfBGvar/pFR07HGYY94t61RDA=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 6,
-      "population": 32,
-      "alive": 32,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 6
-        },
-        {
-          "id": "federation-recruitment",
-          "title": "Federation Recruitment via GitHub Discussions",
-          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
-          "status": "active",
-          "last_gap_summary": [
-            "maintain recruitment momentum without thrash"
-          ],
-          "last_evaluated_heartbeat": 6
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784293755.1097994,
-    "ttl_s": 7200.0,
-    "payload_hash": "4696dd347e60515c2ee042b2c2f26ba8ee84f5c235bdd371a4cc2481ce4d93d7",
-    "signature": "k0x7adUgs0nq/evE1qXPDsde8pM7oR5v0hhPhgagwcQ6FVXk83D0YAYgrGvLXopVizacTK1ObQBQJSzwj9dGBw=="
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Investigate and fix the failing ruff_clean and tests_pass contracts to restore code health and CI stability.",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_clean_and_t",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 6,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784293625.6966825,
-    "ttl_s": 7200.0,
-    "payload_hash": "5e8c9f988452364af0a7911df6e93654c1a7bdae0baff037427643fd188869ec",
-    "signature": "rAZ/VA44G/aok1QE5j7gPIiMonrxpDdd8emhSv3wcPQogY31LBkXPn+0qWteLhim1MJWNmN2yD4UfG99KSSYCw=="
-  },
-  {
-    "operation": "heartbeat",
-    "timestamp": 1784289398.4552443,
-    "heartbeat": 5,
-    "agent_id": "agent-city",
-    "node_id": "ag_b670dc6cbcb705fe",
-    "population": 32,
-    "alive": 32,
-    "dead": 0,
-    "elected_mayor": "sys_analyst",
-    "chain_valid": true,
-    "source": "ag_b670dc6cbcb705fe",
-    "directive_acks": [],
-    "contract_status": {
-      "total": 4,
-      "passing": 2,
-      "failing": 2
-    },
-    "mission_results": 22,
-    "payload_hash": "152c1f486be0d4241e29fef951a4bb4acc7c44c4744aface16adf6ee05261f04",
-    "signature": "zN2gGK4BzbVSJzOAGvCEVMc1MsedJ3vHl7wzO5NK5Q8y1bTK0DCK1hSNkyfDALOueQYXXDPo0rfQ47nBAPxzDA=="
   }
 ]
