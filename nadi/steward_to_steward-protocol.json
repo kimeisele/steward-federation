@@ -5,87 +5,6 @@
     "operation": "heartbeat",
     "payload": {
       "agent_id": "ag_fb47bf4a9b820452",
-      "health": 0.8313462325157237,
-      "timestamp": 1784663194.0529215,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1784663194.0529277,
-    "ttl_s": 900.0,
-    "payload_hash": "abe6151ac892f5da4014fa5f5f0311456b77a3f01055897a26dc2d0dd42e8fe9",
-    "signature": "D05zx27vZIthT4mVIIolL3TdX5redvx3UvFKTcco7LsJyRAtu2/k2fgahwgp0CR1k0TZ0MAe3sZKjR08C1QUBQ==",
-    "id": "bf426288-7dd7-4883-a199-049ff58f2148"
-  },
-  {
-    "source": "ag_fb47bf4a9b820452",
-    "target": "steward-protocol",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "ag_fb47bf4a9b820452",
-      "health": 0.8313462325157237,
-      "timestamp": 1784663225.1118474,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1784663225.1118536,
-    "ttl_s": 900.0,
-    "payload_hash": "63181f3e5d9c5ba7911672cbbb97b90661ec956a73ef725fb58a2a1a490949fb",
-    "signature": "PWY0qdzJ4p5648OsW6MgDaPSOEKR6ZYcBEwR8MQwOuOtzvEguzmhBGoOoZRS0jBKlsvMIMnJtRImje9baMGrDA==",
-    "id": "50ae1e50-79e1-43a2-8b49-d2b253d2549f"
-  },
-  {
-    "source": "ag_fb47bf4a9b820452",
-    "target": "steward-protocol",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "ag_fb47bf4a9b820452",
-      "health": 0.8313462325157237,
-      "timestamp": 1784663262.466691,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1784663262.4666967,
-    "ttl_s": 900.0,
-    "payload_hash": "218a319e866a3149e1bbc70cf0232b55ef5a1728b9db5f10db7c798cc8340bc4",
-    "signature": "ZpnbkswZ77EZtd7ssuPinXRz2Ez0ULuStpHo252tfhSdaiWCAkaiSBBz7pgm8Dejo5AjR1DI+upaAhpmljh0Dg==",
-    "id": "e1ac68e2-43c6-4045-9271-79ea6dabefdd"
-  },
-  {
-    "source": "ag_fb47bf4a9b820452",
-    "target": "steward-protocol",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "ag_fb47bf4a9b820452",
       "health": 0.8300458056618157,
       "timestamp": 1784663305.7243397,
       "capabilities": [
@@ -3788,5 +3707,88 @@
     "payload_hash": "8900db6293526012c93e8b9b84aad5df7a6779e35fb8624668100dca3f51fe76",
     "signature": "lL9+8qgWFsuPHYiMR+lBqMtvaW2rQfIMcLczxu28ryKGyz+aE0js3h1uo4gsgvjdMsZCrO8gkc5ypBItlH9lCg==",
     "id": "080e47f5-63df-43ae-b092-1154f32286ec"
+  },
+  {
+    "source": "ag_fb47bf4a9b820452",
+    "target": "steward-protocol",
+    "operation": "diagnostic_report",
+    "payload": {
+      "target_peer": "agent-template-acceptance-node-05",
+      "diagnostic": {
+        "agent_id": "agent-template-acceptance-node-05",
+        "checks": [
+          "repo_accessible",
+          "ci_success"
+        ],
+        "last_push": "2026-07-21T19:05:32Z",
+        "last_ci": {
+          "conclusion": "success",
+          "name": "Node Heartbeat"
+        }
+      },
+      "steward_action": "suspect_investigation",
+      "trust": 0.1
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1784674904.2837348,
+    "ttl_s": 900.0,
+    "payload_hash": "ba5d1a4ec63d495e50c2a9072a55518576c0c295b85bf045e29d6d8dbb051572",
+    "signature": "JltJlgkLleLdIZ1FucF9VcXLMlhKbx7Uf/CTWIRTuyseX07j0pgxxIRpHhm58NCebluLgzGkuE/JB0n6lGHFAw==",
+    "id": "26933b8a-b475-4c65-a600-f3f77e68205b"
+  },
+  {
+    "source": "ag_fb47bf4a9b820452",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_fb47bf4a9b820452",
+      "health": 0.8330479183170273,
+      "timestamp": 1784674928.1725626,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1784674928.1725655,
+    "ttl_s": 900.0,
+    "payload_hash": "6fc2965f9b7db849a46563c0aaffcfec269df8a6d9d776b1015a0d8ec725dd3b",
+    "signature": "igeOuziffGU9Tp564+cMi42acsfemBEx5suk4C1pVWXDwA+IFxQBxmG27+dLOnfTIrIASVKyNLmcffvoyp1PBg==",
+    "id": "6c5ec7ee-8f00-45d4-aac1-d14a3946522d"
+  },
+  {
+    "source": "ag_fb47bf4a9b820452",
+    "target": "steward-protocol",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_fb47bf4a9b820452",
+      "health": 0.8330479183170273,
+      "timestamp": 1784674959.2317095,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1784674959.2317133,
+    "ttl_s": 900.0,
+    "payload_hash": "d3b2b433918b5ec0b28bc7aeff4b9ec06c7fed504d2219adeef24a5d7e51c98d",
+    "signature": "5gT4Dxt9oRKeHqNDdA0jB0kDXtHj1padW702ON6Dv+Ez8puJrhfSaWNPzr0cs3ri9mPheLf31j9cPGShiiofAQ==",
+    "id": "11dd36b5-d389-4292-9cca-747b22036329"
   }
 ]
