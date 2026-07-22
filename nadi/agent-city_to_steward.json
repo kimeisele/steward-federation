@@ -1,72 +1,5 @@
 [
   {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "bottleneck_escalation",
-    "payload": {
-      "target": "Investigate and fix the failing ruff_clean and tests_pass contracts to restore code quality and test reliability.",
-      "contract_name": "ruff_clean",
-      "issue_key": "kimeisele/agent-city:ruff_clean:investigate_and_fix_the_failing_ruff_clean_and_t",
-      "target_repo": "kimeisele/agent-city",
-      "target_role": "city_runtime",
-      "source": "brain_health",
-      "evidence": "failing contracts \u2014 scope gate rejected code-fix mission",
-      "requested_action": "fix",
-      "heartbeat": 49,
-      "origin_phase": "brain_health"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784496797.2882283,
-    "ttl_s": 7200.0,
-    "payload_hash": "c6d26433c74c598faee18f9406f1722cc14f0456d70be7e7c40ab54ee442d008",
-    "signature": "Tkgu/za0qgjMveg8OO5VJOTZRR1fUXO8uMVKFbSFI5lPFzToq4EnRmQxAdnPFpGd5vb1+XmCjWLZ2SLvDuoVDw==",
-    "id": "980d23bb-a24e-44f6-a0ea-0b17f29a5ab0"
-  },
-  {
-    "source": "ag_b670dc6cbcb705fe",
-    "target": "steward",
-    "operation": "city_report",
-    "payload": {
-      "heartbeat": 49,
-      "population": 32,
-      "alive": 32,
-      "chain_valid": true,
-      "pr_results": [],
-      "mission_results": [],
-      "active_campaigns": [
-        {
-          "id": "internet-adaptation",
-          "title": "Internet adaptation",
-          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
-          "status": "active",
-          "last_gap_summary": [
-            "keep active work bounded so strategy does not dissolve into thrash"
-          ],
-          "last_evaluated_heartbeat": 49
-        },
-        {
-          "id": "federation-recruitment",
-          "title": "Federation Recruitment via GitHub Discussions",
-          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
-          "status": "active",
-          "last_gap_summary": [
-            "maintain recruitment momentum without thrash"
-          ],
-          "last_evaluated_heartbeat": 49
-        }
-      ],
-      "origin_phase": "moksha"
-    },
-    "priority": 2,
-    "correlation_id": "",
-    "timestamp": 1784496882.2517538,
-    "ttl_s": 7200.0,
-    "payload_hash": "aaa3bb234ab1b8bc5daed5bba52b7544c69ea1dd7264c66db3fd91ab7ad29904",
-    "signature": "920uiKTrLbxa9sezLDRUw9e4Tiv2/9K77bLsTjr4KTr7LPqdBp4O56bylvACZBhyBQr/SY880v2adP4etK+IDw==",
-    "id": "f019f59c-9774-4a14-b38c-99c94519e195"
-  },
-  {
     "operation": "federation.agent_claim",
     "source": "ag_b670dc6cbcb705fe",
     "target": "steward",
@@ -4111,5 +4044,69 @@
     "id": "8705bd18-f161-498f-8d8d-58951feef95d",
     "payload_hash": "849e4be52261de7e8cae8f113b622526cbaa75110f5562437aeda5dc21555f67",
     "signature": "kVx7EIWtaN60RfLhUgdt0+HWkack1ypVlxI2uuRVZByirhJuFw2hXec1GMXKRw7SE+RyBSV4VL+bkDbe032jDw=="
+  },
+  {
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "operation": "city_report",
+    "payload": {
+      "heartbeat": 81,
+      "population": 32,
+      "alive": 32,
+      "chain_valid": true,
+      "pr_results": [],
+      "mission_results": [],
+      "active_campaigns": [
+        {
+          "id": "internet-adaptation",
+          "title": "Internet adaptation",
+          "north_star": "Continuously adapt the city to relevant new protocols, tools, and standards while keeping execution bounded and the heartbeat healthy.",
+          "status": "active",
+          "last_gap_summary": [
+            "keep active work bounded so strategy does not dissolve into thrash"
+          ],
+          "last_evaluated_heartbeat": 81
+        },
+        {
+          "id": "federation-recruitment",
+          "title": "Federation Recruitment via GitHub Discussions",
+          "north_star": "Recruit external agents and developers to solve critical infrastructure gaps through GitHub-first A2A coordination.",
+          "status": "active",
+          "last_gap_summary": [
+            "maintain recruitment momentum without thrash"
+          ],
+          "last_evaluated_heartbeat": 81
+        }
+      ],
+      "origin_phase": "moksha"
+    },
+    "priority": 2,
+    "correlation_id": "",
+    "timestamp": 1784714194.9927764,
+    "ttl_s": 7200.0,
+    "payload_hash": "e0e9a8c03e2ac6f61b7fccfbae968ba37ec23f5901c259ca60de7c5bd6dff5dc",
+    "signature": "vMf4DqlDX6IX5Oi5a4TorIyBKGbz0KZuzCtuSOjqO7kfjr7Y26OAwLpqJdapmH4yKl+9mGFH66MS8083nnQJCA==",
+    "id": "dee09d00-359e-496f-8787-b09d72df3c19"
+  },
+  {
+    "operation": "federation.agent_claim",
+    "source": "ag_3a223b9a0c43a649",
+    "target": "steward",
+    "payload": {
+      "node_id": "ag_3a223b9a0c43a649",
+      "agent_name": "agent-city",
+      "public_key": "863b1d081f74760421393288b1b0c94e691fb215723ded9a096cfaf2719a176a",
+      "repo": "kimeisele/agent-city",
+      "capabilities": [
+        "multi_agent_runtime",
+        "city_governance",
+        "federation_relay",
+        "wiki_publishing",
+        "heartbeat_observer"
+      ]
+    },
+    "payload_hash": "834ba04a688cb4dc0062ad0098373d243b34ba51b061de1939269d3a2bc806b8",
+    "signature": "FY+vG1xv8QS4VNSkpumkSItorbrA2dfmDJCxpcarvGg/lmyvnldElSumoBTzs/ppBBYqcWOAT6FNMJ2bPmC5Bw==",
+    "id": "edb745fa-2c6f-41f6-9eb6-92d00cbf04d0"
   }
 ]
