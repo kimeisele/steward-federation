@@ -4,35 +4,6 @@
     "target": "agent-city",
     "operation": "diagnostic_report",
     "payload": {
-      "target_peer": "steward-federation",
-      "diagnostic": {
-        "agent_id": "steward-federation",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-07-29T04:46:33Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1785300436.8745308,
-    "ttl_s": 900.0,
-    "payload_hash": "63a581fe589c5d30598266f5fb4447ab72a6257b936e687694f81b6433055864",
-    "signature": "KZNPLUEDKDaIhuvJhViYbhd2jTwPo134+SaPqusM4utYSMaweNcOmKt/vNGbZunibWIAqZibiNswxus1YzQBAw==",
-    "id": "cc80371e-6c49-47f0-8b14-b31a49842de9"
-  },
-  {
-    "source": "ag_fb47bf4a9b820452",
-    "target": "agent-city",
-    "operation": "diagnostic_report",
-    "payload": {
       "target_peer": "agent-internet",
       "diagnostic": {
         "agent_id": "agent-internet",
@@ -3842,5 +3813,32 @@
     "payload_hash": "934371cdb77eaf0eeac23e9060aac357e4038e539574e13d696725fec6d65fcc",
     "signature": "n+wy18h33x4bl5gva7MxAGsHAyWACsi/H1uAK1lwLoXkASfJfGKC9mbmIit1pwuWQ3ZclhWMYgJhs4vWrx2hCA==",
     "id": "ade73c3f-7459-4b00-8eca-debc2fa7a2b6"
+  },
+  {
+    "source": "ag_fb47bf4a9b820452",
+    "target": "agent-city",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_fb47bf4a9b820452",
+      "health": 0.8348311607408703,
+      "timestamp": 1785315865.8825676,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1785315865.8825717,
+    "ttl_s": 900.0,
+    "payload_hash": "0efd10d03a68ab7a9bd6d029b31968dc6ae4a141cebfb859e688cd9e415e289a",
+    "signature": "fX4+KOItt7OSUZQNbrlzJifXpADbi2nB29MUPnDjPxFbTPd3lRxgZUBhyz4qReYZ2ezsFo9JxujSVVrIoGPbCQ==",
+    "id": "9c8dd5e4-7491-46e0-9652-1e54dfc128bd"
   }
 ]
