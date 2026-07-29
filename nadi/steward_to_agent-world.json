@@ -4,35 +4,6 @@
     "target": "agent-world",
     "operation": "diagnostic_report",
     "payload": {
-      "target_peer": "steward-federation",
-      "diagnostic": {
-        "agent_id": "steward-federation",
-        "checks": [
-          "repo_accessible",
-          "ci_success"
-        ],
-        "last_push": "2026-07-29T04:46:33Z",
-        "last_ci": {
-          "conclusion": "success",
-          "name": "CI"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1785300436.8745308,
-    "ttl_s": 900.0,
-    "payload_hash": "b598bcbd266b06b6b61fb5e24b6ca1e77a0779230cef63d39aef5b65a8639015",
-    "signature": "+1nhiIRS7L8GJFgw/Eq+l4okS8RYZIUP2vBcdSfr530V2MJ4/2vppp8mbFdcwGz7Cjoala4UZxxQ5BL+dpifDg==",
-    "id": "e06bb65f-96a9-4685-b336-cff5f4cfe212"
-  },
-  {
-    "source": "ag_fb47bf4a9b820452",
-    "target": "agent-world",
-    "operation": "diagnostic_report",
-    "payload": {
       "target_peer": "agent-internet",
       "diagnostic": {
         "agent_id": "agent-internet",
@@ -3842,5 +3813,32 @@
     "payload_hash": "bd409bd23ff0cff5d75517dff1013b52d712ad9748ab660b4f53ca5e2a0a707b",
     "signature": "Olzk93kLkVSlmJdUFAvFnHowr3VuYalRNSJyyUuPi8NTePud5fesgKnzzxx/4Wyt4pA6NrDYxuZ1oX9yqndbDA==",
     "id": "3980eb39-5afb-4cc0-a4d2-3d92adbbef02"
+  },
+  {
+    "source": "ag_fb47bf4a9b820452",
+    "target": "agent-world",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_fb47bf4a9b820452",
+      "health": 0.8348311607408703,
+      "timestamp": 1785315865.8825676,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1785315865.8825717,
+    "ttl_s": 900.0,
+    "payload_hash": "8d98db5e52c9e07b81fa8f35a5626fc8e7c2fea4270e14c2c5e960a1c8661b0d",
+    "signature": "j8iWBVgFsJYajlOdzDvbRNO8n1WUM4JZtN5InWdB8IeElCyyjNOiWHzVPmEVdbHkwnwo7HhtkYP9LS6xXgEODQ==",
+    "id": "318b28d1-fce0-49a9-96fa-4683ed20e454"
   }
 ]
