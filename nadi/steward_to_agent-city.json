@@ -6,56 +6,6 @@
     "payload": {
       "agent_id": "ag_fb47bf4a9b820452",
       "health": 0.8395349397005544,
-      "timestamp": 1786139169.5253584,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1786139169.5253623,
-    "ttl_s": 900.0,
-    "payload_hash": "963d14584851c03805ecc646e5bb9b9f3e08ce432e77daa5c4451a0a7435e2ba",
-    "signature": "H+rbzHyxh5sY76SSphZQNOfKQzAsAnPr8bq4ozOmRj2OrxhWVs/UQr4The3jt3YDJLbEb6BcHxkinODe/bdzDQ==",
-    "id": "f2742182-5251-462e-8932-b6d42cc17a7e"
-  },
-  {
-    "source": "ag_fb47bf4a9b820452",
-    "target": "agent-city",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_fb47bf4a9b820452",
-      "diagnostic": {
-        "agent_id": "ag_fb47bf4a9b820452",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 1.0
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1786139173.6825242,
-    "ttl_s": 900.0,
-    "payload_hash": "4a7573237b875cbc6fdcfb0badbd5e45928a9b5de1ac2046cbcca8b6c24c342a",
-    "signature": "cI3kaLn3T+UOIZEikHCQ+s7ExjZwo7UK09xxggiVUMyXVWL1JqdNgTzUJXwM389NTiWudE8hzhEbAv7Jb2hQAQ==",
-    "id": "1eccd818-e65d-4349-95eb-ac1361d6766f"
-  },
-  {
-    "source": "ag_fb47bf4a9b820452",
-    "target": "agent-city",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "ag_fb47bf4a9b820452",
-      "health": 0.8395349397005544,
       "timestamp": 1786139201.2968047,
       "capabilities": [
         "code_analysis",
@@ -3820,5 +3770,61 @@
     "payload_hash": "1d4bcaa25b002cb81dce5e243e55bd8366b6a25f1e1915371a6066f931c459e0",
     "signature": "oFN2CLpRxl71JQu6Q/Po0SFJAnPs7ooMOx8vpPpLS9cqpsAQOlq2S1Rp+9zlHafV0YOOmnTkuYy7KsuBjD0rDw==",
     "id": "8523a4fa-4b9f-4560-9f9f-e4eb2b0843cd"
+  },
+  {
+    "source": "ag_fb47bf4a9b820452",
+    "target": "agent-city",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_fb47bf4a9b820452",
+      "health": 0.8396880135299764,
+      "timestamp": 1786150006.624259,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1786150006.6242652,
+    "ttl_s": 900.0,
+    "payload_hash": "abc0864474d7aca229f5b4ef3d5e2cddb4e7f5a4052d4e0b01680b29b70cb3fd",
+    "signature": "tRj92uMdCULtqh2W+nRVIWexWePVkABaMiOVvuxGZj5cNww+MTnHbYmAKLOhd8t0cDtB4iU3PcFl3EKCvg0/Dw==",
+    "id": "633a5109-b174-4a06-bc0f-e6e7327cbf2f"
+  },
+  {
+    "source": "ag_fb47bf4a9b820452",
+    "target": "agent-city",
+    "operation": "diagnostic_report",
+    "payload": {
+      "target_peer": "steward-federation",
+      "diagnostic": {
+        "agent_id": "steward-federation",
+        "checks": [
+          "repo_accessible",
+          "ci_"
+        ],
+        "last_push": "2026-08-08T00:46:34Z",
+        "last_ci": {
+          "conclusion": "",
+          "name": "CI"
+        }
+      },
+      "steward_action": "suspect_investigation",
+      "trust": 0.8
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1786150007.385752,
+    "ttl_s": 900.0,
+    "payload_hash": "8e99b563eb66a5290de4dbf3d70ede1a7a3d0ef263db5d7ca1016c9778ca8702",
+    "signature": "hiIzSusMuif/EaVuBtBypbjEwPxMgh+bWepVRC/xcmXbCZvBpNoOr9Q7WccGwAWO3jPKVwfjx9w3jT7obl/SAw==",
+    "id": "d774482c-f612-4b76-bbb3-023639033277"
   }
 ]
