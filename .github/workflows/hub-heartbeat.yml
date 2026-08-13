@@ -25,12 +25,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install nadi-kit
-        env:
-          GH_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
+      - name: Install checked-out nadi-kit
         run: |
-          python -m pip install cryptography
-          curl -sL -H "Authorization: token ${GH_TOKEN}" "https://raw.githubusercontent.com/kimeisele/steward-federation/main/nadi_kit.py" -o nadi_kit.py
+          python -m pip install .
 
       - name: Run NADI heartbeat cycle
         env:
