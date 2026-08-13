@@ -88,6 +88,16 @@ def test_transport_deduplicates_within_one_append(tmp_path: Path):
     assert t.stats()["outbox"] == 1
 
 
+def test_inbox_accepts_complete_pull_larger_than_outbox_capacity(tmp_path: Path):
+    transport = NadiTransport(tmp_path)
+    messages = [
+        NadiMessage(source="peer", target="me", operation="x", payload={"n": index})
+        for index in range(200)
+    ]
+    assert transport.append_to_inbox(messages) == 200
+    assert len(transport.read_inbox()) == 200
+
+
 def test_transport_clear_expired(tmp_path: Path):
     t = NadiTransport(tmp_path)
     fresh = NadiMessage(source="a", target="b", operation="test", payload={})
@@ -317,6 +327,33 @@ def test_existing_hub_message_acknowledges_local_duplicate(tmp_path: Path, monke
     result = node.sync()
     assert result["pushed"] == 0
     assert node.transport.read_outbox() == []
+
+
+def test_full_hub_mailbox_evicts_old_existing_and_reports_it(tmp_path: Path, monkeypatch):
+    (tmp_path / "nadi_inbox.json").write_text("[]")
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    node = NadiNode("me", tmp_path)
+    existing = [NadiMessage(source="me", target="a", operation="old", payload={"n": index}) for index in range(144)]
+    message = NadiMessage(source="me", target="a", operation="new", payload={})
+    written = []
+    monkeypatch.setattr(node.relay, "_read_hub_file_with_sha", lambda _path: ([m.to_dict() for m in existing], "sha"))
+    monkeypatch.setattr(node.relay, "_write_hub_file", lambda _path, data, *, sha=None: written.extend(data))
+    report = node.relay.push_to_hub_report([message])
+    assert report.pushed == 1
+    assert len(report.evicted_keys) == 1
+    assert len(written) == 144
+    assert (message.source, message.target, message.id) in report.acknowledged_keys
+    assert message.id in {entry["id"] for entry in written}
+
+
+def test_acknowledgement_is_scoped_by_source_target_and_id(tmp_path: Path):
+    transport = NadiTransport(tmp_path)
+    shared_id = "shared-id"
+    successful = NadiMessage(source="me", target="a", operation="x", payload={}, id=shared_id)
+    failed = NadiMessage(source="me", target="b", operation="x", payload={}, id=shared_id)
+    transport.append_to_outbox([successful, failed])
+    transport.acknowledge_outbox({(successful.source, successful.target, successful.id)})
+    assert [(m.target, m.id) for m in transport.read_outbox()] == [("b", shared_id)]
 
 
 def test_node_load_peers_from_seeds(tmp_path: Path):

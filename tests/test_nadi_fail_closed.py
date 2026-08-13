@@ -20,5 +20,4 @@ def test_ack_reports_atomic_write_failure_and_does_not_claim_removal(tmp_path, m
     transport.append_to_outbox([message])
     monkeypatch.setattr("nadi_kit.os.replace", lambda *_args: (_ for _ in ()).throw(OSError("disk full")))
     with pytest.raises(OSError, match="disk full"):
-        transport.acknowledge_outbox({message.id})
-
+        transport.acknowledge_outbox({(message.source, message.target, message.id)})

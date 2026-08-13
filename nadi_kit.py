@@ -47,6 +47,7 @@ __all__ = [
 __version__ = "0.1.2"
 
 log = logging.getLogger("nadi_kit")
+MessageKey = tuple[str, str, str]
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
@@ -338,8 +339,14 @@ class PushReport:
     """Per-message relay outcome used to acknowledge only durable delivery."""
 
     pushed: int
-    acknowledged_ids: frozenset[str] = frozenset()
+    acknowledged_keys: frozenset[MessageKey] = frozenset()
     failed_targets: frozenset[str] = frozenset()
+    evicted_keys: frozenset[MessageKey] = frozenset()
+
+
+def _message_key(message: NadiMessage | dict[str, Any]) -> MessageKey:
+    parsed = message if isinstance(message, NadiMessage) else NadiMessage.from_dict(message)
+    return (parsed.source, parsed.target, parsed.id)
 
 
 # ── NadiTransport (local file I/O) ──────────────────────────────────────────
@@ -369,10 +376,13 @@ class NadiTransport:
         return [m for m in msgs if not m.is_expired]
 
     def append_to_outbox(self, messages: list[NadiMessage]) -> int:
-        return self._atomic_append(self.outbox_path, messages)
+        return self._atomic_append(self.outbox_path, messages, capacity=NADI_BUFFER_SIZE)
 
     def append_to_inbox(self, messages: list[NadiMessage]) -> int:
-        return self._atomic_append(self.inbox_path, messages)
+        # The inbox is a local cache of durable hub mailboxes.  Do not reject
+        # a complete pull merely because more than 144 live messages arrived;
+        # clear_expired() bounds historical growth at the end of every sync.
+        return self._atomic_append(self.inbox_path, messages, capacity=None)
 
     def clear_outbox(self) -> int:
         old = self._atomic_read(self.outbox_path)
@@ -384,12 +394,12 @@ class NadiTransport:
         self._atomic_write(self.inbox_path, [])
         return len(old)
 
-    def acknowledge_outbox(self, message_ids: set[str] | frozenset[str]) -> int:
+    def acknowledge_outbox(self, message_keys: set[MessageKey] | frozenset[MessageKey]) -> int:
         """Remove only messages confirmed durable by the relay."""
-        if not message_ids:
+        if not message_keys:
             return 0
         existing = self._atomic_read(self.outbox_path)
-        remaining = [d for d in existing if NadiMessage.from_dict(d).id not in message_ids]
+        remaining = [d for d in existing if _message_key(d) not in message_keys]
         removed = len(existing) - len(remaining)
         if removed:
             self._atomic_write(self.outbox_path, remaining)
@@ -447,22 +457,29 @@ class NadiTransport:
                 os.unlink(tmp.name)
             raise
 
-    def _atomic_append(self, path: Path, messages: list[NadiMessage]) -> int:
+    def _atomic_append(
+        self,
+        path: Path,
+        messages: list[NadiMessage],
+        *,
+        capacity: int | None,
+    ) -> int:
         now = time.time()
         existing = [
             d for d in self._atomic_read(path)
             if now <= d.get("timestamp", 0) + d.get("ttl_s", NADI_DEFAULT_TTL_S)
         ]
-        seen = {NadiMessage.from_dict(d).id for d in existing}
+        seen = {_message_key(d) for d in existing}
         new: list[dict[str, Any]] = []
         for message in messages:
-            if message.is_expired or message.id in seen:
+            key = _message_key(message)
+            if message.is_expired or key in seen:
                 continue
             new.append(message.to_dict())
-            seen.add(message.id)
-        if len(existing) + len(new) > NADI_BUFFER_SIZE:
+            seen.add(key)
+        if capacity is not None and len(existing) + len(new) > capacity:
             raise BufferError(
-                f"NADI buffer capacity {NADI_BUFFER_SIZE} exceeded; refusing lossy append"
+                f"NADI buffer capacity {capacity} exceeded; refusing lossy append"
             )
         merged = existing + new
         self._atomic_write(path, merged)
@@ -539,8 +556,9 @@ class NadiHubRelay:
             by_target.setdefault(msg.target, []).append(msg.to_dict())
 
         pushed = 0
-        acknowledged_ids: set[str] = set()
+        acknowledged_keys: set[MessageKey] = set()
         failed_targets: set[str] = set()
+        evicted_keys: set[MessageKey] = set()
         for target, batch in by_target.items():
             filename = f"{HUB_NADI_DIR}/{self.agent_id}_to_{target}.json"
             try:
@@ -549,23 +567,34 @@ class NadiHubRelay:
                     d for d in existing
                     if now <= d.get("timestamp", 0) + d.get("ttl_s", NADI_DEFAULT_TTL_S)
                 ]
-                seen = {NadiMessage.from_dict(d).id for d in alive}
+                alive_by_key = {_message_key(d): d for d in alive}
+                batch_by_key = {_message_key(d): d for d in batch}
+                seen = set(alive_by_key)
                 new: list[dict[str, Any]] = []
-                for entry in batch:
-                    message_id = NadiMessage.from_dict(entry).id
-                    if message_id in seen:
+                for key, entry in batch_by_key.items():
+                    if key in seen:
                         continue
                     new.append(entry)
-                    seen.add(message_id)
-                merged = alive + new
-                if len(merged) > NADI_BUFFER_SIZE:
+                    seen.add(key)
+
+                required_existing = [d for d in alive if _message_key(d) in batch_by_key]
+                if len(required_existing) + len(new) > NADI_BUFFER_SIZE:
                     raise BufferError(
-                        f"hub mailbox capacity {NADI_BUFFER_SIZE} exceeded for {target}"
+                        f"attempted batch exceeds hub mailbox capacity for {target}"
                     )
+                other_existing = [d for d in alive if _message_key(d) not in batch_by_key]
+                available = NADI_BUFFER_SIZE - len(required_existing) - len(new)
+                retained_other = other_existing[-available:] if available else []
+                retained_keys = {_message_key(d) for d in retained_other + required_existing}
+                merged = [d for d in alive if _message_key(d) in retained_keys] + new
+                evicted = {_message_key(d) for d in alive if _message_key(d) not in retained_keys}
                 if merged != existing:
                     self._write_hub_file(filename, merged, sha=sha)
                 pushed += len(new)
-                acknowledged_ids.update(NadiMessage.from_dict(d).id for d in batch)
+                acknowledged_keys.update(batch_by_key)
+                evicted_keys.update(evicted)
+                if evicted:
+                    log.warning("relay evicted %d old messages from full mailbox %s", len(evicted), target)
             except Exception as exc:
                 failed_targets.add(target)
                 log.warning("relay push to %s failed: %s", target, exc)
@@ -573,8 +602,9 @@ class NadiHubRelay:
         self._last_push = time.time()
         return PushReport(
             pushed=pushed,
-            acknowledged_ids=frozenset(acknowledged_ids),
+            acknowledged_keys=frozenset(acknowledged_keys),
             failed_targets=frozenset(failed_targets),
+            evicted_keys=frozenset(evicted_keys),
         )
 
     def discover_hub_peers(self) -> list[str]:
@@ -897,7 +927,7 @@ class NadiNode:
             if outbox:
                 report = self.relay.push_to_hub_report(outbox)
                 stats["pushed"] = report.pushed
-                self.transport.acknowledge_outbox(report.acknowledged_ids)
+                self.transport.acknowledge_outbox(report.acknowledged_keys)
         except Exception as exc:
             log.warning("hub push failed: %s", exc)
 
