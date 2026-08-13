@@ -567,7 +567,16 @@ class NadiHubRelay:
                     d for d in existing
                     if now <= d.get("timestamp", 0) + d.get("ttl_s", NADI_DEFAULT_TTL_S)
                 ]
-                alive_by_key = {_message_key(d): d for d in alive}
+                # Normalize pre-existing legacy duplicates before enforcing
+                # mailbox cardinality.  Keep the newest representation for a
+                # key while preserving deterministic last-occurrence order.
+                alive_by_key: dict[MessageKey, dict[str, Any]] = {}
+                for entry in alive:
+                    key = _message_key(entry)
+                    if key in alive_by_key:
+                        del alive_by_key[key]
+                    alive_by_key[key] = entry
+                alive = list(alive_by_key.values())
                 batch_by_key = {_message_key(d): d for d in batch}
                 seen = set(alive_by_key)
                 new: list[dict[str, Any]] = []

@@ -346,6 +346,27 @@ def test_full_hub_mailbox_evicts_old_existing_and_reports_it(tmp_path: Path, mon
     assert message.id in {entry["id"] for entry in written}
 
 
+def test_hub_normalizes_existing_duplicate_keys_before_capacity(tmp_path: Path, monkeypatch):
+    (tmp_path / "nadi_inbox.json").write_text("[]")
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    node = NadiNode("me", tmp_path)
+    existing = [NadiMessage(source="me", target="a", operation="old", payload={"n": index}) for index in range(143)]
+    duplicate = existing[0].to_dict()
+    duplicate["payload"] = {"n": "newest duplicate"}
+    message = NadiMessage(source="me", target="a", operation="new", payload={})
+    written = []
+    monkeypatch.setattr(
+        node.relay,
+        "_read_hub_file_with_sha",
+        lambda _path: ([m.to_dict() for m in existing] + [duplicate], "sha"),
+    )
+    monkeypatch.setattr(node.relay, "_write_hub_file", lambda _path, data, *, sha=None: written.extend(data))
+    report = node.relay.push_to_hub_report([message])
+    assert report.pushed == 1
+    assert len(written) == 144
+    assert len({(entry["source"], entry["target"], entry["id"]) for entry in written}) == 144
+
+
 def test_acknowledgement_is_scoped_by_source_target_and_id(tmp_path: Path):
     transport = NadiTransport(tmp_path)
     shared_id = "shared-id"
