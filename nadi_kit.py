@@ -28,14 +28,22 @@ import subprocess
 import tempfile
 import time
 import uuid
+from collections import OrderedDict
 from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 from typing import Any, Callable
 
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
-__all__ = ["NadiMessage", "NadiTransport", "NadiHubRelay", "NadiNode", "NodeKeyStore"]
+__all__ = [
+    "NadiMessage",
+    "NadiTransport",
+    "NadiHubRelay",
+    "NadiNode",
+    "NodeKeyStore",
+    "PushReport",
+]
 __version__ = "0.1.2"
 
 log = logging.getLogger("nadi_kit")
@@ -317,7 +325,21 @@ class NadiMessage:
         filtered.setdefault("target", "*")
         filtered.setdefault("operation", "unknown")
         filtered.setdefault("payload", {})
+        if not filtered.get("id"):
+            # Legacy messages predate the explicit UUID.  A random default
+            # would give the same stored record a new identity on every read.
+            canonical = json.dumps(d, sort_keys=True, separators=(",", ":"), default=str)
+            filtered["id"] = str(uuid.uuid5(uuid.NAMESPACE_URL, canonical))
         return cls(**filtered)
+
+
+@dataclass(frozen=True)
+class PushReport:
+    """Per-message relay outcome used to acknowledge only durable delivery."""
+
+    pushed: int
+    acknowledged_ids: frozenset[str] = frozenset()
+    failed_targets: frozenset[str] = frozenset()
 
 
 # ── NadiTransport (local file I/O) ──────────────────────────────────────────
@@ -361,6 +383,17 @@ class NadiTransport:
         old = self._atomic_read(self.inbox_path)
         self._atomic_write(self.inbox_path, [])
         return len(old)
+
+    def acknowledge_outbox(self, message_ids: set[str] | frozenset[str]) -> int:
+        """Remove only messages confirmed durable by the relay."""
+        if not message_ids:
+            return 0
+        existing = self._atomic_read(self.outbox_path)
+        remaining = [d for d in existing if NadiMessage.from_dict(d).id not in message_ids]
+        removed = len(existing) - len(remaining)
+        if removed:
+            self._atomic_write(self.outbox_path, remaining)
+        return removed
 
     def clear_expired(self) -> dict[str, int]:
         """Remove expired messages from both files."""
@@ -412,12 +445,26 @@ class NadiTransport:
             log.error("nadi write error %s: %s", path.name, exc)
             if tmp and os.path.exists(tmp.name):
                 os.unlink(tmp.name)
+            raise
 
     def _atomic_append(self, path: Path, messages: list[NadiMessage]) -> int:
-        existing = self._atomic_read(path)
-        seen = {(d.get("source"), d.get("timestamp")) for d in existing}
-        new = [m.to_dict() for m in messages if (m.source, m.timestamp) not in seen]
-        merged = (existing + new)[-NADI_BUFFER_SIZE:]
+        now = time.time()
+        existing = [
+            d for d in self._atomic_read(path)
+            if now <= d.get("timestamp", 0) + d.get("ttl_s", NADI_DEFAULT_TTL_S)
+        ]
+        seen = {NadiMessage.from_dict(d).id for d in existing}
+        new: list[dict[str, Any]] = []
+        for message in messages:
+            if message.is_expired or message.id in seen:
+                continue
+            new.append(message.to_dict())
+            seen.add(message.id)
+        if len(existing) + len(new) > NADI_BUFFER_SIZE:
+            raise BufferError(
+                f"NADI buffer capacity {NADI_BUFFER_SIZE} exceeded; refusing lossy append"
+            )
+        merged = existing + new
         self._atomic_write(path, merged)
         return len(new)
 
@@ -473,11 +520,15 @@ class NadiHubRelay:
 
     def push_to_hub(self, messages: list[NadiMessage]) -> int:
         """Write messages to hub per-peer mailboxes. Returns count pushed."""
+        return self.push_to_hub_report(messages).pushed
+
+    def push_to_hub_report(self, messages: list[NadiMessage]) -> PushReport:
+        """Write per-target batches and report exactly which IDs are durable."""
         if not messages:
-            return 0
+            return PushReport(0)
         if time.time() - self._last_push < MIN_RELAY_INTERVAL_S:
             log.debug("relay push throttled")
-            return 0
+            return PushReport(0)
 
         now = time.time()
         by_target: dict[str, list[dict]] = {}
@@ -488,22 +539,43 @@ class NadiHubRelay:
             by_target.setdefault(msg.target, []).append(msg.to_dict())
 
         pushed = 0
+        acknowledged_ids: set[str] = set()
+        failed_targets: set[str] = set()
         for target, batch in by_target.items():
             filename = f"{HUB_NADI_DIR}/{self.agent_id}_to_{target}.json"
             try:
                 existing, sha = self._read_hub_file_with_sha(filename)
-                seen = {(d.get("source"), d.get("timestamp")) for d in existing}
-                new = [d for d in batch if (d.get("source"), d.get("timestamp")) not in seen]
-                if not new:
-                    continue
-                merged = (existing + new)[-NADI_BUFFER_SIZE:]
-                self._write_hub_file(filename, merged, sha=sha)
+                alive = [
+                    d for d in existing
+                    if now <= d.get("timestamp", 0) + d.get("ttl_s", NADI_DEFAULT_TTL_S)
+                ]
+                seen = {NadiMessage.from_dict(d).id for d in alive}
+                new: list[dict[str, Any]] = []
+                for entry in batch:
+                    message_id = NadiMessage.from_dict(entry).id
+                    if message_id in seen:
+                        continue
+                    new.append(entry)
+                    seen.add(message_id)
+                merged = alive + new
+                if len(merged) > NADI_BUFFER_SIZE:
+                    raise BufferError(
+                        f"hub mailbox capacity {NADI_BUFFER_SIZE} exceeded for {target}"
+                    )
+                if merged != existing:
+                    self._write_hub_file(filename, merged, sha=sha)
                 pushed += len(new)
+                acknowledged_ids.update(NadiMessage.from_dict(d).id for d in batch)
             except Exception as exc:
+                failed_targets.add(target)
                 log.warning("relay push to %s failed: %s", target, exc)
 
         self._last_push = time.time()
-        return pushed
+        return PushReport(
+            pushed=pushed,
+            acknowledged_ids=frozenset(acknowledged_ids),
+            failed_targets=frozenset(failed_targets),
+        )
 
     def discover_hub_peers(self) -> list[str]:
         """Discover peers from hub nadi/ directory listing."""
@@ -621,7 +693,7 @@ class NadiNode:
         self.relay = NadiHubRelay(agent_id, hub_repo=hub_repo)
         self._handlers: dict[str, Callable[[NadiMessage], None]] = {}
         self._peers: list[str] = []
-        self._processed: set[tuple[str, float]] = set()
+        self._processed: OrderedDict[tuple[str, str], None] = OrderedDict()
 
         # Cryptographic identity
         fed_dir = Path(federation_dir)
@@ -765,7 +837,14 @@ class NadiNode:
     def receive(self) -> list[NadiMessage]:
         """Read inbox, return unprocessed messages sorted by priority."""
         messages = self.transport.read_inbox()
-        unprocessed = [m for m in messages if (m.source, m.timestamp) not in self._processed]
+        seen: set[tuple[str, str]] = set()
+        unprocessed = []
+        for message in messages:
+            key = (message.source, message.id)
+            if key in self._processed or key in seen:
+                continue
+            seen.add(key)
+            unprocessed.append(message)
         unprocessed.sort(key=lambda m: -m.priority)
         return unprocessed
 
@@ -774,7 +853,7 @@ class NadiNode:
         messages = self.receive()
         processed = 0
         for msg in messages:
-            key = (msg.source, msg.timestamp)
+            key = (msg.source, msg.id)
             handler = self._handlers.get(msg.operation)
             if handler:
                 try:
@@ -782,13 +861,15 @@ class NadiNode:
                     processed += 1
                 except Exception as exc:
                     log.error("handler %s failed: %s", msg.operation, exc)
+                    continue
             else:
                 log.debug("no handler for op=%s from %s", msg.operation, msg.source)
-            self._processed.add(key)
+            self._processed[key] = None
 
             # Prevent unbounded growth
             if len(self._processed) > 5000:
-                self._processed = set(list(self._processed)[-2500:])
+                while len(self._processed) > 2500:
+                    self._processed.popitem(last=False)
 
         return processed
 
@@ -814,9 +895,9 @@ class NadiNode:
         try:
             outbox = self.transport.read_outbox()
             if outbox:
-                stats["pushed"] = self.relay.push_to_hub(outbox)
-                if stats["pushed"] > 0:
-                    self.transport.clear_outbox()
+                report = self.relay.push_to_hub_report(outbox)
+                stats["pushed"] = report.pushed
+                self.transport.acknowledge_outbox(report.acknowledged_ids)
         except Exception as exc:
             log.warning("hub push failed: %s", exc)
 

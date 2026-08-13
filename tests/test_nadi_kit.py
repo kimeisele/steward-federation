@@ -1,8 +1,9 @@
 """Tests for nadi_kit — shared NADI federation transport."""
 
 import json
-import time
 from pathlib import Path
+
+import pytest
 
 from nadi_kit import NadiMessage, NadiNode, NadiTransport
 
@@ -53,7 +54,7 @@ def test_transport_read_write(tmp_path: Path):
 
 def test_transport_dedup(tmp_path: Path):
     t = NadiTransport(tmp_path)
-    msg = NadiMessage(source="a", target="b", operation="test", payload={}, timestamp=100.0, ttl_s=999999)
+    msg = NadiMessage(source="a", target="b", operation="test", payload={})
     t.append_to_outbox([msg])
     t.append_to_outbox([msg])  # duplicate
     assert t.stats()["outbox"] == 1
@@ -65,8 +66,26 @@ def test_transport_buffer_cap(tmp_path: Path):
         NadiMessage(source="a", target="b", operation="test", payload={"n": i})
         for i in range(200)
     ]
-    t.append_to_outbox(msgs)
-    assert t.stats()["outbox"] == 144  # NADI_BUFFER_SIZE
+    with pytest.raises(BufferError, match="refusing lossy append"):
+        t.append_to_outbox(msgs)
+    assert t.stats()["outbox"] == 0
+
+
+def test_transport_overflow_preserves_existing_messages(tmp_path: Path):
+    t = NadiTransport(tmp_path)
+    existing = [NadiMessage(source="a", target="b", operation="x", payload={"n": i}) for i in range(143)]
+    assert t.append_to_outbox(existing) == 143
+    additions = [NadiMessage(source="a", target="b", operation="x", payload={"n": i}) for i in range(2)]
+    with pytest.raises(BufferError):
+        t.append_to_outbox(additions)
+    assert [message.id for message in t.read_outbox()] == [message.id for message in existing]
+
+
+def test_transport_deduplicates_within_one_append(tmp_path: Path):
+    t = NadiTransport(tmp_path)
+    message = NadiMessage(source="a", target="b", operation="x", payload={})
+    assert t.append_to_outbox([message, message]) == 1
+    assert t.stats()["outbox"] == 1
 
 
 def test_transport_clear_expired(tmp_path: Path):
@@ -204,6 +223,100 @@ def test_node_process_inbox(tmp_path: Path):
     # Second call should not re-process
     count2 = node.process_inbox()
     assert count2 == 0
+
+
+def test_same_source_and_timestamp_with_distinct_ids_both_dispatch(tmp_path: Path):
+    t = 1234.0
+    first = NadiMessage(source="peer", target="me", operation="ping", payload={"n": 1}, timestamp=t, ttl_s=9999999999)
+    second = NadiMessage(source="peer", target="me", operation="ping", payload={"n": 2}, timestamp=t, ttl_s=9999999999)
+    (tmp_path / "nadi_inbox.json").write_text(json.dumps([first.to_dict(), second.to_dict()]))
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    received = []
+    node = NadiNode("me", tmp_path)
+    node.on("ping", lambda message: received.append(message.payload["n"]))
+    assert node.process_inbox() == 2
+    assert received == [1, 2]
+
+
+def test_duplicate_id_in_one_inbox_dispatches_once(tmp_path: Path):
+    message = NadiMessage(source="peer", target="me", operation="ping", payload={})
+    (tmp_path / "nadi_inbox.json").write_text(json.dumps([message.to_dict(), message.to_dict()]))
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    calls = []
+    node = NadiNode("me", tmp_path)
+    node.on("ping", lambda received: calls.append(received.id))
+    assert node.process_inbox() == 1
+    assert calls == [message.id]
+
+
+def test_failed_handler_is_retryable(tmp_path: Path):
+    message = NadiMessage(source="peer", target="me", operation="ping", payload={})
+    (tmp_path / "nadi_inbox.json").write_text(json.dumps([message.to_dict()]))
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    node = NadiNode("me", tmp_path)
+    node.on("ping", lambda _message: (_ for _ in ()).throw(RuntimeError("retry me")))
+    assert node.process_inbox() == 0
+    calls = []
+    node.on("ping", lambda received: calls.append(received.id))
+    assert node.process_inbox() == 1
+    assert calls == [message.id]
+
+
+def test_legacy_message_without_id_has_stable_identity():
+    raw = {"source": "peer", "target": "me", "operation": "ping", "payload": {}, "timestamp": 1234.0}
+    assert NadiMessage.from_dict(raw).id == NadiMessage.from_dict(raw).id
+
+
+def test_processed_trim_keeps_exact_newest_entries(tmp_path: Path):
+    (tmp_path / "nadi_inbox.json").write_text("[]")
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    node = NadiNode("me", tmp_path)
+    node._processed.update((("peer", str(index)), None) for index in range(5000))
+    for index in range(5000, 5001):
+        message = NadiMessage(source="peer", target="me", operation="noop", payload={}, id=str(index))
+        node.transport._atomic_write(node.transport.inbox_path, [message.to_dict()])
+        node.process_inbox()
+    assert list(node._processed) == [("peer", str(index)) for index in range(2501, 5001)]
+
+
+def test_partial_relay_failure_keeps_only_failed_target_in_outbox(tmp_path: Path, monkeypatch):
+    (tmp_path / "nadi_inbox.json").write_text("[]")
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    node = NadiNode("me", tmp_path)
+    to_a = NadiMessage(source="me", target="a", operation="work", payload={})
+    to_b = NadiMessage(source="me", target="b", operation="work", payload={})
+    node.transport.append_to_outbox([to_a, to_b])
+    monkeypatch.setattr(node.relay, "_read_hub_file_with_sha", lambda _path: ([], None))
+
+    def write(path, _data, *, sha=None):
+        if "_to_b.json" in path:
+            raise RuntimeError("target b unavailable")
+
+    monkeypatch.setattr(node.relay, "_write_hub_file", write)
+    result = node.sync()
+    assert result["pushed"] == 1
+    assert [message.id for message in node.transport.read_outbox()] == [to_b.id]
+
+
+def test_existing_hub_message_acknowledges_local_duplicate(tmp_path: Path, monkeypatch):
+    (tmp_path / "nadi_inbox.json").write_text("[]")
+    (tmp_path / "nadi_outbox.json").write_text("[]")
+    node = NadiNode("me", tmp_path)
+    message = NadiMessage(source="me", target="a", operation="work", payload={})
+    node.transport.append_to_outbox([message])
+    monkeypatch.setattr(
+        node.relay,
+        "_read_hub_file_with_sha",
+        lambda _path: ([message.to_dict()], "sha"),
+    )
+    monkeypatch.setattr(
+        node.relay,
+        "_write_hub_file",
+        lambda *_args, **_kwargs: pytest.fail("duplicate must not rewrite mailbox"),
+    )
+    result = node.sync()
+    assert result["pushed"] == 0
+    assert node.transport.read_outbox() == []
 
 
 def test_node_load_peers_from_seeds(tmp_path: Path):
