@@ -2,52 +2,6 @@
   {
     "source": "ag_c0993c40cfb06e92",
     "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_d35ed53bca093a38",
-      "diagnostic": {
-        "agent_id": "ag_d35ed53bca093a38",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.3
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1786790791.6918774,
-    "ttl_s": 900.0,
-    "payload_hash": "b88cf5216ffa547e57932c3fe7caaa6d0b89e6c8725625d82c5d085fac833bef",
-    "signature": "ca2vzLP6BufH3TMp0NT3YX8CK/LAq95AgL62rv7AMfjOeZLvm7YuBaWZUBedbZ4YYLmYyNUAzj3QJfGNDx2TDQ==",
-    "id": "96482117-4c1a-49e1-a713-3ed212cd2d67"
-  },
-  {
-    "source": "ag_c0993c40cfb06e92",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "ag_e2305ecef502d300",
-      "diagnostic": {
-        "agent_id": "ag_e2305ecef502d300",
-        "checks": [
-          "repo_inaccessible"
-        ]
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.3
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1786790791.9583259,
-    "ttl_s": 900.0,
-    "payload_hash": "ef29f5d474b16730028d57147de516b5518e0d5e0494bafc4efb71ddc6410b6f",
-    "signature": "h3KkmIo42I34JxS4Z+ZBs85k13QHNlEfmxmASodachTzsrzVvRVVaoxLLlWvxyP0+O1QorNlIAJnHg0ciwpIBw==",
-    "id": "4bff9d1c-9ddc-4a5f-a6a0-dd0493848493"
-  },
-  {
-    "source": "ag_c0993c40cfb06e92",
-    "target": "agent-internet",
     "operation": "heartbeat",
     "payload": {
       "agent_id": "ag_c0993c40cfb06e92",
@@ -3814,5 +3768,61 @@
     "payload_hash": "00a23128629744c44439cdff1d4386e58f803ec665e79b6ee1e2ebda535164eb",
     "signature": "Z+7E0NB58bwW1ITP+LsAUXEkld+VaLB6CtliU8yLIwobh+bE9Vjkjm4Ng20cLOqzNijduPzFZ1ahzQNYBm5YAg==",
     "id": "3e58a441-0edf-49e2-8e3b-f1de43cba2aa"
+  },
+  {
+    "source": "ag_c0993c40cfb06e92",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_c0993c40cfb06e92",
+      "health": 0.8495537678421274,
+      "timestamp": 1786800791.0882587,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1786800791.088266,
+    "ttl_s": 900.0,
+    "payload_hash": "43ce4d6ff84e2e5bb1d20bd7d53fd951deee387256e563f467d140704a199309",
+    "signature": "kiC6BHy5QU6P/VQCEySlIBN5ANb66VDI0RDNbfQAolO3dCY6O4tZSdsc47Ys/TKqboG7TmbknJMEiFrP6wqUBg==",
+    "id": "704f2b3c-7d45-4c4e-af93-d64aaeb20ebc"
+  },
+  {
+    "source": "ag_c0993c40cfb06e92",
+    "target": "agent-internet",
+    "operation": "diagnostic_report",
+    "payload": {
+      "target_peer": "agent-internet",
+      "diagnostic": {
+        "agent_id": "agent-internet",
+        "checks": [
+          "repo_accessible",
+          "ci_success"
+        ],
+        "last_push": "2026-07-12T10:20:39Z",
+        "last_ci": {
+          "conclusion": "success",
+          "name": "Federation Heartbeat"
+        }
+      },
+      "steward_action": "suspect_investigation",
+      "trust": 0.8
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1786800796.7167406,
+    "ttl_s": 900.0,
+    "payload_hash": "7fb31dede87c95a9ed1f72fad83dd5229d1cd38f02dae50484db1f6a62a445cc",
+    "signature": "XZwUw9YOA19ea4ZeIUmyAmaMRZjWQiVvKt3gt+OMc/GkV3SDmqc8o9Q5byf+eRVc8fWsH+OpWwwG8AU62/aBAg==",
+    "id": "b40b2169-d0ed-46ac-ad2e-dd2f3db44655"
   }
 ]
