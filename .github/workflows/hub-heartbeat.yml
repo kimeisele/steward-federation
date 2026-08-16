@@ -19,6 +19,13 @@ jobs:
     steps:
       - name: Checkout steward-federation
         uses: actions/checkout@v4
+        with:
+          # S1/repo-hygiene: the heartbeat only needs the current tree; full
+          # history is ~0.5-0.7 GB per checkout, 96x/day. No workflow step or
+          # nadi_kit.py accesses git history (verified 2026-08-16: only add,
+          # commit, diff --cached, pull --rebase, push; the race rebase works
+          # from a shallow clone because git fetches the needed depth).
+          fetch-depth: 1
 
       - name: Setup Python
         uses: actions/setup-python@v5
