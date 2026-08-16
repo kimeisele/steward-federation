@@ -31,9 +31,11 @@ jobs:
         # Phase-2 replacement (owner decision 2026-08-16): no periodic squash
         # (would destroy reproducibility). Instead alert when the server-side
         # repo size exceeds 1.5 GB; docs/steward-federation-shrink-runbook.md
-        # then applies (manual Phase 1, owner-gated).
+        # then applies (manual Phase 1, owner-gated). Uses GITHUB_TOKEN, not
+        # FEDERATION_PAT: the repo is public and the guard runs before the
+        # heartbeat cycle (kept out of the secret-bearing zone).
         env:
-          GH_TOKEN: ${{ secrets.FEDERATION_PAT || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           SIZE_KB="$(gh api repos/kimeisele/steward-federation --jq .size)"
           LIMIT_KB=$(( 1500 * 1024 ))
