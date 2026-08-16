@@ -27,6 +27,25 @@ jobs:
           # from a shallow clone because git fetches the needed depth).
           fetch-depth: 1
 
+      - name: Repo-size guard
+        # Phase-2 replacement (owner decision 2026-08-16): no periodic squash
+        # (would destroy reproducibility). Instead alert when the server-side
+        # repo size exceeds 1.5 GB; docs/steward-federation-shrink-runbook.md
+        # then applies (manual Phase 1, owner-gated). Uses GITHUB_TOKEN, not
+        # uses only the ambient token (no federation secret): the repo is
+        # public and the guard runs before the heartbeat cycle, keeping it
+        # out of the secret-bearing zone.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          SIZE_KB="$(gh api repos/kimeisele/steward-federation --jq .size)"
+          LIMIT_KB=$(( 1500 * 1024 ))
+          echo "steward-federation repo size: ${SIZE_KB} KB (limit ${LIMIT_KB} KB)"
+          if [ "$SIZE_KB" -gt "$LIMIT_KB" ]; then
+            echo "::error ::steward-federation repo size ${SIZE_KB} KB exceeds 1.5 GB; run the shrink runbook (Phase 1, owner-gated)"
+            exit 1
+          fi
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
