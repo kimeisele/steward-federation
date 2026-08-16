@@ -1,0 +1,81 @@
+name: Hub Heartbeat Watchdog
+
+# Dead-man check (owner decision 2026-08-16): a *missing* heartbeat run
+# raises no error on its own — the failure alert only fires when a run
+# exists and fails. This workflow runs independently of the heartbeat and
+# alerts when no successful heartbeat run has completed within the window.
+# A dead schedule, a disabled workflow, or a stuck runner all surface here.
+
+on:
+  schedule:
+    # Every hour at :17 — offset from the heartbeat's :05-:59/15 grid so this
+    # never runs in lockstep with a heartbeat job.
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  deadman:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check heartbeat freshness
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Heartbeat runs every 15 min; a healthy hub shows a success within
+          # the last ~30 min. Alert if the newest successful run is older than
+          # STALE_HOURS (2 h = ~8 missed runs), which is far beyond jitter.
+          STALE_HOURS=2
+          STALE_SECONDS=$(( STALE_HOURS * 3600 ))
+          latest="$(gh run list --repo kimeisele/steward-federation \
+            --workflow 253419143 --status success --limit 1 \
+            --json createdAt --jq '.[0].createdAt // empty' 2>/dev/null || true)"
+          now="$(date -u +%FT%TZ)"
+          if [ -z "$latest" ]; then
+            echo "no successful heartbeat run ever recorded"
+            STALE=1
+          else
+            latest_ts="$(date -j -f '%Y-%m-%dT%H:%M:%SZ' "$latest" +%s 2>/dev/null || \
+                         date -d "$latest" +%s 2>/dev/null)"
+            now_ts="$(date -j -f '%Y-%m-%dT%H:%M:%SZ' "$now" +%s 2>/dev/null || \
+                      date -d "$now" +%s 2>/dev/null)"
+            age=$(( now_ts - latest_ts ))
+            echo "last successful heartbeat: $latest (age ${age}s, limit ${STALE_SECONDS}s)"
+            if [ "$age" -gt "$STALE_SECONDS" ]; then
+              STALE=1
+            else
+              STALE=0
+            fi
+          fi
+          # Close a stale alert when the hub is healthy again.
+          if [ "${STALE:-0}" = "0" ]; then
+            open="$(gh issue list --repo kimeisele/steward-federation \
+              --state open --search "heartbeat failing" --json number \
+              --jq '.[].number' 2>/dev/null || true)"
+            if [ -n "$open" ]; then
+              for n in $open; do
+                gh issue close "$n" --repo kimeisele/steward-federation \
+                  --comment "Heartbeat is healthy again (last success: $latest); closing alert."
+              done
+            fi
+            echo "OK — heartbeat fresh"
+            exit 0
+          fi
+          # Dead-man: open or reuse the alert issue.
+          existing="$(gh issue list --repo kimeisele/steward-federation \
+            --state open --search "heartbeat failing" --json number \
+            --jq '.[0].number // empty' 2>/dev/null || true)"
+          body="Dead-man check at $(date -u +%FT%TZ): no successful Federation Hub Heartbeat run since $latest (older than ${STALE_HOURS}h). The heartbeat schedule fires every 15 min; 2 h without success means the workflow is disabled, the schedule is broken, or the runner is stuck. A missing run does not raise a normal failure, which is exactly why this watchdog exists. This issue stays open until a successful heartbeat run closes it; do not close manually."
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo kimeisele/steward-federation \
+              --body "$body"
+          else
+            gh issue create --repo kimeisele/steward-federation \
+              --title "heartbeat failing — no successful run since $latest" \
+              --body "$body"
+          fi
+          exit 1

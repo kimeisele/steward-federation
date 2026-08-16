@@ -91,3 +91,24 @@ jobs:
             # re-applied automatically after the rebase.
             git pull --rebase --autostash origin main
           done
+      - name: Alert on heartbeat failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Failure alert (owner decision 2026-08-16: failure-alarm before
+          # size-alarm). Opens or reuses a single dedicated alert issue so a
+          # persistent breakage does not spam one issue per run.
+          ALERT_TITLE="heartbeat failing (run #${{ github.run_number }})"
+          existing="$(gh issue list --repo kimeisele/steward-federation \
+            --state open --search "heartbeat failing" --json number \
+            --jq '.[0].number // empty' 2>/dev/null || true)"
+          body="Run #${{ github.run_number }} failed at $(date -u +%FT%TZ). See ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo kimeisele/steward-federation \
+              --body "$body"
+          else
+            gh issue create --repo kimeisele/steward-federation \
+              --title "$ALERT_TITLE" \
+              --body "$body"
+          fi
