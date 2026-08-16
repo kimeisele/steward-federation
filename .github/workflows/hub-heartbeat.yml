@@ -65,5 +65,10 @@ jobs:
             backoff=$(( (RANDOM % 15) + 2 ))
             echo "Race condition. Backoff ${backoff}s then rebase..."
             sleep $backoff
-            git pull --rebase origin main
+            # --autostash: nadi_kit.py sync leaves uncommitted local files
+            # (e.g. nadi_inbox.json). Without it the rebase refuses with
+            # "cannot pull with rebase: You have unstaged changes" and the
+            # heartbeat dies on the first push conflict. The stash is
+            # re-applied automatically after the rebase.
+            git pull --rebase --autostash origin main
           done
