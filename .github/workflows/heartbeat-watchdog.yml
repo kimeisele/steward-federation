@@ -54,7 +54,7 @@ jobs:
           # Close a stale alert when the hub is healthy again.
           if [ "${STALE:-0}" = "0" ]; then
             open="$(gh issue list --repo kimeisele/steward-federation \
-              --state open --search "heartbeat failing" --json number \
+              --state open --label heartbeat-alert --json number \
               --jq '.[].number' 2>/dev/null || true)"
             if [ -n "$open" ]; then
               for n in $open; do
@@ -67,7 +67,7 @@ jobs:
           fi
           # Dead-man: open or reuse the alert issue.
           existing="$(gh issue list --repo kimeisele/steward-federation \
-            --state open --search "heartbeat failing" --json number \
+            --state open --label heartbeat-alert --json number \
             --jq '.[0].number // empty' 2>/dev/null || true)"
           body="Dead-man check at $(date -u +%FT%TZ): no successful Federation Hub Heartbeat run since $latest (older than ${STALE_HOURS}h). The heartbeat schedule fires every 15 min; 2 h without success means the workflow is disabled, the schedule is broken, or the runner is stuck. A missing run does not raise a normal failure, which is exactly why this watchdog exists. This issue stays open until a successful heartbeat run closes it; do not close manually."
           if [ -n "$existing" ]; then
@@ -76,6 +76,7 @@ jobs:
           else
             gh issue create --repo kimeisele/steward-federation \
               --title "heartbeat failing — no successful run since $latest" \
+              --label heartbeat-alert \
               --body "$body"
           fi
           exit 1
