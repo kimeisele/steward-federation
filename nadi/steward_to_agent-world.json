@@ -4,64 +4,6 @@
     "target": "agent-world",
     "operation": "diagnostic_report",
     "payload": {
-      "target_peer": "agent-template-proof-node-01",
-      "diagnostic": {
-        "agent_id": "agent-template-proof-node-01",
-        "checks": [
-          "repo_accessible",
-          "ci_failure"
-        ],
-        "last_push": "2026-08-16T08:13:56Z",
-        "last_ci": {
-          "conclusion": "failure",
-          "name": "Federation Discovery"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1792685832.5270693,
-    "ttl_s": 900.0,
-    "payload_hash": "dd1e0c0abcb68488a242581c57fe0a7a9f03212fb886f6c69fb7e3983b14c998",
-    "signature": "QcUXmpyGuKYMEywIQzJeHEwAx4sVUpQgCEDZHFPyg4ETXHOmG5x1uj48LBBG9fcTcgh8U06FbXOLfBoyJYU3Ag==",
-    "id": "00daa2c8-c0bc-4080-a31d-fd2756a2e043"
-  },
-  {
-    "source": "ag_1cf5350ddac25f81",
-    "target": "agent-world",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "federation-hq",
-      "diagnostic": {
-        "agent_id": "federation-hq",
-        "checks": [
-          "repo_accessible",
-          "ci_failure"
-        ],
-        "last_push": "2026-08-19T16:33:30Z",
-        "last_ci": {
-          "conclusion": "failure",
-          "name": "Federation Discovery"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1792685833.4234655,
-    "ttl_s": 900.0,
-    "payload_hash": "50138eb9539a15da84c3f75292c981bb40b88009d11df1c2d55b574fbd99afe3",
-    "signature": "hx+jhSb2ylTq8CTgpixQ1eRTAisrNqx9K5OUYqroMTwsUOgH8FQAxTwIXtdqAWU8PPc9dUZCCVmINyaonaZGCw==",
-    "id": "1aaecfca-2263-427a-bca7-3a17e77ad97e"
-  },
-  {
-    "source": "ag_1cf5350ddac25f81",
-    "target": "agent-world",
-    "operation": "diagnostic_report",
-    "payload": {
       "target_peer": "steward-herald",
       "diagnostic": {
         "agent_id": "steward-herald",
@@ -3860,5 +3802,59 @@
     "payload_hash": "edac5f6e1e14d52831843fb6b1fd3271ae8da688047ba305f4a6d19519322740",
     "signature": "rvldgUGt4D40yp+QYjJTA/KEE/Cd0CX26OkugC+AXeBCzKj4AkTDCMHPk8QF/JIrR144cPSSHYmpl9yT4WYmCA==",
     "id": "bac59c43-1b99-4fc4-a8a4-563a402ee88b"
+  },
+  {
+    "source": "ag_1cf5350ddac25f81",
+    "target": "agent-world",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_1cf5350ddac25f81",
+      "health": 0.8546093611446632,
+      "timestamp": 1792701159.2975416,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1792701159.2975519,
+    "ttl_s": 900.0,
+    "payload_hash": "bafe3ec8ede810e69ba8e29925edc2a14bc294acc19bb46e016675eb1518b8e1",
+    "signature": "VYT8O/tdWRoJ5Iyvzseb6TCirQVckOuE2Cj4VbmzBwN3rllOk3i3xUP4pj/dGbIPPSNmn+IeT1k9PbXlkCgnDg==",
+    "id": "081c16d1-e3d8-4c8b-9d45-cac0588013d1"
+  },
+  {
+    "source": "ag_1cf5350ddac25f81",
+    "target": "agent-world",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_1cf5350ddac25f81",
+      "health": 0.8546093611446632,
+      "timestamp": 1792701190.3562453,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1792701190.3562512,
+    "ttl_s": 900.0,
+    "payload_hash": "75ce17aa67cda2f5f2abfbb36763677d875c7cfca6eaf84c2dcb67dcbc11584f",
+    "signature": "F/mYILp9ZxDE3TqpnmP419+UT76QbiqqduI3oPpRG7RGvLPJ+pjKrHHgfGwCO5X40siPh0PtJoLoHEKSJyktDw==",
+    "id": "ddf04988-7659-4b44-aeff-44fd9c4f7cfb"
   }
 ]
