@@ -4,64 +4,6 @@
     "target": "agent-internet",
     "operation": "diagnostic_report",
     "payload": {
-      "target_peer": "agent-template-proof-node-01",
-      "diagnostic": {
-        "agent_id": "agent-template-proof-node-01",
-        "checks": [
-          "repo_accessible",
-          "ci_failure"
-        ],
-        "last_push": "2026-08-16T08:13:56Z",
-        "last_ci": {
-          "conclusion": "failure",
-          "name": "Federation Discovery"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1792685832.5270693,
-    "ttl_s": 900.0,
-    "payload_hash": "a05814a4d1379f2dfb37a308d9a38c526192f4974a50b7a31c60b5cf0a602bb6",
-    "signature": "1U/pwaufHqD8ufo2bNaRdaWJFGfxTV6EjvKu4Umntv6o2R/O3e25WZMRt00UdF1NVHvL+hMCv9Lr43LCncegDQ==",
-    "id": "b3a573a0-72e9-4b72-9b9b-56c76d8e604b"
-  },
-  {
-    "source": "ag_1cf5350ddac25f81",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
-      "target_peer": "federation-hq",
-      "diagnostic": {
-        "agent_id": "federation-hq",
-        "checks": [
-          "repo_accessible",
-          "ci_failure"
-        ],
-        "last_push": "2026-08-19T16:33:30Z",
-        "last_ci": {
-          "conclusion": "failure",
-          "name": "Federation Discovery"
-        }
-      },
-      "steward_action": "suspect_investigation",
-      "trust": 0.8
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1792685833.4234655,
-    "ttl_s": 900.0,
-    "payload_hash": "3e1bd7d48ecf1bac0cf8d0a74a3941ba18f828cd7c03ca07947272e3f1ea5e8b",
-    "signature": "fYlu6OiWwSRnFJTiCLQCiMJz1ThD3ACG+FFD9nMqZ12XSKHwWK1CEmHA9acM7VxXyXCGKEIL5oQU8/1gB0sIAQ==",
-    "id": "595a27f3-fe68-4a9c-b36d-446c3e87da9c"
-  },
-  {
-    "source": "ag_1cf5350ddac25f81",
-    "target": "agent-internet",
-    "operation": "diagnostic_report",
-    "payload": {
       "target_peer": "steward-herald",
       "diagnostic": {
         "agent_id": "steward-herald",
@@ -3860,5 +3802,59 @@
     "payload_hash": "05668c01bd6c5d4e7107c3fc86a46f45d28661c4a9d5c7c191427486496906a0",
     "signature": "A2W5tw2VJe6+Yf2na4uHDe6yblD1KbWz0hJvn1zgScjOuNTitvBUrflMv/19xlmQGjbWS0rLhj6Rfda28XlPAg==",
     "id": "566853c1-7b77-4ef9-b98d-fd1ac3d6a420"
+  },
+  {
+    "source": "ag_1cf5350ddac25f81",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_1cf5350ddac25f81",
+      "health": 0.8546093611446632,
+      "timestamp": 1792701159.2975416,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1792701159.2975519,
+    "ttl_s": 900.0,
+    "payload_hash": "a42fe549665e48c9077db161957c5d34d2a66bd233780f2371f03072e8c13a13",
+    "signature": "7IMNbNZa4Tf//wn939pApgpqpCkhcHhewKsx5OhhqrWpeeT146ZpdjydGSdukDDeTOLFashQZV+dw/h6Co8CAw==",
+    "id": "5a0d51af-c5e2-4aa9-8b72-bfb707b0b015"
+  },
+  {
+    "source": "ag_1cf5350ddac25f81",
+    "target": "agent-internet",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_1cf5350ddac25f81",
+      "health": 0.8546093611446632,
+      "timestamp": 1792701190.3562453,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1792701190.3562512,
+    "ttl_s": 900.0,
+    "payload_hash": "416c1f1666a410e3f791ab00f512e19379ea1674bbd5710eeba7b9928e3f03c4",
+    "signature": "ZErTO83XJfH9oBh9Hqi1C2Dg5W5n5LBEQy0Ym57JkrVTzO91WYaQJi5QpuDBDwG728EaGKkOgOlaxypzG2DzCw==",
+    "id": "1be87aa3-1156-45df-a443-50f5fe0b2c5f"
   }
 ]
