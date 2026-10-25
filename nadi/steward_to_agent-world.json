@@ -5,60 +5,6 @@
     "operation": "heartbeat",
     "payload": {
       "agent_id": "ag_1cf5350ddac25f81",
-      "health": 0.8546093611446632,
-      "timestamp": 1792878495.8394318,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1792878495.8394384,
-    "ttl_s": 900.0,
-    "payload_hash": "41a52a8cd854e40e742abddd5823028e6667b5ac8dedacda2b1000e9316eddc5",
-    "signature": "/oMN1EN43E0hiA3gI5TLenxJrjaYAucDXxhtgO3cOqJbt1mXeC+A5VLE0affMqKVdCkYxobknFWJiz59stikDA==",
-    "id": "bea25566-526c-46d0-9567-792feeac5ebd"
-  },
-  {
-    "source": "ag_1cf5350ddac25f81",
-    "target": "agent-world",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "ag_1cf5350ddac25f81",
-      "health": 0.8536358611446633,
-      "timestamp": 1792878535.166128,
-      "capabilities": [
-        "code_analysis",
-        "task_execution",
-        "ci_automation",
-        "federation_bridge",
-        "autonomous_daemon"
-      ],
-      "repo": "kimeisele/steward",
-      "version": "0.17.0",
-      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
-    },
-    "priority": 1,
-    "correlation_id": "",
-    "timestamp": 1792878535.166135,
-    "ttl_s": 900.0,
-    "payload_hash": "1a817aaf4f98030d07a64051f67d38a1b8533845f8e830e35d1ddfb5cce60a7f",
-    "signature": "1XtY4g58H1ndfdlgZ3ZiwYPdP7+6ZcIqAo6EPECgyaTdISeMBMoVQsKdCJSI7G+pmzlqgpDQMzX8tsKOaeEQCA==",
-    "id": "8e7c467b-298e-4487-8ccf-700d379f5a78"
-  },
-  {
-    "source": "ag_1cf5350ddac25f81",
-    "target": "agent-world",
-    "operation": "heartbeat",
-    "payload": {
-      "agent_id": "ag_1cf5350ddac25f81",
       "health": 0.8536358611446633,
       "timestamp": 1792878538.3817792,
       "capabilities": [
@@ -3846,5 +3792,61 @@
     "payload_hash": "e69e27707ff59ec7cb6317262181d07e723736d1e80c830451c07e8b630f12aa",
     "signature": "odx/SES6O0z3Gs0a4K57q/YbFDliaq348Wr3DM1ey+oewWnZYlqVGZieJH4nwL0YPDh1kzW8ivcYzZ342wBeCA==",
     "id": "82f63f4b-6ade-458d-8adc-78646893126d"
+  },
+  {
+    "source": "ag_1cf5350ddac25f81",
+    "target": "agent-world",
+    "operation": "heartbeat",
+    "payload": {
+      "agent_id": "ag_1cf5350ddac25f81",
+      "health": 0.8546093611446632,
+      "timestamp": 1792892829.9186714,
+      "capabilities": [
+        "code_analysis",
+        "task_execution",
+        "ci_automation",
+        "federation_bridge",
+        "autonomous_daemon"
+      ],
+      "repo": "kimeisele/steward",
+      "version": "0.17.0",
+      "fingerprint": "ba8429a39e537cb86305b4438d0293c04ff7f286fd7a403cf20a232ba2599c7e"
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1792892829.9186769,
+    "ttl_s": 900.0,
+    "payload_hash": "8f7a67f4f39fd6a31b67dcb79f77fb322afc8b11d3fd333dcad95f2f79d1353e",
+    "signature": "yu3EF3xRfkChTy2K6JZhAdH2WmOWIgYvMugLzeSORwHhZco1EWfx7CxUE1Z8jtOmTBHHuyJVsw6OtQjVkixqCg==",
+    "id": "dd62f0ee-4aea-49ce-bb69-0b48e2ec8dea"
+  },
+  {
+    "source": "ag_1cf5350ddac25f81",
+    "target": "agent-world",
+    "operation": "diagnostic_report",
+    "payload": {
+      "target_peer": "steward-federation",
+      "diagnostic": {
+        "agent_id": "steward-federation",
+        "checks": [
+          "repo_accessible",
+          "ci_"
+        ],
+        "last_push": "2026-10-25T01:46:58Z",
+        "last_ci": {
+          "conclusion": "",
+          "name": "CI"
+        }
+      },
+      "steward_action": "suspect_investigation",
+      "trust": 0.8
+    },
+    "priority": 1,
+    "correlation_id": "",
+    "timestamp": 1792892830.8234372,
+    "ttl_s": 900.0,
+    "payload_hash": "92e7d0be75bd80ba25f1b2ab196435424cb55a1e07bc59f8412e5b94a9fae12f",
+    "signature": "i0Bua1b7vfeQsBObhPxWdAww3/M5T4GD6oy9ixi1Ug/Vx/mu85OleUtG5VnJ/sdGIfw0jJBygOp13Rkl8e7YBQ==",
+    "id": "9de63cdc-d222-4156-b950-7616dd396417"
   }
 ]
